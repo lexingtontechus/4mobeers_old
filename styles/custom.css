@@ -1,0 +1,11 @@
+.darkmode {
+  background-color: #18181b; /*zinc-900*/
+  color: #f3f4f6; /*gray-100*/
+}
+.lightmode {
+  background-color: #93c5fd; /*#fb923c /*blue-300*/
+  color: #374151; /*gray-700*/
+}
+.body {
+  background-color: #ea580c; /*zinc-900*/
+}
