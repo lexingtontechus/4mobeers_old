@@ -13,20 +13,19 @@ import Footer from "../components/footer";
 export default function Home() {
   return (
     <>
-      <SEO title="Home | 0xaloysius" description="Home 0xaloysius." />
+      <SEO title="Home | 4MoBeers" description="Home 4MoBeers." />
       <Navbar />
       <Hero />
-      <SectionTitle pretitle="0x Stack" title="Portfolio Organizations">
+      <SectionTitle pretitle="4MoBeers" title="Portfolio Organizations">
         The 0x portfolio is comprised of five (5) companies & one (1) non-profit.
         Each company is focused on a specific mission and innovations within its
         industry.
       </SectionTitle>
       <Cta />
       <SectionTitle pretitle="FAQ" title="Frequently Asked Questions">
-        How to partner or work with 0xaloysius?
+        How to partner or work with 4MoBeers?
       </SectionTitle>
       <Faq />
-
       <Footer />
       <PopupWidget />
     </>

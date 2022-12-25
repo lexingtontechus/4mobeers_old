@@ -9,6 +9,11 @@ import { useEffect } from "react";
 import { getCalApi } from "@calcom/embed-react";
 import SEO from "../components/seo";
 
+import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
+
+// This is the chainId your dApp will work on.
+const activeChainId = ChainId.Mainnet;
+
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }) {
@@ -31,12 +36,21 @@ function MyApp({ Component, pageProps }) {
     })();
   }, []);
   return (
-    <ThemeProvider attribute="class">
-      <NextUIProvider>
-        <SEO />
-        <Component {...pageProps} />
-      </NextUIProvider>
-    </ThemeProvider>
+    <ThirdwebProvider
+      desiredChainId={activeChainId}
+      authConfig={{
+        domain: "localhost:3000",
+        authUrl: "/api/auth",
+        loginRedirect: "/",
+      }}
+    >
+      <ThemeProvider attribute="class">
+        <NextUIProvider>
+          <SEO />
+          <Component {...pageProps} />
+        </NextUIProvider>
+      </ThemeProvider>
+    </ThirdwebProvider>
   );
 }
 

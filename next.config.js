@@ -15,7 +15,7 @@ const nextConfig = {
     domains: ["storageapi.fleek.co"],
     loader: "custom",
   },
-  exportPathMap: function () {
+  /*  exportPathMap: function () {
     return {
       "/": { page: "/" },
       "/profile": { page: "/profile" },
@@ -23,7 +23,7 @@ const nextConfig = {
       "/terms": { page: "/terms" },
       "/privacy": { page: "/privacy" },
     };
-  },
+  },*/
 };
 
 module.exports = nextConfig;
