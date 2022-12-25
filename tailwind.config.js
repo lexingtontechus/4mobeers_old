@@ -3,13 +3,13 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   mode: "jit",
-    content: ["./pages/**/*.{html,js}", "./components/**/*.{html,js}"],
+  content: ["./pages/**/*.{html,js}", "./components/**/*.{html,js}"],
   darkMode: "class", // or 'media' or 'class'
 
   backgroundImage: {
     "profile-pattern":
       "url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80')",
-    "footer-texture": "url('/img/footer-texture.png')"
+    "footer-texture": "url('/img/footer-texture.png')",
   },
   theme: {
     extend: {
@@ -19,19 +19,20 @@ module.exports = {
         trueOrange: colors.orange,
         trueSky: colors.sky,
         trueRed: colors.red,
- truePurple: colors.purple,
+        truePurple: colors.purple,
         trueZinc: colors.zinc,
         trueEmerald: colors.emerald,
         trueBlue: colors.blue,
-      }
+        truePink: colors.pink,
+      },
     },
     fontFamily: {
-      sans: ["Inter Tight", "Mukta", ...defaultTheme.fontFamily.sans],
-      stock: [defaultTheme.fontFamily.sans]
-    }
+      sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+      stock: [defaultTheme.fontFamily.sans],
+    },
   },
   variants: {
-    extend: {}
+    extend: {},
   },
-  plugins: [require("@tailwindcss/aspect-ratio")]
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };
