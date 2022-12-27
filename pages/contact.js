@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Image } from "@nextui-org/react";
 import { useForm, useWatch } from "react-hook-form";
 import { Disclosure, Transition } from "@headlessui/react";
+import Link from "nxt/link";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import SEO from "../components/seo";
@@ -52,7 +53,7 @@ export default function Contact() {
   };
   return (
     <>
-      <SEO title="Contact | 0xaloysius" description="Contact 0xaloysius." />
+      <SEO title="Contact | 4MoBeers" description="Contact 4MoBeers." />
       <Navbar />
       <div className="h-full w-full">
         <div className="relative py-8 flex content-center items-center justify-center min-h-screen-75">
@@ -89,7 +90,7 @@ export default function Contact() {
                   />
                   <input
                     type="hidden"
-                    value="0xaloysius"
+                    value="4MoBeers"
                     {...register("from_name")}
                   />
                   <input
@@ -218,7 +219,6 @@ export default function Contact() {
                       )}
                     </button>
                   </div>
-                 
                 </form>
               )}
 
@@ -242,6 +242,15 @@ export default function Contact() {
                     <h3 className="py-5 text-xl text-green-500">
                       Message sent successfully
                     </h3>
+                    <h2 className="py-5 text-xl text-trueZinc-700">
+                      <Link
+                        href="https://discord.gg/d6KnD7V2gs"
+                        alt="Discord"
+                        target="_blank"
+                      >
+                        Join Our Discord Channel
+                      </Link>
+                    </h2>
                     <p className="text-trueZinc-700 md:px-3">{Message}</p>
                     <button
                       className="mt-6 text-truePurple-600 focus:outline-none"
