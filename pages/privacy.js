@@ -12,8 +12,8 @@ export default function Privacy() {
   return (
     <>
       <SEO
-        title="Privacy | 0xaloysius"
-        description="Privacy 0xaloysius. Early-stage VC in biotech, cleantech, foodtech & mobility."
+        title="Privacy | 4MoBeers"
+        description="Privacy 4MoBeers."
       />
       <Navbar transparent />
       <main className="text-trueZinc-700 dark:text-trueZinc-100 mx-auto px-8">
@@ -44,8 +44,8 @@ export default function Privacy() {
                 <Collapse title="GENERAL NOTICE" expanded>
                   <p className="text-sm text-trueZinc-700">
                     Thank you for choosing to be part of our community at
-                    0xaloysius LLC, doing business as 0xaloysius
-                    (&quot;0xaloysius LLC.,&quot; &quot;we,&quot;
+                    4MoBeers Inc, doing business as 4MoBeers
+                    (&quot;4MoBeers Inc.,&quot; &quot;we,&quot;
                     &quot;us,&quot; or &quot;our&quot;). We are committed to
                     protecting your personal information and your right to
                     privacy. If you have any questions or concerns about this
@@ -56,9 +56,9 @@ export default function Privacy() {
                   </p>
                   <Link
                     className="text-sm font-bold"
-                    href="https://0xaloysius.x"
+                    href="https://4MoBeers.nft"
                   >
-                    https://0xaloysius.x
+                    https://4MoBeers.nft
                   </Link>
                 </Collapse>
                 <Collapse title="2. HOW DO WE USE YOUR INFORMATION?">
@@ -219,7 +219,7 @@ export default function Privacy() {
                     account and take reasonable measures to promptly delete such
                     data from our records. If you become aware of any data we
                     may have collected from children under age 18, please
-                    contact us at legal@0xaloysius.x.
+                    contact us at legal@4MoBeers.nft.
                   </p>
                 </Collapse>
 
@@ -317,13 +317,13 @@ export default function Privacy() {
                     to your inquiries. How do we use and share your personal
                     information? More information about our data collection and
                     sharing practices can be found in this privacy notice. You
-                    may contact us by email at legal@0xaloysius.x, by visiting
+                    may contact us by email at legal@4MoBeers.nft, by visiting
                   </p>
                   <Link
                     className="text-sm font-bold"
-                    href="https://0xaloysius.x/contact"
+                    href="https://4MoBeers.nft/contact"
                   >
-                    https://0xaloysius.x/contact
+                    https://4MoBeers.nft/contact
                   </Link>
                   <p className="text-sm text-trueZinc-700">
                     , or by referring to the contact details at the bottom of
@@ -339,10 +339,10 @@ export default function Privacy() {
                     information for our own business purposes, such as for
                     undertaking internal research for technological development
                     and demonstration. This is not considered to be
-                    &quot;selling&quot; of your personal data. 0xaloysius has
+                    &quot;selling&quot; of your personal data. 4MoBeers has
                     not disclosed or sold any personal information to third
                     parties for a business or commercial purpose in the
-                    preceding 12 months. 0xaloysius will not sell personal
+                    preceding 12 months. 4MoBeers will not sell personal
                     information in the future belonging to website visitors,
                     users and other consumers. Your rights with respect to your
                     personal data Right to request deletion of the data -
@@ -407,13 +407,13 @@ export default function Privacy() {
                     upon the request as soon as feasibly possible, but no later
                     than 15 days from the date of the request submission. To
                     exercise these rights, you can contact us by email at
-                    legal@0xaloysius.x, by visiting
+                    legal@4MoBeers.nft, by visiting
                   </p>
                   <Link
                     className="text-sm font-bold"
-                    href="https://0xaloysius.x/contact"
+                    href="https://4MoBeers.nft/contact"
                   >
-                    https://0xaloysius.x/contact
+                    https://4MoBeers.nft/contact
                   </Link>
                   <p className="text-sm text-trueZinc-700">
                     , or by referring to the contact details at the bottom of
@@ -439,10 +439,10 @@ export default function Privacy() {
                 <Collapse title="12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?">
                   <p className="text-sm text-trueZinc-700">
                     If you have questions or comments about this notice, you may
-                    email us at legal@0xaloysius.x or by post to:
+                    email us at legal@4MoBeers.nft or by post to:
                   </p>
                   <p className="text-sm text-trueZinc-700">
-                    0xaloysius LLC.
+                    4MoBeers Inc.
                     <br />
                     16192 Coastal Highway
                     <br />

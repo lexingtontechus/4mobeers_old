@@ -45,10 +45,8 @@ export default function Hero() {
                 />*/}
               </div>
             </div>
-            {/*<div className="pt-8 text-xl leading-normal text-trueZinc-700 lg:text-xl xl:text-2xl dark:text-trueZinc-100">*/}
-            <h1>
-              Transitioning to a world of new protocols, digital ownership and
-              systems powering new technologies.
+            <h1 className="uppercase pt-8 text-4xl leading-normal lg:text-4xl xl:text-5xl">
+              4 MO BEERS{" "}
             </h1>
           </div>
         </div>

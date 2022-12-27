@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Disclosure, Transition } from "@headlessui/react";
+import Link from "next/link";
 
 export default function PopupWidget() {
   const {
@@ -285,6 +286,16 @@ export default function PopupWidget() {
                         <h3 className="py-5 text-xl text-green-500">
                           Message sent successfully
                         </h3>
+                        <h2 className="py-5 text-xl text-trueZinc-700">
+                          <Link
+                            href="https://discord.gg/d6KnD7V2gs"
+                            alt="Discord"
+                            target="_blank"
+                          >
+                            Join Our Discord Channel
+                          </Link>
+                        </h2>
+
                         <p className="text-trueZinc-700 md:px-3">{Message}</p>
                         <button
                           className="mt-6 text-trueZinc-600 focus:outline-none"

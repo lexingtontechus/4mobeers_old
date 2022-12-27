@@ -35,17 +35,17 @@ export default function Faq() {
 
 const faqdata = [
   {
-    question: "How do I work with 0xaloysius?",
+    question: "How do I work with 4MoBeers?",
     answer:
       "The 0x portfolio partners with & employs people with a wide range of skills & experince.",
   },
   {
-    question: "Is 0xaloysius hiring?",
+    question: "Is 4MoBeers hiring?",
     answer:
       "Our portfolio businesses are hiring! Book a meeting with me to discuss new possibilities.",
   },
   {
-    question: "Who is 0xaloysius?",
+    question: "Who is 4MoBeers?",
     answer: "Book an introduction call with me!",
   },
 ];

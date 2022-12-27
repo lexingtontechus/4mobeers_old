@@ -21,8 +21,8 @@ function MyApp({ Component, pageProps }) {
     (async function () {
       const cal = await getCalApi();
       cal("floatingButton", {
-        calLink: "0xaloysius/30min",
-        buttonText: "Book Me",
+        calLink: "4mobeers/30min",
+        buttonText: "Beer Me",
         buttonColor: "#7e22ce",
         buttonTextColor: "#f4f4f5",
         buttonPosition: "bottom-left",

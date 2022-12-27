@@ -64,7 +64,7 @@ export default function Navbar() {
                       <li>
                         <Link
                           href="#about"
-                          className="text-2xl text-trueZinc-700 dark:text-trueZinc-100"
+                          className="text-2xl text-truePink-700 dark:text-truePink-500"
                         >
                           About
                         </Link>
@@ -72,7 +72,7 @@ export default function Navbar() {
                       <li>
                         <Link
                           href="#faqs"
-                          className="text-2xl text-trueZinc-700 dark:text-trueZinc-100"
+                          className="text-2xl text-truePink-700 dark:text-truePink-500"
                         >
                           Faqs
                         </Link>
@@ -80,7 +80,7 @@ export default function Navbar() {
                       <li>
                         <Link
                           href="#team"
-                          className="text-2xl text-trueZinc-700 dark:text-trueZinc-100"
+                          className="text-2xl text-truePink-700 dark:text-truePink-500"
                         >
                           Team
                         </Link>
@@ -112,13 +112,13 @@ export default function Navbar() {
             </button>
             <Link
               href="#faqs"
-              className="p-4 text-2xl text-trueZinc-700 dark:text-trueZinc-100"
+              className="p-4 text-2xl text-truePink-700 dark:text-truePink-500"
             >
               FAQs
             </Link>
             <Link
               href="#team"
-              className="p-4 text-2xl text-trueZinc-700 dark:text-trueZinc-100"
+              className="p-4 text-2xl text-truePink-700 dark:text-truePink-500"
             >
               Team
             </Link>
@@ -128,7 +128,7 @@ export default function Navbar() {
         <div className="hidden mr-3 space-x-3 lg:flex nav__item">
           <Link
             href="/"
-            className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5"
+            className="px-6 py-2 text-trueZinc-100 bg-truePurple-700 rounded-md md:ml-5"
           >
             Connect Wallet
           </Link>

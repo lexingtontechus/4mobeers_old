@@ -16,10 +16,10 @@ import {
 export default function Portfolio() {
   return (
     <>
-      <SEO title="Portfolio | 0xaloysius" description="Portfolio 0xaloysius." />
+      <SEO title="Portfolio | 4MoBeers" description="Portfolio 4MoBeers." />
 
       <Navbar />
-      <SectionTitle pretitle="Core Vision" title="The 0x Mission">
+      <SectionTitle pretitle="Core Vision" title="The 4MoBeers Mission">
         Support diversified investments in Southern Californian start-ups and
         communities to create sustainable, renewable & secure platforms and services.
       </SectionTitle>
