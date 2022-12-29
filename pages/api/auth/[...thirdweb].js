@@ -13,14 +13,14 @@ export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
   callbacks: {
     login: async (address) => {
       const { data: user } = await supabase
-        .from("users")
+        .from("profile")
         .select("*")
         .eq("address", address.toLowerCase())
         .single();
 
       if (!user) {
         const res = await supabase
-          .from("users")
+          .from("profile")
           .insert({ address: address.toLowerCase() })
           .single();
 
@@ -31,7 +31,7 @@ export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
     },
     user: async (address) => {
       const { data: user } = await supabase
-        .from("users")
+        .from("profile")
         .select("*")
         .eq("address", address.toLowerCase())
         .single();

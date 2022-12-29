@@ -35,7 +35,7 @@ export default function Navbar() {
 
                 <Disclosure.Button
                   aria-label="Toggle Menu"
-                  className="px-2 py-1 ml-auto text-truePink-700 dark:text-truePink-500 rounded-md lg:hidden hover:text-truePink-500 focus:text-truePink-500 focus:bg-truePink-100 focus:outline-none dark:focus:bg-truePink-700"
+                  className="px-2 py-1 ml-auto text-truePink-700 dark:text-truePink-400 rounded-md lg:hidden hover:text-truePink-400 focus:text-truePink-400 focus:bg-truePink-100 focus:outline-none dark:focus:bg-truePink-700"
                 >
                   <svg
                     className="w-6 h-6 fill-current"
@@ -64,7 +64,7 @@ export default function Navbar() {
                       <li>
                         <Link
                           href="#about"
-                          className="text-2xl text-truePink-700 dark:text-truePink-500"
+                          className="text-2xl text-truePink-700 dark:text-truePink-400"
                         >
                           About
                         </Link>
@@ -72,7 +72,7 @@ export default function Navbar() {
                       <li>
                         <Link
                           href="#faqs"
-                          className="text-2xl text-truePink-700 dark:text-truePink-500"
+                          className="text-2xl text-truePink-700 dark:text-truePink-400"
                         >
                           Faqs
                         </Link>
@@ -80,7 +80,7 @@ export default function Navbar() {
                       <li>
                         <Link
                           href="#team"
-                          className="text-2xl text-truePink-700 dark:text-truePink-500"
+                          className="text-2xl text-truePink-700 dark:text-truePink-400"
                         >
                           Team
                         </Link>
@@ -104,7 +104,7 @@ export default function Navbar() {
             <button button type="button">
               <Link
                 href="#about"
-                className="p-4 text-2xl text-truePink-700 dark:text-truePink-500"
+                className="p-4 text-2xl text-truePink-700 dark:text-truePink-400"
                 onClick={() => Router.push("#about")}
               >
                 About
@@ -112,13 +112,13 @@ export default function Navbar() {
             </button>
             <Link
               href="#faqs"
-              className="p-4 text-2xl text-truePink-700 dark:text-truePink-500"
+              className="p-4 text-2xl text-truePink-700 dark:text-truePink-400"
             >
               FAQs
             </Link>
             <Link
               href="#team"
-              className="p-4 text-2xl text-truePink-700 dark:text-truePink-500"
+              className="p-4 text-2xl text-truePink-700 dark:text-truePink-400"
             >
               Team
             </Link>

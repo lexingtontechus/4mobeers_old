@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Image } from "@nextui-org/react";
 import { useForm, useWatch } from "react-hook-form";
 import { Disclosure, Transition } from "@headlessui/react";
-import Link from "nxt/link";
+import Link from "next/link";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import SEO from "../components/seo";
@@ -68,8 +68,8 @@ export default function Contact() {
           </div>
         </div>
         <div className="container w-10/12 p-8 mx-auto w-full place-content-center flex flex-wrap">
-          <div className=" flex flex-col  overflow-hidden left-0 h-full w-full lg:w-1/2  min-h-[250px] sm:h-[600px] border border-trueZinc-300 dark:border-trueZinc-800 bg-white shadow-2xl rounded-md sm:max-h-[calc(100vh-120px)]">
-            <div className="flex flex-col  justify-center h-32 p-5 bg-truePurple-600">
+          <div className=" flex flex-col overflow-hidden left-0 h-full w-full lg:w-1/2  min-h-[250px] sm:h-[600px] border border-trueZinc-300 dark:border-trueZinc-800 bg-white shadow-2xl rounded-md sm:max-h-[calc(100vh-120px)]">
+            <div className="flex flex-col justify-center h-32 p-5 bg-truePurple-600">
               <h3 className="text-lg text-white">How can we help you?</h3>
               <p className="text-white opacity-50">
                 We usually respond in a few hours.
@@ -80,7 +80,7 @@ export default function Contact() {
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
                   <input
                     type="hidden"
-                    value="c4c17b77-17f0-4af1-9718-aecafb0ae7e8"
+                    value="1e3b28e3-22b9-49c7-a712-9dd2bdd83af9"
                     {...register("apikey")}
                   />
                   <input

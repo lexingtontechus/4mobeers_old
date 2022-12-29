@@ -10,6 +10,7 @@ import Faq from "../components/faq";
 import PopupWidget from "../components/popupWidget";
 import Team from "../components/team";
 import Footer from "../components/footer";
+import Whitelist from "../components/whitelist";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
         How to partner or work with 4MoBeers?
       </SectionTitle>
       <Faq />
+      <Whitelist />
       <Team id="team" />
       <Footer />
       <PopupWidget />

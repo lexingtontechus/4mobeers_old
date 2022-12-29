@@ -55,8 +55,8 @@ export default function Hero() {
             <Image
               loader={HeroImage}
               src="/hero.png"
-              width={200}
-              height={200}
+              width={150}
+              height={150}
               alt="0xhero"
               priority="true"
               className="inline-flex h-content w-auto rounded-half h-auto align-middle border-2 max-w-150-px"

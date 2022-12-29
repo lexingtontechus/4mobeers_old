@@ -43,15 +43,13 @@ class MyDocument extends Document {
             property="twitter:image"
             content="https://storageapi.fleek.co/47c43c10-6c0c-4b3b-a520-683839c214cf-bucket/assets/img/0xaloysius.svg"
           />
-
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap"
-            rel="stylesheet"
-          />
-
+          <link rel="me" href="https://noc.social/@4mobeers" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap" rel="stylesheet" />
           <link
             rel="icon"
-            href="https://storageapi.fleek.co/47c43c10-6c0c-4b3b-a520-683839c214cf-bucket/assets/img/logoyellow-0xaloysius.svg"
+            href="https://storageapi.fleek.one/ead18a13-670a-4701-91a7-06a767c3dcd5-bucket/assets/img/logo-4mobeers.svg"
           />
         </Head>
         <body className="lightmode dark:darkmode">
