@@ -1542,6 +1542,13 @@
   dependencies:
     "tslib" "2.4.0"
 
+"@formspark/use-formspark@^0.1.39":
+  "integrity" "sha512-3bIhw3z1eUzMXStgM3/WNNkjYuodk0PSrgrR3cQpCYifGmzkgRuy6mduCetqYK4vsTEaQO2RWFjNOK0eUEDGOQ=="
+  "resolved" "https://registry.npmjs.org/@formspark/use-formspark/-/use-formspark-0.1.39.tgz"
+  "version" "0.1.39"
+  dependencies:
+    "whatwg-fetch" "^3.6.2"
+
 "@fortawesome/fontawesome-common-types@6.2.0":
   "version" "6.2.0"
 
@@ -11751,6 +11758,11 @@
     "typedarray-to-buffer" "^3.1.5"
     "utf-8-validate" "^5.0.2"
     "yaeti" "^0.0.6"
+
+"whatwg-fetch@^3.6.2":
+  "integrity" "sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA=="
+  "resolved" "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz"
+  "version" "3.6.2"
 
 "whatwg-url@^5.0.0":
   "integrity" "sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw=="

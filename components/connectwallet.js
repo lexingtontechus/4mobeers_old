@@ -3,10 +3,10 @@ import {
   useUser,
   useLogin,
   useLogout,
-  useMetamask,
+  useMetamask
 } from "@thirdweb-dev/react";
 
-const Home = () => {
+const Wallet = () => {
   const address = useAddress();
   const connect = useMetamask();
 
@@ -29,4 +29,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Wallet;

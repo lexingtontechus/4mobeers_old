@@ -45,7 +45,7 @@ export default function Hero() {
                 />*/}
               </div>
             </div>
-            <h1 className="uppercase pt-8 text-4xl leading-normal lg:text-4xl xl:text-5xl">
+            <h1 className="uppercase pt-8 text-5xl leading-normal lg:text-4xl xl:text-6xl">
               4 MO BEERS{" "}
             </h1>
           </div>
@@ -55,8 +55,8 @@ export default function Hero() {
             <Image
               loader={HeroImage}
               src="/hero.png"
-              width={200}
-              height={200}
+              width={150}
+              height={150}
               alt="0xhero"
               priority="true"
               className="inline-flex h-content w-auto rounded-half h-auto align-middle border-2 max-w-150-px"

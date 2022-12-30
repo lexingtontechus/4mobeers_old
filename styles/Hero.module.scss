@@ -7,7 +7,9 @@
   flex-wrap: wrap;
   .row {
     h1 {
-      background: linear-gradient(-45deg, #6355a4, #6355a4, #e89a3e, #e89a3e);
+      font-size: 3.75rem; /* 60px */
+line-height: 1;
+background: linear-gradient(-45deg, #6355a4, #6355a4, #e89a3e, #e89a3e);
       background-size: 300%;
        -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
