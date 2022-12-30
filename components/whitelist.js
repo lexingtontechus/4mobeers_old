@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { Disclosure, Transition } from "@headlessui/react";
 import Link from "next/link";
 import styles from "../styles/Whitelist.module.scss";
 
@@ -18,6 +17,9 @@ export default function Whitelist() {
   const [Message, setMessage] = useState("");
 
   const userName = useWatch({ control, name: "name", defaultValue: "Someone" });
+  const [beername, setBeerName] = useState(null);
+  const [beertitle, setBeerTitle] = useState(null);
+  const [beeremail, setBeerEmail] = useState(null);
 
   const onSubmit = async (data, e) => {
     console.log(data);
@@ -47,7 +49,6 @@ export default function Whitelist() {
         console.log(error);
       });
   };
-
   return (
     <div className="container w-10/12 p-8 mx-auto w-full place-content-center flex flex-wrap">
       <div className="bg-trueBlue-300 dark:bg-trueZinc-900 flex flex-col  overflow-hidden left-0 h-full w-full sm:w-[350px] min-h-[250px] sm:h-[600px] sm:max-h-[calc(100vh-120px)]">
@@ -74,12 +75,12 @@ export default function Whitelist() {
               />
               <input
                 type="hidden"
-                value={`${userName} sent a message`}
+                value={`${userName} joined the Whitelist`}
                 {...register("subject")}
               />
               <input
                 type="hidden"
-                value="0xaloysius"
+                value="4MoBeers"
                 {...register("from_name")}
               />
               <input
@@ -91,67 +92,95 @@ export default function Whitelist() {
 
               <div className="mb-4 px-4">
                 <label
-                  htmlFor="full_name"
-                  className="block mb-2 text-sm text-trueZinc-600 dark:text-trueZinc-400"
+                  htmlFor="beername"
+                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
                 >
-                  Full Name
+                  Beer Name
                 </label>
                 <input
                   type="text"
-                  id="full_name"
-                  placeholder="John Doe"
+                  id="beername"
+                  placeholder="Brewster"
                   {...register("name", {
-                    required: "Full name is required",
+                    required: "Beer Name is required",
                     maxLength: 80,
                   })}
                   className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
-                    errors.name
+                    errors.beername
                       ? "border-red-600 focus:border-red-600 ring-red-100"
                       : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
                   }`}
                 />
-                {errors.name && (
+                {errors.beername && (
                   <div className="mt-1 text-sm text-red-400 invalid-feedback">
-                    {errors.name.message}
+                    {errors.beername.message}
                   </div>
                 )}
               </div>
 
               <div className="mb-4 px-4">
                 <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm text-trueZinc-600 dark:text-trueZinc-400"
+                  htmlFor="beeremail"
+                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
                 >
-                  Email Address
+                  Beer Email Address
                 </label>
                 <input
                   type="email"
-                  id="email"
-                  {...register("email", {
+                  id="beeremail"
+                  {...register("beeremail", {
                     required: "Enter your email",
                     pattern: {
                       value: /^\S+@\S+$/i,
                       message: "Please enter a valid email",
                     },
                   })}
-                  placeholder="you@company.com"
+                  placeholder="brewbuddy@company.com"
                   className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
-                    errors.email
+                    errors.beeremail
                       ? "border-red-600 focus:border-red-600 ring-red-100"
                       : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
                   }`}
                 />
 
-                {errors.email && (
+                {errors.beeremail && (
                   <div className="mt-1 text-sm text-red-400 invalid-feedback">
-                    {errors.email.message}
+                    {errors.beeremail.message}
+                  </div>
+                )}
+              </div>
+
+              <div className="mb-4 px-4">
+                <label
+                  htmlFor="beertitle"
+                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
+                >
+                  Beer Title
+                </label>
+                <input
+                  type="text"
+                  id="beertitle"
+                  placeholder="Brew Buddy"
+                  {...register("beertitle", {
+                    required: "Beer Title is required",
+                    maxLength: 80,
+                  })}
+                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                    errors.beertitle
+                      ? "border-red-600 focus:border-red-600 ring-red-100"
+                      : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                  }`}
+                />
+                {errors.beertitle && (
+                  <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                    {errors.beertitle.message}
                   </div>
                 )}
               </div>
               <div className="mx-auto mt-8 px-4">
                 <button
                   type="submit"
-                  className="w-full px-2 py-2 text-trueZinc-100 bg-truePurple-700 rounded-md focus:bg-trueSky-600 focus:outline-none"
+                  className="w-full px-2 py-2 text-trueZinc-100 bg-truePurple-700 rounded-md focus:bg-trueBlue-600 focus:outline-none"
                 >
                   {isSubmitting ? (
                     <svg

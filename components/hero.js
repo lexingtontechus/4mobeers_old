@@ -45,7 +45,7 @@ export default function Hero() {
                 />*/}
               </div>
             </div>
-            <h1 className="uppercase pt-8 text-4xl leading-normal lg:text-4xl xl:text-5xl">
+            <h1 className="uppercase pt-8 text-5xl leading-normal lg:text-4xl xl:text-6xl">
               4 MO BEERS{" "}
             </h1>
           </div>
