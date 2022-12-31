@@ -105,7 +105,7 @@ export default function Whitelist() {
                     required: "Beer Name is required",
                     maxLength: 80,
                   })}
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                  className={`w-full px-3 py-2 placeholder-trueZinc-700 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
                     errors.beername
                       ? "border-red-600 focus:border-red-600 ring-red-100"
                       : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
@@ -136,7 +136,7 @@ export default function Whitelist() {
                     },
                   })}
                   placeholder="brewbuddy@company.com"
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                  className={`w-full px-3 py-2 placeholder-trueZinc-700 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
                     errors.beeremail
                       ? "border-red-600 focus:border-red-600 ring-red-100"
                       : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
@@ -165,7 +165,7 @@ export default function Whitelist() {
                     required: "Beer Title is required",
                     maxLength: 80,
                   })}
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                  className={`w-full px-3 py-2 placeholder-trueZinc-700 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
                     errors.beertitle
                       ? "border-red-600 focus:border-red-600 ring-red-100"
                       : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"

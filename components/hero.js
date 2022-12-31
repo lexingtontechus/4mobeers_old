@@ -67,7 +67,7 @@ export default function Hero() {
       <Container>
         <div className="flex flex-col justify-center">
           <h2 className="text-xl text-center text-trueZinc-700 dark:text-trueZinc-100">
-            Building diverse companies in Southern California.
+            Building a Beerverse supporting the hospitality industry and beer community.
           </h2>
         </div>
       </Container>
