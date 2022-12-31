@@ -1,44 +1,54 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import Link from "next/link";
 import styles from "../styles/Whitelist.module.scss";
 
-import { supabase } from "../utils/supabase-clients";
-import { useRouter } from "next/router";
-
-export default function Test() {
+export default function Whitelist() {
   const {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors, isSubmitSuccessful, isSubmitting },
   } = useForm({
     mode: "onTouched",
   });
   const [isSuccess, setIsSuccess] = useState(false);
+  const [Message, setMessage] = useState("");
 
-  //const supabase = Supabase;
+  const userName = useWatch({ control, name: "name", defaultValue: "Someone" });
+  const [beername, setBeerName] = useState(null);
+  const [beertitle, setBeerTitle] = useState(null);
+  const [beeremail, setBeerEmail] = useState(null);
 
-  const onSubmit = //async (beerName, beerTitle, beerEmail) => {
-    async function JoinWhitelist(beerName, beerTitle, beerEmail) {
-      try {
-        let { error } = await supabase
-          .from("whitelist")
-          .insert(beerName, beerTitle, beerEmail);
-        if (error) throw error;
-        alert("Whitelist updated!");
-      } catch (error) {
-        alert("Error updating the data!");
-        console.log(error);
+  const onSubmit = async (data, e) => {
+    console.log(data);
+    await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(data, null, 2),
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        if (json.success) {
+          setIsSuccess(true);
+          setMessage(json.message);
+          e.target.reset();
+          reset();
+        } else {
+          setIsSuccess(false);
+          setMessage(json.message);
+        }
+      })
+      .catch((error) => {
         setIsSuccess(false);
-      } finally {
-        //setLoading(false);
-        setIsSuccess(true);
-
-        reset();
-      }
-    };
-
+        setMessage("Client Error. Please check the console.log for more info");
+        console.log(error);
+      });
+  };
   return (
     <div className="container w-10/12 p-8 mx-auto w-full place-content-center flex flex-wrap">
       <div className="bg-trueBlue-300 dark:bg-trueZinc-900 flex flex-col  overflow-hidden left-0 h-full w-full sm:w-[350px] min-h-[250px] sm:h-[600px] sm:max-h-[calc(100vh-120px)]">
@@ -58,45 +68,67 @@ export default function Test() {
         <div className="flex-grow h-full p-6 overflow-auto bg-trueBlue-300 dark:bg-trueZinc-900">
           {!isSubmitSuccessful && (
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
+              <input
+                type="hidden"
+                value="1e3b28e3-22b9-49c7-a712-9dd2bdd83af9"
+                {...register("apikey")}
+              />
+              <input
+                type="hidden"
+                value={`${userName} joined the Whitelist`}
+                {...register("subject")}
+              />
+              <input
+                type="hidden"
+                value="4MoBeers"
+                {...register("from_name")}
+              />
+              <input
+                type="checkbox"
+                className="hidden"
+                style={{ display: "none" }}
+                {...register("botcheck")}
+              ></input>
+
               <div className="mb-4 px-4">
                 <label
-                  htmlFor="beerName"
+                  htmlFor="beername"
                   className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
                 >
                   Beer Name
                 </label>
                 <input
                   type="text"
-                  id="beerName"
+                  id="beername"
                   placeholder="Brewster"
-                  {...register("beerName", {
+                  {...register("name", {
                     required: "Beer Name is required",
                     maxLength: 80,
                   })}
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
-                    errors.beerName
+                  className={`w-full px-3 py-2 placeholder-trueZinc-700 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                    errors.beername
                       ? "border-red-600 focus:border-red-600 ring-red-100"
                       : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
                   }`}
                 />
-                {errors.beerName && (
+                {errors.beername && (
                   <div className="mt-1 text-sm text-red-400 invalid-feedback">
-                    {errors.beerName.message}
+                    {errors.beername.message}
                   </div>
                 )}
               </div>
 
               <div className="mb-4 px-4">
                 <label
-                  htmlFor="beerEmail"
+                  htmlFor="beeremail"
                   className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
                 >
                   Beer Email Address
                 </label>
                 <input
                   type="email"
-                  id="beerEmail"
-                  {...register("beerEmail", {
+                  id="beeremail"
+                  {...register("beeremail", {
                     required: "Enter your email",
                     pattern: {
                       value: /^\S+@\S+$/i,
@@ -104,44 +136,44 @@ export default function Test() {
                     },
                   })}
                   placeholder="brewbuddy@company.com"
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
-                    errors.beerEmail
+                  className={`w-full px-3 py-2 placeholder-trueZinc-700 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                    errors.beeremail
                       ? "border-red-600 focus:border-red-600 ring-red-100"
                       : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
                   }`}
                 />
 
-                {errors.beerEmail && (
+                {errors.beeremail && (
                   <div className="mt-1 text-sm text-red-400 invalid-feedback">
-                    {errors.beerEmail.message}
+                    {errors.beeremail.message}
                   </div>
                 )}
               </div>
 
               <div className="mb-4 px-4">
                 <label
-                  htmlFor="beerTitle"
+                  htmlFor="beertitle"
                   className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
                 >
                   Beer Title
                 </label>
                 <input
                   type="text"
-                  id="beerTitle"
+                  id="beertitle"
                   placeholder="Brew Buddy"
-                  {...register("beerTitle", {
+                  {...register("beertitle", {
                     required: "Beer Title is required",
                     maxLength: 80,
                   })}
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
-                    errors.beerTitle
+                  className={`w-full px-3 py-2 placeholder-trueZinc-700 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                    errors.beertitle
                       ? "border-red-600 focus:border-red-600 ring-red-100"
                       : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
                   }`}
                 />
-                {errors.beerTitle && (
+                {errors.beertitle && (
                   <div className="mt-1 text-sm text-red-400 invalid-feedback">
-                    {errors.beerTitle.message}
+                    {errors.beertitle.message}
                   </div>
                 )}
               </div>
@@ -185,7 +217,7 @@ export default function Test() {
                 <svg
                   width="60"
                   height="60"
-                  className="text-truePurple-900 dark:text-truePink-400"
+                  className="text-green-300"
                   viewBox="0 0 100 100"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +228,7 @@ export default function Test() {
                     strokeWidth="3"
                   />
                 </svg>
-                <h3 className="py-5 text-xl text-trueEmerald-500">
+                <h3 className="py-5 text-xl text-green-500">
                   Whitelist request sent successfully
                 </h3>
                 <h2 className="py-5 text-xl text-trueZinc-700">
@@ -204,14 +236,14 @@ export default function Test() {
                     href="https://discord.gg/d6KnD7V2gs"
                     alt="Discord"
                     target="_blank"
-                    className="text-trueZinc-700"
                   >
                     Join Our Discord Channel
                   </Link>
                 </h2>
 
+                <p className="text-trueZinc-700 md:px-3">{Message}</p>
                 <button
-                  className="rounded-md py-2 px-4 bg-truePurple-900 mt-6 text-trueZinc-100 focus:outline-none"
+                  className="mt-6 text-trueZinc-600 focus:outline-none"
                   onClick={() => reset()}
                 >
                   Go back
@@ -240,7 +272,7 @@ export default function Test() {
               <h3 className="text-xl text-red-400 py-7">
                 Oops, Something went wrong!
               </h3>
-
+              <p className="text-trueZinc-700 md:px-3">{Message}</p>
               <button
                 className="mt-6 text-truePurple-600 focus:outline-none"
                 onClick={() => reset()}
