@@ -54,6 +54,7 @@ class MyDocument extends Document {
             rel="icon"
             href="https://storageapi.fleek.one/ead18a13-670a-4701-91a7-06a767c3dcd5-bucket/assets/img/logo-4mobeers.svg"
           />
+          
         </Head>
         <body className="lightmode dark:darkmode">
           <Main />

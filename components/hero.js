@@ -13,19 +13,20 @@ const HeroImage = ({ src, width, quality }) => {
 export default function Hero() {
   return (
     <>
-      <Container className={styles.container}>
+      <Container className={styles.hero}>
         {/*px-8 flex flex-wrap */}
-        <div className={styles.row}>
-          {" "}
-          {/*"flex items-center w-full lg:w-1/2">*/}
-          <div
-            className="max-w-2xl mb-8"
-            data-aos="fade-in"
-            data-aos-delay="50"
-            data-aos-duration="3000"
-          >
-            {/*<h1 className="2xl:text-8xl font-bold leading-snug tracking-tight text-trueZinc-700 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-trueZinc-100">*/}
-            <div className={styles.row}>
+        <div
+          className={styles.row}
+          data-aos="fade-in"
+          data-aos-delay="50"
+          data-aos-duration="3000"
+        >
+          <h1 className="text-center flex">
+            Beerverse for the beer community.
+          </h1>
+
+          <div className="flex items-center place-content-center align=center">
+            <div className="visible lg:block">
               <div className={styles.mainImg}>
                 <Image
                   loader={HeroImage}
@@ -36,7 +37,7 @@ export default function Hero() {
                   className={styles.token}
                 />
                 {/* <Image
-                  className={styles.token}
+                  className={Hero.token}
                   loader={HeroImage}
                   alt="Beer"
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAD1UlEQVRoge2azUsVURjGf5paWhqZRSaopFSUBO0kBQ3sQ8QKtVpEIRRC0CZrGWVRtGgdtSx3BQbRzvAP6IOoRUFakF9Zi7JSozC9LeY9zTidO805955LQQ8czsw5z8z7Pvd8ve8o/Me/iRbgO5BwXGaAXTYOZsfktQJ5NgYMUQDss3kwrpD1UrcDWY5Ku9jY4FJIqdSDNkZiQr17jc3DcYWUSP3FxkhMqHeXRLKSIK6QfKmnbIzExLTUSxza4AferpLr0Eae2Jh1aOPX9uga1nbiTq2wIVdFocK1kCFg3tSIBY66enHwF1sHDJD8Vx0FOoBCKW14W2vUSPQDJwL3s8AFoNyVEHWe5CYRMwoUa54vBsY0/FngsMbOXIg3gzcbevGijKxUhcwBndLWqHGsQ/paxPFRoFnaDmj4PdJXL1zVvhW4C3zSPJMAHgJbUhGSAN5LW4HGQKH0BZ0akbblGn619IWnXhgFwCbgJPBGOFP4P5KVkCFpq9Y4VmQopED63oXaLwKv8c6veenvA3YCi4FrATFGIxN0ql7aejSOtUlfs4gZAXZLW4eG3yh9nfy+LpKVmyExDzBYM+EhP4K3UMNGXgIrNc8X441kmD+AHy2UBtqfA7VAjjhZDnTjrxklRk2zFlMh3cB9jUPBMoa3sIukdCQRERRTFbJTm8SPmoCYJuCUXN8wFeKqzLFwwedE+KKc7wM2y3Xs9EJn3PTgM+FHoUI4E8BSuZ6OfCJCiOnBZ8qPQjb+KAZ9sxJievCZ8uP6k7IQ04PPlB+FfOF8DfpmGv0qmMY61rGRBmp7/4Afvc/ZCmmSugt/qnRJ24408KNQKfUE/rqbjPtwqgefKT8Kp4VzFdgo1y9shdgcfCb8KKj04RCwR677TYUMEj8mSqUkQzVeEDmFt4FcEf45UyGQmQwxGW5L/3W5fyr3202FZCpD1OGg9H0G1gLb5H4Cg+/SykCmMsQw9gPfpE/tdnfk/mxcEUEhCTKTIdYBK/CmzK1A+yXh78UfndW2QjKRIYbLNP4nokq86ZQAjpmICArJVIY4AXwEHgFn8NdmFTAsnHtYRAzhues6QwwjGziOn1T1439YtxJSQ2YyxEVAGd7OdJ6Fa6iXFL7YRzmejhLOEHWjPYjl3xf/JGQYb4qV4u0wrcCzCGdN+ZPAE7yYqo40RdA6p8o0vGXA4zTwV6XDaR3ChtSh1AC8ktIgbfVp4Bsj7nBZvTwFGE8j28Tqr0PU9yMd0pmy6mA98nFH5K3UdbaGYkBFDOMObXAZ92eJKiowdII8ETPuUMCYiMjE/7z8h3P8BG1HMLt0Do93AAAAAElFTkSuQmCC"
@@ -45,30 +46,7 @@ export default function Hero() {
                 />*/}
               </div>
             </div>
-            <h1 className="uppercase pt-8 text-5xl leading-normal lg:text-4xl xl:text-6xl">
-              4 MO BEERS{" "}
-            </h1>
           </div>
-        </div>
-        <div className="flex items-center justify-center w-full lg:w-1/2">
-          <div className="visible lg:block">
-            <Image
-              loader={HeroImage}
-              src="/hero.png"
-              width={150}
-              height={150}
-              alt="0xhero"
-              priority="true"
-              className="inline-flex h-content w-auto rounded-half h-auto align-middle border-2 max-w-150-px"
-            />
-          </div>
-        </div>
-      </Container>
-      <Container>
-        <div className="flex flex-col justify-center">
-          <h2 className="text-xl text-center text-trueZinc-700 dark:text-trueZinc-100">
-            Building a Beerverse supporting the hospitality industry and beer community.
-          </h2>
         </div>
       </Container>
     </>

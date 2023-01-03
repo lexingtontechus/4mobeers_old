@@ -6,6 +6,8 @@ import "../styles/tailwind.css";
 import "../styles/custom.css";
 import { NextUIProvider } from "@nextui-org/react";
 import SEO from "../components/seo";
+import AOS from "aos";
+import { useEffect } from "react";
 
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 
@@ -15,7 +17,13 @@ const activeChainId = ChainId.Mainnet;
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }) {
- 
+  useEffect(() => {
+    AOS.init({
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 50,
+    });
+  }, []);
   return (
     <ThirdwebProvider
       desiredChainId={activeChainId}

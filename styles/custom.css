@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600&display=swap");
 .darkmode {
   background-color: #18181b; /*zinc-900*/
   color: #f3f4f6; /*gray-100*/
@@ -8,6 +9,5 @@
 }
 .body {
   background-color: #ea580c; /*zinc-900*/
-  font-family: "Poppins", sans-serif;
+  font-family: "Sora", sans-serif;
 }
-

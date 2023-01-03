@@ -1,144 +1,159 @@
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import Link from "next/link";
-
-import ThemeChanger from "./darkSwitch";
-import Router from "next/router";
 import styles from "../styles/Home.module.css";
-//import { useRouter } from "next/router";
-
 import { ConnectWallet } from "@thirdweb-dev/react";
 
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+
+import { Fragment } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import ThemeChanger from "../components/darkSwitch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
+import {
+  useAddress,
+  useDisconnect,
+  useUser,
+  useLogin,
+  useLogout,
+  useMetamask,
+} from "@thirdweb-dev/react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar() {
+const Navbar = () => {
+  const router = useRouter();
+  const supabaseClient = useSupabaseClient();
+  const session = useSession();
+  const address = useAddress();
+  const { user } = useUser();
   return (
-    <div className="w-full px-8">
-      <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0">
-        {/* Logo  */}
-        <Disclosure>
-          {({ open }) => (
-            <>
-              <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
-                <Link
-                  href="/"
-                  className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100"
-                >
-                  <span>
-                    <Logo />
-                  </span>
-                </Link>
-
-                <Disclosure.Button
-                  aria-label="Toggle Menu"
-                  className="px-2 py-1 ml-auto text-truePink-700 dark:text-truePink-400 rounded-md lg:hidden hover:text-truePink-400 focus:text-truePink-400 focus:bg-truePink-100 focus:outline-none dark:focus:bg-truePink-700"
-                >
-                  <svg
-                    className="w-6 h-6 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                  >
-                    {open && (
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-                      />
-                    )}
-                    {!open && (
-                      <path
-                        fillRule="evenodd"
-                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                      />
-                    )}
-                  </svg>
-                </Disclosure.Button>
-
-                <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
-                  <>
-                    <ul>
-                      <li>
-                        <Link
-                          href="#about"
-                          className="text-2xl text-truePink-700 dark:text-truePink-400"
-                        >
-                          About
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="#faqs"
-                          className="text-2xl text-truePink-700 dark:text-truePink-400"
-                        >
-                          Faqs
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="#team"
-                          className="text-2xl text-truePink-700 dark:text-truePink-400"
-                        >
-                          Team
-                        </Link>
-                      </li>
-                      <li>
-                        <div className="{styles.connect}">
+    <>
+      <Disclosure as="nav">
+        {({ open }) => (
+          <>
+            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-4">
+              <div className="relative flex h-16 items-center justify-between">
+                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                  {/* Mobile menu button*/}
+                </div>
+                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                  <div className="flex flex-shrink-0 items-center">
+                    <Link
+                      href="/"
+                      className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
+                    >
+                      <Logo />
+                    </Link>
+                  </div>
+                </div>
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  {/* Profile dropdown */}
+                  <Menu as="div" className="relative mx-3">
+                    <div>
+                      <Menu.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-00 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
+                        <span className="sr-only">Open user menu</span>
+                        <FontAwesomeIcon
+                          icon={faBars}
+                          className="text-truePink-400 dark:text-truePurple-900"
+                        />
+                      </Menu.Button>
+                    </div>
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-100"
+                      enterFrom="transform opacity-0 scale-95"
+                      enterTo="transform opacity-100 scale-100"
+                      leave="transition ease-in duration-75"
+                      leaveFrom="transform opacity-100 scale-100"
+                      leaveTo="transform opacity-0 scale-95"
+                    >
+                      <Menu.Items className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
+                        <Menu.Item>
                           <ConnectWallet />
-                        </div>
-                      </li>
-                    </ul>
-                  </>
-                </Disclosure.Panel>
+                        </Menu.Item>
+                        {user && (
+                          <>
+                            <Menu.Item>
+                              <Link
+                                href="/profile"
+                                alt="Profile"
+                                className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                              >
+                                Profile
+                              </Link>{" "}
+                            </Menu.Item>
+                          </>
+                        )}
+                        <Menu.Item>
+                          <Link
+                            href="#about"
+                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                          >
+                            About
+                          </Link>
+                        </Menu.Item>
+                        <Menu.Item>
+                          <Link
+                            href="#faqs"
+                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                          >
+                            FAQs
+                          </Link>
+                        </Menu.Item>
+                        <Menu.Item>
+                          <Link
+                            href="#whitelist"
+                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                          >
+                            Whitelist
+                          </Link>
+                        </Menu.Item>
+                        <Menu.Item>
+                          <Link
+                            href="#team"
+                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                          >
+                            Team
+                          </Link>
+                        </Menu.Item>
+                      </Menu.Items>
+                    </Transition>
+                  </Menu>
+                  <ThemeChanger />
+                </div>
+
+                {/* Menu */}
+                <div className="hidden text-center lg:flex lg:items-center">
+                  <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
+                    <div className="mr-3">
+                      <Link
+                        href="about"
+                        className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none"
+                      >
+                        About
+                      </Link>
+                    </div>
+                    <div className={styles.connect}>
+                      <ConnectWallet />
+                    </div>
+                  </div>
+                  <ThemeChanger />
+                </div>
               </div>
-            </>
-          )}
-        </Disclosure>
-
-        {/* menu  */}
-        <div className="hidden text-center lg:flex lg:items-center">
-          <div className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
-            <button button type="button">
-              <Link
-                href="#about"
-                className="p-4 text-2xl text-truePink-700 dark:text-truePink-400"
-                onClick={() => Router.push("#about")}
-              >
-                About
-              </Link>
-            </button>
-            <Link
-              href="#faqs"
-              className="p-4 text-2xl text-truePink-700 dark:text-truePink-400"
-            >
-              FAQs
-            </Link>
-            <Link
-              href="#team"
-              className="p-4 text-2xl text-truePink-700 dark:text-truePink-400"
-            >
-              Team
-            </Link>
-          </div>
-        </div>
-
-        <div className="hidden mr-3 space-x-3 lg:flex nav__item">
-          <Link
-            href="/"
-            className="px-6 py-2 text-trueZinc-100 bg-truePurple-700 rounded-md md:ml-5"
-          >
-            Connect Wallet
-          </Link>
-
-          <ThemeChanger />
-        </div>
-      </nav>
-    </div>
+            </div>
+          </>
+        )}
+      </Disclosure>
+    </>
   );
-}
+};
+
+export default Navbar;
 
 function Logo() {
   return (

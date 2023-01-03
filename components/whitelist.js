@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-import styles from "../styles/Whitelist.module.scss";
-
+import Container from "./container";
 import { supabase } from "../utils/supabase-clients";
 import { useRouter } from "next/router";
 
@@ -42,20 +41,7 @@ export default function Test() {
   return (
     <div className="container w-10/12 p-8 mx-auto w-full place-content-center flex flex-wrap">
       <div className="bg-trueBlue-300 dark:bg-trueZinc-900 flex flex-col  overflow-hidden left-0 h-full w-full sm:w-[350px] min-h-[250px] sm:h-[600px] sm:max-h-[calc(100vh-120px)]">
-        <div
-          data-aos="fade-in"
-          data-aos-delay="50"
-          data-aos-duration="2500"
-          id="whitelist"
-          className={styles.whitelist}
-        >
-          <h5 className="text-trueZinc-700 dark:text-trueZinc-100">
-            Join The
-            <br />
-            <span className="uppercase">Whitelist</span>
-          </h5>
-        </div>
-        <div className="flex-grow h-full p-6 overflow-auto bg-trueBlue-300 dark:bg-trueZinc-900">
+        <div className="flex-grow h-full p-6 overflow-auto">
           {!isSubmitSuccessful && (
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
               <div className="mb-4 px-4">

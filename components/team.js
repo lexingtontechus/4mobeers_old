@@ -26,7 +26,7 @@ export default function Team() {
         >
           <Image
             loader={TeamImage}
-            alt="Mo Beers"
+            alt="Beer Shark"
             src="at.png"
             width={100}
             height={100}
@@ -34,7 +34,7 @@ export default function Team() {
           />
           <h3>Mo Beers</h3>
           <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">
-            Roadie Kingz
+            Beer Shark
           </p>
           <p className="text-xl text-truePink-600 dark:text-truePink-400">
             Web 2 - &quot;Roadie! 4 Mo Beers!&quot;{" "}
@@ -52,12 +52,12 @@ export default function Team() {
           <Image
             loader={TeamImage}
             src="ks.jpg"
-            alt=""
+            alt="K Monster"
             height={100}
             width={100}
             className="border-2 p-2 mx-auto"
           />
-          <h3>K</h3>
+          <h3>K Monster</h3>
           <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">
             Community
           </p>
@@ -77,13 +77,13 @@ export default function Team() {
           <Image
             loader={TeamImage}
             src="ds.png"
-            alt="Roadie Kingz"
+            alt="Roadie King"
             height={100}
             width={100}
             className="border-2 p-2 mx-auto"
           />
           <h3>D</h3>
-          <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">The Boy</p>
+          <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">Roadie King</p>
           <p className="text-xl text-truePink-600 dark:text-truePink-400">Web 2 - &quot;Card declined.&quot; </p>
           <p className="text-xl text-truePink-600 dark:text-truePink-400">WEB3 - &quot;Wallet address confirmed!&quot;</p>
         </div>
