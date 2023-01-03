@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
-.container {
+.hero {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   .row {
     h1 {
-      font-size: 3.75rem; /* 60px */
+      text-transform: uppercase;
+      font-size: 4rem; /* 60px */
 line-height: 1;
 background: linear-gradient(-45deg, #6355a4, #6355a4, #e89a3e, #e89a3e);
       background-size: 300%;
@@ -97,7 +98,7 @@ background: linear-gradient(-45deg, #6355a4, #6355a4, #e89a3e, #e89a3e);
       h1 {
         background: linear-gradient(-45deg, #892cdc, #19d3da, #e89a3e, #e89a3e);
         background-size: 300%;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Sora;
         font-weight: 900;
         font-size: 40px;
         letter-spacing: -3px;

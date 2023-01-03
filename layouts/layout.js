@@ -12,18 +12,45 @@ import Cal from "../components/cal";
 import Faq from "../components/faq";
 import PopupWidget from "../components/popupWidget";
 
+import stylesfaq from "../styles/FAQs.module.scss";
+import stylesteam from "../styles/Team.module.scss";
+
+
 export default function Layout({ children }) {
   return (
     <>
       <div className="relative h-full w-full mx-auto px-8">
-    <Navbar />
+      <Navbar />
       <Hero />
         <div className="relative mb-4">
           <div className="mx-auto w-full">{children}</div>
         </div>
-        <Faq id="faqs" />
-      <Whitelist id="whitelist" />
-      <Team id="team" />
+        <div
+          className={stylesfaq.faq}
+          data-aos='zoom-in-up'
+          data-aos-delay='50'
+          data-aos-duration='2500'
+          id='faqs'
+          >
+              <h1 className="text-center">FAQs</h1>
+              <h2 className="text-center max-w-2xl mt-3 text-2xl font-bold leading-snug tracking-tight text-trueZinc-700 dark:text-trueZinc-100 lg:leading-tight lg:text-4xl dark:text-white">
+              How to partner and build your community with 4MoBeers?</h2>
+              <Faq />
+        </div>
+         <div
+          data-aos='fade-right'
+          data-aos-delay='50'
+          data-aos-duration='2500'
+          id='team'
+          className={stylesteam.team}>   
+              <h1 className="text-trueZinc-700 dark:text-trueZinc-100 text-center w-full">
+              Join The
+              <br />
+              <span>WHITELIST</span>
+              </h1>
+            <Team/>
+         </div>
+
       <Footer />
       <PopupWidget />
       <Cal />

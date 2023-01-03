@@ -10,6 +10,7 @@ export const supabase = createClient(
 export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
   privateKey: process.env.ADMIN_PRIVATE_KEY || "",
   domain: "localhost:3000",
+  loginRedirect: "/profile",
   callbacks: {
     login: async (address) => {
       const { data: user } = await supabase
