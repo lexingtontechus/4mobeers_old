@@ -57,7 +57,7 @@ function Beer() {
       viewBox="0 0 100 123.58800478239715"
       width="30"
       height="30"
-      className="fill-truePurple-900 dark:fill-truePink-400"
+      className="fill-truePurple-900 dark:fill-truePink-600"
     >
       <g transform="translate(0, 0) scale(1.2358800478239715)">
         <path

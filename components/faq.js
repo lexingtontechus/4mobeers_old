@@ -9,7 +9,7 @@ export default function Faq() {
   return (
     <>
       <Container>
-        <div className="flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-trueZinc-700 dark:truePink-400 bg-trueZinc-100 px-7 py-7 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
+        <div className="flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-trueZinc-700 dark:truePink-400 bg-trueZinc-100 p-8 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
           <div className="w-full p-8 mx-auto rounded-2xl">
             <Disclosure>
               {({ open }) => (
@@ -20,7 +20,6 @@ export default function Faq() {
                   >
                     <Collapse
                       title="What is the 4MoBeers DAO?"
-                      expanded
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
@@ -31,20 +30,27 @@ export default function Faq() {
                     >
                       <p className="text-md text-trueZinc-700">
                         Thank you for choosing to be part of our community at
-                        4MoBeers Inc, doing business as 4MoBeers (&quot;4MoBeers
-                        Inc.,&quot; &quot;we,&quot; &quot;us,&quot; or
-                        &quot;our&quot;). We are creating a Beerverse that
-                        supports the hospitality industry and roadie lovers. The
-                        4MoBeers DAO will orchestrate the goverance, voting,
-                        airdrops, splits and management/security of mdart
-                        contracts.
+                        4MoBeers DAO Inc, doing business as 4MoBeers. We are
+                        creating a Beerverse that supports the beer community
+                        and roadie lovers. The 4MoBeers DAO will orchestrate the
+                        goverance, voting, airdrops, splits and
+                        management/security of smart contracts.
                       </p>
-                      <Link
-                        className="text-md font-bold"
-                        href="https://4mobeers.nft"
-                      >
-                        https://4mobeers.nft
-                      </Link>
+                      <p className="text-md text-trueZinc-700">
+                        4MoBeers will be responsible for the design & creation
+                        of each Non-Fungible Token (NFT).
+                      </p>
+                      <p className="text-md text-trueZinc-700">
+                        Each NFT will be offered at a fixed price.
+                      </p>
+                      <p className="text-md text-trueZinc-700">
+                        Each NIL owner will be their own limited edition NFT
+                        set, to be managed at their own discretion.
+                      </p>
+                      <p className="text-md text-trueZinc-700">
+                        Ongoing royalities will be attributed to the NIL owner
+                        only, not the DAO.
+                      </p>
                     </Collapse>
                     <Collapse
                       title="What is the 4MoBeers NFT Collectibles Edition?"
@@ -57,8 +63,9 @@ export default function Faq() {
                       }
                     >
                       <p className="text-md text-trueZinc-700">
-                        The 4MoBeer NFT Collectibles Edition will support
-                        nominated hospitality staff.
+                        The 4MoBeer NFT Collectibles Edition will support the
+                        Name, Image & Likeness (NIL) of nominated & voted on
+                        community partners.
                       </p>
                     </Collapse>
                     <Collapse
@@ -72,8 +79,9 @@ export default function Faq() {
                       }
                     >
                       <p className="text-md text-trueZinc-700">
-                        The 4MoBeer NFT Collectibles Edition will support
-                        nominated hospitality staff.
+                        The 4MoBeer NFT Collectibles Edition will support the
+                        Name Image & Likeness (NIL) of nominated & voted on
+                        community members.
                       </p>
                     </Collapse>
                     <Collapse
