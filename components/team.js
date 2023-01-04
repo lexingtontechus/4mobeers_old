@@ -16,7 +16,7 @@ export default function Team() {
       data-aos-duration="3000"
       id="team"
     >
-      <h1>Brew Crew</h1>
+      <h1>Team Roadiez</h1>
       <div className={styles.row}>
         <div
           className={styles.card}
@@ -59,7 +59,7 @@ export default function Team() {
           />
           <h3>K Monster</h3>
           <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">
-            Community
+            The Wrangler
           </p>
           <p className="text-xl text-truePink-600 dark:text-truePink-400">
             Web 2 - &quot;Need more GBz!&quot;{" "}
@@ -83,9 +83,15 @@ export default function Team() {
             className="border-2 p-2 mx-auto"
           />
           <h3>D</h3>
-          <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">Roadie King</p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">Web 2 - &quot;Card declined.&quot; </p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">WEB3 - &quot;Wallet address confirmed!&quot;</p>
+          <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">
+            Roadie King
+          </p>
+          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+            Web 2 - &quot;Card declined.&quot;{" "}
+          </p>
+          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+            WEB3 - &quot;Wallet address confirmed!&quot;
+          </p>
         </div>
         <div
           className={styles.card}
@@ -102,9 +108,15 @@ export default function Team() {
             className="border-2 p-2 mx-auto"
           />
           <h3>The Rock God</h3>
-          <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">Engineer</p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">Web 2 - &quot;Napster Rulez.&quot; </p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">WEB3 - &quot;NFTz!&quot;</p>
+          <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">
+            Vibe Machine
+          </p>
+          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+            Web 2 - &quot;Napster Rulez.&quot;{" "}
+          </p>
+          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+            WEB3 - &quot;NFTz!&quot;
+          </p>
         </div>
       </div>
     </div>

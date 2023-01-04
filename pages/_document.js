@@ -21,27 +21,27 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://0xaloysius.x/" />
-          <meta property="og:title" content="0xaloysius LLC." />
-          <meta property="og:description" content="0xaloysius. " />
+          <meta property="og:url" content="https://4mobeers.nft/" />
+          <meta property="og:title" content="4mobeers DAO Inc." />
+          <meta property="og:description" content="4mobeers. " />
           <meta
             property="og:image"
-            content="https://storageapi.fleek.co/47c43c10-6c0c-4b3b-a520-683839c214cf-bucket/assets/img/0xaloysius.svg"
+            content="https://storageapi.fleek.co/47c43c10-6c0c-4b3b-a520-683839c214cf-bucket/assets/img/4mobeers.svg"
           />
 
           <meta property="twitter:card" content="summary_large_image" />
           <meta
             property="twitter:url"
-            content="https://twitter.com/0xaloysius"
+            content="https://twitter.com/4mobeers"
           />
-          <meta property="twitter:title" content="0xaloysius" />
+          <meta property="twitter:title" content="4mobeers" />
           <meta
             property="twitter:description"
-            content="Early-stage VC in biotech, cleantech, foodtech & mobility."
+            content="The Beer Crew. Team Roadie Kingz."
           />
           <meta
             property="twitter:image"
-            content="https://storageapi.fleek.co/47c43c10-6c0c-4b3b-a520-683839c214cf-bucket/assets/img/0xaloysius.svg"
+            content="https://storageapi.fleek.co/47c43c10-6c0c-4b3b-a520-683839c214cf-bucket/assets/img/4mobeers.svg"
           />
           <link rel="me" href="https://noc.social/@4mobeers" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
