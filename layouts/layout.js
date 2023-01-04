@@ -15,43 +15,42 @@ import PopupWidget from "../components/popupWidget";
 import stylesfaq from "../styles/FAQs.module.scss";
 import stylesteam from "../styles/Team.module.scss";
 
-
 export default function Layout({ children }) {
   return (
     <>
       <div className="relative h-full w-full mx-auto px-8">
-      <Navbar />
-      <Hero />
+        <Navbar />
+        <Hero className="mt-4" />
         <div className="relative mb-4">
           <div className="mx-auto w-full">{children}</div>
         </div>
         <div
           className={stylesfaq.faq}
-          data-aos='zoom-in-up'
-          data-aos-delay='50'
-          data-aos-duration='2500'
-          id='faqs'
-          >
-              <h1 className="text-center">FAQs</h1>
-              <h2 className="text-center max-w-2xl mt-3 text-2xl font-bold leading-snug tracking-tight text-trueZinc-700 dark:text-trueZinc-100 lg:leading-tight lg:text-4xl dark:text-white">
-              How to partner and build your community with 4MoBeers?</h2>
-              <Faq />
+          data-aos="zoom-in-up"
+          data-aos-delay="50"
+          data-aos-duration="2500"
+          id="faqs"
+        >
+          <h1>FAQs</h1>
+          <h2 className="text-center max-w-2xl mt-3 text-2xl font-bold leading-snug tracking-tight text-trueZinc-700 dark:text-trueZinc-100 lg:leading-tight lg:text-4xl dark:text-white">
+            How to partner and build your community with 4MoBeers?
+          </h2>
+          <Faq />
         </div>
-         <div
-          data-aos='fade-right'
-          data-aos-delay='50'
-          data-aos-duration='2500'
-          id='team'
-          className={stylesteam.team}>   
-              <h1>
-              The Brew Crew
-              </h1>
-            <Team/>
-         </div>
+        <div
+          data-aos="fade-right"
+          data-aos-delay="50"
+          data-aos-duration="2500"
+          id="team"
+          className={stylesteam.team}
+        >
+          <h1>The Brew Crew</h1>
+          <Team className="mt-4" />
+        </div>
 
-      <Footer />
-      <PopupWidget />
-      <Cal />
+        <Footer />
+        <PopupWidget />
+        <Cal />
       </div>
     </>
   );

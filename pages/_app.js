@@ -18,11 +18,19 @@ config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    AOS.init({
+    AOS.init();
+    {/*
+    {
       easing: "ease-out-cubic",
       once: true,
       offset: 50,
-    });
+    },
+    {
+      zoom : "zoom-in",
+      once: true,
+      offset: 50,
+    }
+     */}
   }, []);
   return (
     <ThirdwebProvider

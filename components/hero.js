@@ -22,7 +22,7 @@ export default function Hero() {
           data-aos-duration="3000"
         >
           <h1 className="text-center flex">
-            Beerverse for the beer community.
+            Beerverse for the beer community
           </h1>
 
           <div className="flex items-center place-content-center align=center">

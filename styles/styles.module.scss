@@ -1,4 +1,4 @@
-.faq {
+.accordion {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -6,7 +6,7 @@
   h1 {
     background: linear-gradient(-45deg, #892cdc, #19d3da, #e89a3e, #e89a3e);
     background-size: 300%;
-    font-family: Sora;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 900;
     font-size: 5vw;
     letter-spacing: -3px;

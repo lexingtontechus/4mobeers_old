@@ -5,18 +5,25 @@ import SEO from "../components/seo";
 import Cta from "../components/cta";
 
 import Layout from "../layouts/layout.js";
+import Test from "../components/test";
 
 export default function Home() {
   return (
     <>
       <SEO title="Home | 4MoBeers" description="Home 4MoBeers." />
+
       <Layout>
-        <SectionTitle pretitle="4MoBeers" title="Exclusive Access" id="whitelist">
+        <SectionTitle
+          pretitle="4MoBeers"
+          title="Exclusive Access"
+          id="whitelist"
+        >
           Connect your wallet. Update your email address in profile settings to
           receive exclusive offerings.
         </SectionTitle>
         <Cta />
       </Layout>
+      <Test />
     </>
   );
 }
