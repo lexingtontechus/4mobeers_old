@@ -43,10 +43,8 @@ export default function Layout({ children }) {
           data-aos-duration='2500'
           id='team'
           className={stylesteam.team}>   
-              <h1 className="text-trueZinc-700 dark:text-trueZinc-100 text-center w-full">
-              Join The
-              <br />
-              <span>WHITELIST</span>
+              <h1>
+              The Brew Crew
               </h1>
             <Team/>
          </div>

@@ -130,17 +130,60 @@ const Navbar = () => {
                 {/* Menu */}
                 <div className="hidden text-center lg:flex lg:items-center">
                   <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
-                    <div className="mr-3">
-                      <Link
-                        href="about"
-                        className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none"
-                      >
-                        About
-                      </Link>
-                    </div>
-                    <div className={styles.connect}>
-                      <ConnectWallet />
-                    </div>
+                    <ul className="flex flex-col lg:flex-row list-none mr-auto">
+                      <li className="flex items-center">
+                        <div className="mr-3">
+                          <Link
+                            href="#about"
+                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none"
+                          >
+                            About
+                          </Link>
+                        </div>
+                      </li>
+                      <li className="flex items-center">
+                        <div className="mr-3">
+                          <Link
+                            href="#faqs"
+                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none"
+                          >
+                            FAQs
+                          </Link>
+                        </div>
+                      </li>
+                      <li className="flex items-center">
+                        <div className="mr-3">
+                          <Link
+                            href="#team"
+                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none"
+                          >
+                            Team
+                          </Link>
+                        </div>
+                      </li>
+                      <li className="flex items-center">
+                        <div className="mr-3">
+                          {user && (
+                            <>
+                              <Menu.Item>
+                                <Link
+                                  href="/profile"
+                                  alt="Profile"
+                                  className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                                >
+                                  Profile
+                                </Link>{" "}
+                              </Menu.Item>
+                            </>
+                          )}
+                        </div>
+                      </li>
+                      <li className="flex items-center">
+                        <div className={styles.connect}>
+                          <ConnectWallet />
+                        </div>
+                      </li>
+                    </ul>
                   </div>
                   <ThemeChanger />
                 </div>
