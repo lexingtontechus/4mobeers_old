@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import Image from "next/image";
 
+const AvatarImage = ({ src, width, quality }) => {
+  return `https://storageapi.fleek.co/47c43c10-6c0c-4b3b-a520-683839c214cf-bucket/assets/img/${src}?w=${width}&q=${
+    quality || 75
+  }`;
+};
+
 export default function Avatar({ uid, url, size, onUpload }) {
   const supabase = useSupabaseClient();
   const [avatarUrl, setAvatarUrl] = useState(null);
@@ -69,7 +75,8 @@ export default function Avatar({ uid, url, size, onUpload }) {
         />
       ) : (
         <Image
-          src="https://storageapi.fleek.co/9ec37732-832c-4af1-a4fa-cc87c28c6dae-bucket/assets/img/memberprofile.png"
+          loader={AvatarImage}
+          src="memberprofile.png"
           alt="Avatar"
           className="rounded-half mx-auto"
           width={150}
