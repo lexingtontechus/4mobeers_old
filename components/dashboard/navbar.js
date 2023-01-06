@@ -7,7 +7,7 @@ import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import ThemeChanger from "../components/darkSwitch";
+import ThemeChanger from "../../components/darkSwitch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 

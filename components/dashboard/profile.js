@@ -1,34 +1,49 @@
+import {
+  useAddress,
+  useUser,
+  useLogin,
+  useLogout,
+  useMetamask,
+  useWalletConnect,
+} from "@thirdweb-dev/react";
+
 import { useState, useEffect } from "react";
-import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Avatar from "./avatar";
+import ConnectWallet from "../../components/connectwallet";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import styles from "../../styles/styles.module.scss";
 
-import styles from "../styles/Home.module.css";
-import { ConnectWallet } from "@thirdweb-dev/react";
-
-export default function Profile({ session }) {
+export default function Profile({ wallet }) {
   const router = useRouter();
   const supabase = useSupabaseClient();
   const user = useUser();
+  //  const wallet = useAddress();
   const [loading, setLoading] = useState(true);
+  const [address, setAddress] = useState(null);
+  const [email, setEmail] = useState(null);
   const [username, setUsername] = useState(null);
   const [full_name, setFullname] = useState(null);
+  const [title, setTitle] = useState(null);
   const [website, setWebsite] = useState(null);
   const [avatar_url, setAvatarUrl] = useState(null);
 
   useEffect(() => {
     getProfile();
-  }, [session]);
+  }, [wallet]);
 
   async function getProfile() {
     try {
       setLoading(true);
 
       let { data, error, status } = await supabase
-        .from("profiles")
-        .select(`full_name, username, website, avatar_url`)
-        .eq("id", user.id)
+        .from("users")
+        .select(
+          `address, full_name, email, username, title, website, avatar_url`
+        )
+        .eq("address", wallet.address)
         .single();
 
       if (error && status !== 406) {
@@ -36,8 +51,11 @@ export default function Profile({ session }) {
       }
 
       if (data) {
+        setAddress(data.address);
         setFullname(data.full_name);
+        setEmail(data.email);
         setUsername(data.username);
+        setTitle(data.title);
         setWebsite(data.website);
         setAvatarUrl(data.avatar_url);
       }
@@ -49,20 +67,29 @@ export default function Profile({ session }) {
     }
   }
 
-  async function updateProfile({ full_name, username, website, avatar_url }) {
+  async function updateProfile({
+    full_name,
+    email,
+    username,
+    title,
+    website,
+    avatar_url,
+  }) {
     try {
       setLoading(true);
 
       const updates = {
-        id: user.id,
+        address: user.address,
         full_name,
+        email,
         username,
+        title,
         website,
         avatar_url,
         updated_at: new Date().toISOString(),
       };
 
-      let { error } = await supabase.from("profiles").upsert(updates);
+      let { error } = await supabase.from("users").upsert(updates);
       if (error) throw error;
       alert("Profile updated!");
     } catch (error) {
@@ -99,13 +126,23 @@ export default function Profile({ session }) {
 
         <div className="py-4 align-center mb-4 bg-trueZinc-900">
           <Avatar
-            uid={user.id}
+            address={address}
             url={avatar_url}
             size={150}
             onUpload={(url) => {
               setAvatarUrl(url);
               updateProfile({ username, website, avatar_url: url });
             }}
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="addess">Wallet Address</label>
+          <input
+            id="address"
+            type="text"
+            value={address || ""}
+            disabled
+            className="w-full"
           />
         </div>
         <div className="mb-4">
@@ -123,8 +160,7 @@ export default function Profile({ session }) {
           <input
             id="email"
             type="text"
-            value={session.user.email}
-            disabled
+            value={email || ""}
             className="w-full"
           />
         </div>
@@ -153,7 +189,7 @@ export default function Profile({ session }) {
           <button
             className="button primary block bg-trueZinc-900 rounded-md p-2 w-full text-trueZinc-100"
             onClick={() =>
-              updateProfile({ full_name, username, website, avatar_url })
+              updateProfile({ full_name, email, username, website, avatar_url })
             }
             disabled={loading}
           >
@@ -162,9 +198,10 @@ export default function Profile({ session }) {
         </div>
 
         <div className="mb-4">
-           <div className="{styles.connect}">
-                          <ConnectWallet />
-                        </div>
+          <div>
+            {wallet}
+            <ConnectWallet className={styles.connect} />
+          </div>
         </div>
       </div>
     </>
