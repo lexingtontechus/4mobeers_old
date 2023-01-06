@@ -16,11 +16,11 @@ import ConnectWallet from "../../components/connectwallet";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import styles from "../../styles/styles.module.scss";
 
-export default function Profile({ session }) {
+export default function Profile({ wallet }) {
   const router = useRouter();
   const supabase = useSupabaseClient();
   const user = useUser();
-  const wallet = useAddress();
+  //  const wallet = useAddress();
   const [loading, setLoading] = useState(true);
   const [address, setAddress] = useState(null);
   const [email, setEmail] = useState(null);
@@ -32,7 +32,7 @@ export default function Profile({ session }) {
 
   useEffect(() => {
     getProfile();
-  }, [session]);
+  }, [wallet]);
 
   async function getProfile() {
     try {
@@ -41,9 +41,9 @@ export default function Profile({ session }) {
       let { data, error, status } = await supabase
         .from("users")
         .select(
-          `address, full_name, email, username, title website, avatar_url`
+          `address, full_name, email, username, title, website, avatar_url`
         )
-        .eq("address", wallet)
+        .eq("address", wallet.address)
         .single();
 
       if (error && status !== 406) {
@@ -199,6 +199,7 @@ export default function Profile({ session }) {
 
         <div className="mb-4">
           <div>
+            {wallet}
             <ConnectWallet className={styles.connect} />
           </div>
         </div>

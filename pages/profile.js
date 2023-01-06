@@ -6,14 +6,22 @@ import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import Image from "next/image";
 import SEO from "../components/seo";
 import LayoutDashboard from "../layouts/layoutDashboard";
-
 import Profile from "../components/dashboard/profile";
 
 import { ConnectWallet } from "@thirdweb-dev/react";
+import {
+  useAddress,
+  useUser,
+  useLogin,
+  useLogout,
+  useMetamask,
+} from "@thirdweb-dev/react";
 
 const ProfilePage = () => {
   const session = useSession();
   const supabase = useSupabaseClient();
+  const address = useAddress();
+
   return (
     <>
       <SEO title="Profile | 4MoBeers" description="4MoBeers" />
@@ -25,8 +33,7 @@ const ProfilePage = () => {
             </div>
             <div className="flex flex-wrap content-center items-center justify-center min-h-[250px] sm:h-[600px]">
               <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-                {/*{!session ? <ConnectWallet /> : <Profile session={session} />}*/}
-                <Profile session={session} />
+                {!address ? <ConnectWallet /> : <Profile wallet={address} />}
               </div>
             </div>
           </div>
