@@ -85,7 +85,7 @@ export default function Contact() {
                   />
                   <input
                     type="hidden"
-                    value={`${userName} sent a message`}
+                    value={`${userName} ${full_name} sent a message`}
                     {...register("subject")}
                   />
                   <input

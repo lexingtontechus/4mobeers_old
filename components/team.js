@@ -36,10 +36,10 @@ export default function Team() {
           <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">
             Beer Shark
           </p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+          <p className="text-xl text-truePink-600 dark:text-truePink-400 text-center">
             Web 2 - &quot;Roadie! 4 Mo Beers!&quot;{" "}
           </p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+          <p className="text-xl text-truePink-600 dark:text-truePink-400 text-center">
             WEB3 - &quot;Roadie! 4 Mo Beers!&quot;
           </p>
         </div>
@@ -61,10 +61,10 @@ export default function Team() {
           <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">
             The Wrangler
           </p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+          <p className="text-xl text-truePink-600 dark:text-truePink-400 text-center">
             Web 2 - &quot;Need more GBz!&quot;{" "}
           </p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+          <p className="text-xl text-truePink-600 dark:text-truePink-400 text-center">
             WEB3 - &quot;Need more Cryptoz!&quot;
           </p>
         </div>
@@ -86,10 +86,10 @@ export default function Team() {
           <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">
             Roadie King
           </p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+          <p className="text-xl text-truePink-600 dark:text-truePink-400 text-center">
             Web 2 - &quot;Card declined.&quot;{" "}
           </p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+          <p className="text-xl text-truePink-600 dark:text-truePink-400 text-center">
             WEB3 - &quot;Wallet address confirmed!&quot;
           </p>
         </div>
@@ -111,10 +111,10 @@ export default function Team() {
           <p className="text-2xl text-truePink-600 dark:text-truePink-400 text-center">
             Vibe Machine
           </p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+          <p className="text-xl text-truePink-600 dark:text-truePink-400 text-center">
             Web 2 - &quot;Napster Rulez.&quot;{" "}
           </p>
-          <p className="text-xl text-truePink-600 dark:text-truePink-400">
+          <p className="text-xl text-truePink-600 dark:text-truePink-400 text-center">
             WEB3 - &quot;NFTz!&quot;
           </p>
         </div>

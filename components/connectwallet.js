@@ -3,7 +3,7 @@ import {
   useUser,
   useLogin,
   useLogout,
-  useMetamask
+  useMetamask,
 } from "@thirdweb-dev/react";
 
 const Wallet = () => {
