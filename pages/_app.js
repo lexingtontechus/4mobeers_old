@@ -19,7 +19,8 @@ config.autoAddCss = false;
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     AOS.init();
-    {/*
+    {
+      /*
     {
       easing: "ease-out-cubic",
       once: true,
@@ -30,7 +31,8 @@ function MyApp({ Component, pageProps }) {
       once: true,
       offset: 50,
     }
-     */}
+     */
+    }
   }, []);
   return (
     <ThirdwebProvider

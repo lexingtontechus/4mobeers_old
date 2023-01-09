@@ -5,7 +5,6 @@ import SEO from "../components/seo";
 import Cta from "../components/cta";
 
 import Layout from "../layouts/layout.js";
-import Test from "../components/test";
 
 export default function Home() {
   return (
@@ -23,7 +22,6 @@ export default function Home() {
         </SectionTitle>
         <Cta />
       </Layout>
-      <Test />
     </>
   );
 }

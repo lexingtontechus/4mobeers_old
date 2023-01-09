@@ -10,19 +10,19 @@ export const supabase = createClient(
 export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
   privateKey: process.env.ADMIN_PRIVATE_KEY || "",
   domain: "localhost:3000",
-  loginRedirect: "/profile",
+  loginRedirect: "/",
   callbacks: {
     login: async (address) => {
       const { data: user } = await supabase
         .from("users")
         .select("*")
-        .eq("address", address.toLowerCase())
+        .eq("walletaddress", address)
         .single();
 
       if (!user) {
         const res = await supabase
           .from("users")
-          .insert({ address: address.toLowerCase() })
+          .insert({ walletaddress: address })
           .single();
 
         if (res.error) {
@@ -34,7 +34,7 @@ export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
       const { data: user } = await supabase
         .from("users")
         .select("*")
-        .eq("address", address.toLowerCase())
+        .eq("walletaddress", address)
         .single();
 
       return user;

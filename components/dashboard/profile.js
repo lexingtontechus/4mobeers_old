@@ -15,14 +15,15 @@ import Avatar from "./avatar";
 import ConnectWallet from "../../components/connectwallet";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import styles from "../../styles/styles.module.scss";
+import { UserWallet } from "@thirdweb-dev/sdk/solana";
 
 export default function Profile({ wallet }) {
   const router = useRouter();
   const supabase = useSupabaseClient();
   const user = useUser();
-  //  const wallet = useAddress();
+  //const wallet = useAddress();
   const [loading, setLoading] = useState(true);
-  const [address, setAddress] = useState(null);
+  const [walletaddress, setWalletAddress] = useState(null);
   const [email, setEmail] = useState(null);
   const [username, setUsername] = useState(null);
   const [full_name, setFullname] = useState(null);
@@ -41,9 +42,9 @@ export default function Profile({ wallet }) {
       let { data, error, status } = await supabase
         .from("users")
         .select(
-          `address, full_name, email, username, title, website, avatar_url`
+          `walletaddress, username, full_name, email, title, website, avatar_url`
         )
-        .eq("address", wallet.address)
+        .eq("walletaddress", wallet)
         .single();
 
       if (error && status !== 406) {
@@ -51,7 +52,7 @@ export default function Profile({ wallet }) {
       }
 
       if (data) {
-        setAddress(data.address);
+        setWalletAddress(data.walletaddress);
         setFullname(data.full_name);
         setEmail(data.email);
         setUsername(data.username);
@@ -126,7 +127,7 @@ export default function Profile({ wallet }) {
 
         <div className="py-4 align-center mb-4 bg-trueZinc-900">
           <Avatar
-            address={address}
+            walletaddress={address}
             url={avatar_url}
             size={150}
             onUpload={(url) => {
@@ -136,11 +137,11 @@ export default function Profile({ wallet }) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="addess">Wallet Address</label>
+          <label htmlFor="walletaddress">Wallet Address</label>
           <input
-            id="address"
+            id="walletaddess"
             type="text"
-            value={address || ""}
+            value={walletaddress || ""}
             disabled
             className="w-full"
           />
@@ -189,7 +190,7 @@ export default function Profile({ wallet }) {
           <button
             className="button primary block bg-trueZinc-900 rounded-md p-2 w-full text-trueZinc-100"
             onClick={() =>
-              updateProfile({ full_name, email, username, website, avatar_url })
+              updateProfile({ walletaddress, full_name, email, username, website, avatar_url })
             }
             disabled={loading}
           >
@@ -200,6 +201,8 @@ export default function Profile({ wallet }) {
         <div className="mb-4">
           <div>
             {wallet}
+            {wallet.address}
+            
             <ConnectWallet className={styles.connect} />
           </div>
         </div>
