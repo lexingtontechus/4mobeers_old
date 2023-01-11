@@ -33,7 +33,7 @@ const ProfilePage = () => {
             </div>
             <div className="flex flex-wrap content-center items-center justify-center min-h-[250px] sm:h-[600px]">
               <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-                {!address ? <ConnectWallet /> : <Profile wallet={address} />}
+                {!address ? <ConnectWallet /> : <Profile address={address} />}
               </div>
             </div>
           </div>

@@ -35,21 +35,23 @@ function MyApp({ Component, pageProps }) {
     }
   }, []);
   return (
-    <ThirdwebProvider
-      desiredChainId={activeChainId}
-      authConfig={{
-        domain: "localhost:3000",
-        authUrl: "/api/auth",
-        loginRedirect: "/",
-      }}
-    >
-      <ThemeProvider attribute="class">
-        <NextUIProvider>
-          <SEO />
-          <Component {...pageProps} />
-        </NextUIProvider>
-      </ThemeProvider>
-    </ThirdwebProvider>
+   
+      <ThirdwebProvider
+        desiredChainId={activeChainId}
+        authConfig={{
+          domain: "localhost:3000",
+          authUrl: "/api/auth",
+          loginRedirect: "/",
+        }}
+      >
+        <ThemeProvider attribute="class">
+          <NextUIProvider>
+            <SEO />
+            <Component {...pageProps} />
+          </NextUIProvider>
+        </ThemeProvider>
+      </ThirdwebProvider>
+    
   );
 }
 

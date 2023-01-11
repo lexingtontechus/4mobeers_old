@@ -1,50 +1,43 @@
-import {
-  useAddress,
-  useUser,
-  useLogin,
-  useLogout,
-  useMetamask,
-  useWalletConnect,
-} from "@thirdweb-dev/react";
-
 import { useState, useEffect } from "react";
-
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Avatar from "./avatar";
-import ConnectWallet from "../../components/connectwallet";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
-import styles from "../../styles/styles.module.scss";
-import { UserWallet } from "@thirdweb-dev/sdk/solana";
 
-export default function Profile({ wallet }) {
-  const router = useRouter();
-  const supabase = useSupabaseClient();
+import { useUser, useAddress } from "@thirdweb-dev/react";
+
+//import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+//import { useSupabaseClient } from "@supabase/supabase-js";
+import { supabase } from "../../utils/supabase-clients";
+
+export default function Profile({ address }) {
+  //const router = useRouter();
+  //const supabase = useSupabaseClient();
+
   const user = useUser();
-  //const wallet = useAddress();
+  const connectedaddress = useAddress();
   const [loading, setLoading] = useState(true);
   const [walletaddress, setWalletAddress] = useState(null);
+  const [uuid, setUUID] = useState(null);
   const [email, setEmail] = useState(null);
   const [username, setUsername] = useState(null);
-  const [full_name, setFullname] = useState(null);
+  const [fullname, setFullname] = useState(null);
   const [title, setTitle] = useState(null);
-  const [website, setWebsite] = useState(null);
   const [avatar_url, setAvatarUrl] = useState(null);
 
   useEffect(() => {
     getProfile();
-  }, [wallet]);
+  }, [address]);
 
-  async function getProfile() {
+  async function getProfile(address) {
     try {
       setLoading(true);
 
       let { data, error, status } = await supabase
         .from("users")
-        .select(
-          `walletaddress, username, full_name, email, title, website, avatar_url`
-        )
-        .eq("walletaddress", wallet)
+        //.select("walletaddress, username, fullname, email, title, avatar_url")
+        .select("*")
+        .eq("walletaddress", connectedaddress)
+        //.eq("id", user.id)
         .single();
 
       if (error && status !== 406) {
@@ -52,12 +45,12 @@ export default function Profile({ wallet }) {
       }
 
       if (data) {
+        setUUID(data.id);
         setWalletAddress(data.walletaddress);
-        setFullname(data.full_name);
+        setFullname(data.fullname);
         setEmail(data.email);
         setUsername(data.username);
         setTitle(data.title);
-        setWebsite(data.website);
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
@@ -69,28 +62,29 @@ export default function Profile({ wallet }) {
   }
 
   async function updateProfile({
-    full_name,
+    fullname,
     email,
     username,
     title,
-    website,
     avatar_url,
   }) {
     try {
       setLoading(true);
 
       const updates = {
-        address: user.address,
-        full_name,
+        id: uuid,
+        fullname,
         email,
         username,
         title,
-        website,
         avatar_url,
         updated_at: new Date().toISOString(),
       };
 
       let { error } = await supabase.from("users").upsert(updates);
+      //.eq("walletaddress", connectedaddress);
+
+      //.eq("id", id);
       if (error) throw error;
       alert("Profile updated!");
     } catch (error) {
@@ -126,62 +120,79 @@ export default function Profile({ wallet }) {
         </div>*/}
 
         <div className="py-4 align-center mb-4 bg-trueZinc-900">
-          <Avatar
-            walletaddress={address}
+          {/*   <Avatar
+            uid={user.id}
             url={avatar_url}
             size={150}
             onUpload={(url) => {
               setAvatarUrl(url);
-              updateProfile({ username, website, avatar_url: url });
+              updateProfile({ username, avatar_url: url });
             }}
+            
           />
+          */}
         </div>
+
         <div className="mb-4">
           <label htmlFor="walletaddress">Wallet Address</label>
           <input
-            id="walletaddess"
+            id="walletaddress"
             type="text"
-            value={walletaddress || ""}
+            value={connectedaddress || ""}
             disabled
-            className="w-full"
+            className="w-full text-truePink-500"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="fullname">Full Name</label>
+          <label htmlFor="id">UserID</label>
+          <input
+            id="uuid"
+            type="text"
+            value={uuid || ""}
+            disabled
+            className="w-full text-truePink-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="fullname">Full Name (Optional)</label>
           <input
             id="fullname"
             type="text"
-            value={full_name || ""}
+            value={fullname || ""}
             onChange={(e) => setFullname(e.target.value)}
-            className="w-full"
+            className="w-full rounded-md"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email (Required)</label>
           <input
             id="email"
             type="text"
             value={email || ""}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="beerking@email.com"
             className="w-full"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Beer Name (Required)</label>
           <input
             id="username"
             type="text"
             value={username || ""}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder="Drink A Lot"
             className="w-full"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="website">Website</label>
+          <label htmlFor="title">Beer Title (Required)</label>
           <input
-            id="website"
-            type="website"
-            value={website || ""}
-            onChange={(e) => setWebsite(e.target.value)}
+            id="title"
+            type="title"
+            value={title || ""}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Beer King"
             className="w-full"
           />
         </div>
@@ -190,7 +201,13 @@ export default function Profile({ wallet }) {
           <button
             className="button primary block bg-trueZinc-900 rounded-md p-2 w-full text-trueZinc-100"
             onClick={() =>
-              updateProfile({ walletaddress, full_name, email, username, website, avatar_url })
+              updateProfile({
+                fullname,
+                email,
+                username,
+                title,
+                avatar_url,
+              })
             }
             disabled={loading}
           >
@@ -199,12 +216,10 @@ export default function Profile({ wallet }) {
         </div>
 
         <div className="mb-4">
-          <div>
-            {wallet}
-            {wallet.address}
-            
-            <ConnectWallet className={styles.connect} />
-          </div>
+          <div>{address}</div>
+          <div>{connectedaddress}</div>
+          <div>{JSON.stringify(user)}</div>
+          <div>{uuid}</div>
         </div>
       </div>
     </>
