@@ -21,9 +21,7 @@ export default function Hero() {
           data-aos-delay="50"
           data-aos-duration="3000"
         >
-          <h1 className="text-center flex">
-            Beerverse for the beer community
-          </h1>
+          <h1 className="text-center flex">4 Mo Beers!</h1>
 
           <div className="flex items-center place-content-center align=center">
             <div className="visible lg:block">
