@@ -28,12 +28,23 @@ const ProfilePage = () => {
       <LayoutDashboard>
         <div className="relative h-full mx-auto text-trueZinc-700 dark:text-trueZinc-100">
           <div className="relative mt-8 px-4 md:px-10 mx-auto w-full mb-24">
-            <div className="text-xl font-bold uppercase text-center mb-8">
+            <div className="text-2xl font-bold uppercase text-center mb-8">
               Update Your Profile
             </div>
-            <div className="flex flex-wrap content-center items-center justify-center min-h-[250px] sm:h-[600px]">
+            <div className="flex flex-wrap content-center items-center justify-center ">
               <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-                {!address ? <ConnectWallet /> : <Profile address={address} />}
+                {!address ? (
+                  <>
+                    <div>
+                      <div className="text-xl text-trueZinc-700 dark:text-trueZinc-100 mb-8">
+                        Please connect your wallet to access your profile.
+                      </div>
+                      <ConnectWallet />
+                    </div>
+                  </>
+                ) : (
+                  <Profile address={address} />
+                )}
               </div>
             </div>
           </div>

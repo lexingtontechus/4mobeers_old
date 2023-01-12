@@ -90,7 +90,7 @@ const Navbar = () => {
                         )}
                         <Menu.Item>
                           <Link
-                            href="#about"
+                            href="/#about"
                             className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                           >
                             About
@@ -98,7 +98,7 @@ const Navbar = () => {
                         </Menu.Item>
                         <Menu.Item>
                           <Link
-                            href="#faqs"
+                            href="/#faqs"
                             className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                           >
                             FAQs
@@ -106,15 +106,7 @@ const Navbar = () => {
                         </Menu.Item>
                         <Menu.Item>
                           <Link
-                            href="#whitelist"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                          >
-                            Whitelist
-                          </Link>
-                        </Menu.Item>
-                        <Menu.Item>
-                          <Link
-                            href="#team"
+                            href="/#team"
                             className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                           >
                             Team
@@ -133,7 +125,7 @@ const Navbar = () => {
                       <li className="flex items-center">
                         <div className="mr-3">
                           <Link
-                            href="#about"
+                            href="/#about"
                             className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
                           >
                             About
@@ -153,7 +145,7 @@ const Navbar = () => {
                       <li className="flex items-center">
                         <div className="mr-3">
                           <Link
-                            href="#team"
+                            href="/#team"
                             className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
                           >
                             Team

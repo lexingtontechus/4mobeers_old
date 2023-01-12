@@ -33,7 +33,7 @@ export default function Terms() {
             <div className="container mx-auto px-4">
               <div className="items-center flex flex-wrap">
                 <div className="w-full  ml-auto mr-auto px-4">
-                  <div className="text-sm text-trueZinc-700 dark:text-sm text-trueZinc-100">
+                  <div className="text-sm text-trueZinc-700 dark:text-trueZinc-100">
                     These Terms of Use constitute a legally binding agreement
                     made between you, whether personally or on behalf of an
                     entity (“you”) and 4MoBeers DAO Inc, doing business as
@@ -934,7 +934,7 @@ export default function Terms() {
                     <div className="text-sm text-trueZinc-700">
                       4MoBeers DAO Inc.
                       <br />
-                     1712 Pioneer Ave. Suite 101
+                      1712 Pioneer Ave. Suite 101
                       <br />
                       Cheyenne, Wyoming 82001
                       <br />
