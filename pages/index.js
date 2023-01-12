@@ -13,12 +13,12 @@ export default function Home() {
 
       <Layout>
         <SectionTitle
-          pretitle="4MoBeers"
+          pretitle="4MoBeers Whitelist"
           title="Exclusive Access"
           id="whitelist"
         >
           Connect your wallet. Update your email address in profile settings to
-          receive exclusive offerings.
+          receive exclusive airdrops & offerings.
         </SectionTitle>
         <Cta />
       </Layout>

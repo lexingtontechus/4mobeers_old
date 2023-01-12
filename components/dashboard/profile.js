@@ -19,9 +19,9 @@ export default function Profile({ address }) {
   const [walletaddress, setWalletAddress] = useState(null);
   const [uuid, setUUID] = useState(null);
   const [email, setEmail] = useState(null);
-  const [username, setUsername] = useState(null);
+  const [beername, setBeername] = useState(null);
   const [fullname, setFullname] = useState(null);
-  const [title, setTitle] = useState(null);
+  const [beertitle, setBeertitle] = useState(null);
   const [avatar_url, setAvatarUrl] = useState(null);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Profile({ address }) {
 
       let { data, error, status } = await supabase
         .from("users")
-        //.select("walletaddress, username, fullname, email, title, avatar_url")
+        //.select("walletaddress, beername, fullname, email, beertitle, avatar_url")
         .select("*")
         .eq("walletaddress", connectedaddress)
         //.eq("id", user.id)
@@ -49,8 +49,8 @@ export default function Profile({ address }) {
         setWalletAddress(data.walletaddress);
         setFullname(data.fullname);
         setEmail(data.email);
-        setUsername(data.username);
-        setTitle(data.title);
+        setBeername(data.beername);
+        setBeertitle(data.beertitle);
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
@@ -64,8 +64,8 @@ export default function Profile({ address }) {
   async function updateProfile({
     fullname,
     email,
-    username,
-    title,
+    beername,
+    beertitle,
     avatar_url,
   }) {
     try {
@@ -75,8 +75,8 @@ export default function Profile({ address }) {
         id: uuid,
         fullname,
         email,
-        username,
-        title,
+        beername,
+        beertitle,
         avatar_url,
         updated_at: new Date().toISOString(),
       };
@@ -126,7 +126,7 @@ export default function Profile({ address }) {
             size={150}
             onUpload={(url) => {
               setAvatarUrl(url);
-              updateProfile({ username, avatar_url: url });
+              updateProfile({ beername, avatar_url: url });
             }}
             
           />
@@ -140,27 +140,39 @@ export default function Profile({ address }) {
             type="text"
             value={connectedaddress || ""}
             disabled
-            className="w-full text-truePink-500"
+            className="w-full text-truePink-500 rounded-md p-2 mt-4"
           />
         </div>
-        <div className="mb-4">
+        {/*<div className="mb-4">
           <label htmlFor="id">UserID</label>
           <input
             id="uuid"
             type="text"
             value={uuid || ""}
             disabled
-            className="w-full text-truePink-500"
+            className="w-full text-truePink-500 rounded-md p-2 mt-4"
+          />
+        </div>*/}
+        <div className="mb-4">
+          <label htmlFor="beername">Beer Name (Required)</label>
+          <input
+            id="beername"
+            type="text"
+            value={beername || ""}
+            onChange={(e) => setBeername(e.target.value)}
+            placeholder="Drink A Lot"
+            className="w-full rounded-md p-2 mt-4"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="fullname">Full Name (Optional)</label>
+          <label htmlFor="beertitle">Beer Title (Required)</label>
           <input
-            id="fullname"
-            type="text"
-            value={fullname || ""}
-            onChange={(e) => setFullname(e.target.value)}
-            className="w-full rounded-md"
+            id="beertitle"
+            type="beertitle"
+            value={beertitle || ""}
+            onChange={(e) => setBeertitle(e.target.value)}
+            placeholder="Beer King"
+            className="w-full rounded-md p-2 mt-4"
           />
         </div>
         <div className="mb-4">
@@ -171,41 +183,29 @@ export default function Profile({ address }) {
             value={email || ""}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="beerking@email.com"
-            className="w-full"
+            className="w-full rounded-md p-2 mt-4"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="username">Beer Name (Required)</label>
+          <label htmlFor="fullname">Alias/Full Name (Optional)</label>
           <input
-            id="username"
+            id="fullname"
             type="text"
-            value={username || ""}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Drink A Lot"
-            className="w-full"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="title">Beer Title (Required)</label>
-          <input
-            id="title"
-            type="title"
-            value={title || ""}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Beer King"
-            className="w-full"
+            value={fullname || ""}
+            onChange={(e) => setFullname(e.target.value)}
+            className="w-full rounded-md p-2 mt-4"
           />
         </div>
 
         <div className="align-center mb-4">
           <button
-            className="button primary block bg-trueZinc-900 rounded-md p-2 w-full text-trueZinc-100"
+            className="button primary block bg-truePurple-900 rounded-md mt-8 p-2 w-full text-trueZinc-100"
             onClick={() =>
               updateProfile({
                 fullname,
                 email,
-                username,
-                title,
+                beername,
+                beertitle,
                 avatar_url,
               })
             }
@@ -213,13 +213,6 @@ export default function Profile({ address }) {
           >
             {loading ? "Loading ..." : "Update"}
           </button>
-        </div>
-
-        <div className="mb-4">
-          <div>{address}</div>
-          <div>{connectedaddress}</div>
-          <div>{JSON.stringify(user)}</div>
-          <div>{uuid}</div>
         </div>
       </div>
     </>

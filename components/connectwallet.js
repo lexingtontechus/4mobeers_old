@@ -20,17 +20,17 @@ const Wallet = () => {
         <>
           <button
             onClick={() => login()}
-            className="button primary block bg-trueZinc-900 dark:bg-trueZinc-50 rounded-md p-2 w-full text-trueZinc-100 dark:text-trueZinc-700"
+            className="mt-2 button primary block bg-trueZinc-900 dark:bg-trueZinc-50 rounded-md p-2 w-full text-trueZinc-100 dark:text-trueZinc-700"
           >
             Login with Wallet
           </button>
           <button
             onClick={logout}
-            className="button primary block bg-trueZinc-900 dark:bg-trueZinc-50 rounded-md p-2 w-full text-trueZinc-100 dark:text-trueZinc-700"
+            className="mt-2 button primary block bg-trueZinc-900 dark:bg-trueZinc-50 rounded-md p-2 w-full text-trueZinc-100 dark:text-trueZinc-700"
           >
             Logout
           </button>
-          <pre>User: {JSON.stringify(user || null)}</pre>
+         {/* <pre>User: {JSON.stringify(user || null)}</pre>*/}
         </>
       ) : (
         <button onClick={connect}>Connect Wallet</button>
