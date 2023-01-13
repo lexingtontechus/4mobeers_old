@@ -90,7 +90,7 @@ export default function Team() {
             Web 2 - &quot;Card declined.&quot;{" "}
           </p>
           <p className="text-xl text-truePink-600 dark:text-truePink-400 text-center">
-            WEB3 - &quot;Wallet address confirmed!&quot;
+            WEB3 - &quot;Connect Wallet!&quot;
           </p>
         </div>
         <div
