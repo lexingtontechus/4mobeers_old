@@ -3,8 +3,6 @@ import { ConnectWallet } from "@thirdweb-dev/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
-
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import ThemeChanger from "../components/darkSwitch";
@@ -26,8 +24,6 @@ function classNames(...classes) {
 
 const Navbar = () => {
   const router = useRouter();
-  const supabaseClient = useSupabaseClient();
-  const session = useSession();
   const address = useAddress();
   const { user } = useUser();
   return (
@@ -53,15 +49,15 @@ const Navbar = () => {
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative mx-3">
-                    <div>
-                      <Menu.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-00 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
+                    
+                      <Menu.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-100 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
                         <span className="sr-only">Open user menu</span>
                         <FontAwesomeIcon
                           icon={faBars}
                           className="text-truePurple-900 dark:text-truePink-600"
                         />
                       </Menu.Button>
-                    </div>
+                    
                     <Transition
                       as={Fragment}
                       enter="transition ease-out duration-100"
@@ -75,7 +71,7 @@ const Navbar = () => {
                         <Menu.Item>
                           <ConnectWallet />
                         </Menu.Item>
-                        {user && (
+                        {address && (
                           <>
                             <Menu.Item>
                               <Link
@@ -106,10 +102,10 @@ const Navbar = () => {
                         </Menu.Item>
                         <Menu.Item>
                           <Link
-                            href="/#whitelist"
+                            href="/#community"
                             className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                           >
-                            Whitelist
+                            Join
                           </Link>
                         </Menu.Item>
                         <Menu.Item>
@@ -160,7 +156,7 @@ const Navbar = () => {
                           </Link>
                         </div>
                       </li>
-                      {user && (
+                      {address && (
                         <>
                           <li className="flex items-center">
                             <div className="mr-3">

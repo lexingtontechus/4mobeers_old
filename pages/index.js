@@ -13,9 +13,9 @@ export default function Home() {
 
       <Layout>
         <SectionTitle
-          pretitle="4MoBeers Whitelist"
+          pretitle="Join The Community"
           title="Exclusive Access"
-          id="whitelist"
+          id="community"
         >
           Connect your wallet. Update your email address in profile settings to
           receive exclusive airdrops & offerings.
