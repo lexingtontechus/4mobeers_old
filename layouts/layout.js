@@ -31,7 +31,7 @@ export default function Layout({ children }) {
           data-aos-duration="2500"
           id="faqs"
         >
-          <h1>FAQs</h1>
+          <h1 className="text-8xl xl:text-9xl">FAQs</h1>
           <h2 className="text-center max-w-2xl mt-3 text-2xl font-bold leading-snug tracking-tight text-trueZinc-700 dark:text-trueZinc-100 lg:leading-tight lg:text-4xl dark:text-white">
             How to partner and build your community with 4MoBeers?
           </h2>

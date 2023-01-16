@@ -48,16 +48,15 @@ const Navbar = () => {
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {/* Profile dropdown */}
-                  <Menu as="div" className="relative mx-3">
-                    
-                      <Menu.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-100 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
-                        <span className="sr-only">Open user menu</span>
-                        <FontAwesomeIcon
-                          icon={faBars}
-                          className="text-truePurple-900 dark:text-truePink-600"
-                        />
-                      </Menu.Button>
-                    
+                  <div className="relative mx-3">
+                    <Disclosure.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-100 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
+                      <span className="sr-only">Open user menu</span>
+                      <FontAwesomeIcon
+                        icon={faBars}
+                        className="text-truePurple-900 dark:text-truePink-600"
+                      />
+                    </Disclosure.Button>
+
                     <Transition
                       as={Fragment}
                       enter="transition ease-out duration-100"
@@ -67,13 +66,13 @@ const Navbar = () => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
-                        <Menu.Item>
+                      <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
+                        <div>
                           <ConnectWallet />
-                        </Menu.Item>
+                        </div>
                         {address && (
                           <>
-                            <Menu.Item>
+                            <div>
                               <Link
                                 href="/profile"
                                 alt="Profile"
@@ -81,44 +80,44 @@ const Navbar = () => {
                               >
                                 Profile
                               </Link>{" "}
-                            </Menu.Item>
+                            </div>
                           </>
                         )}
-                        <Menu.Item>
+                        <div>
                           <Link
                             href="/#about"
                             className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                           >
                             About
                           </Link>
-                        </Menu.Item>
-                        <Menu.Item>
+                        </div>
+                        <div>
                           <Link
                             href="/#faqs"
                             className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                           >
                             FAQs
                           </Link>
-                        </Menu.Item>
-                        <Menu.Item>
+                        </div>
+                        <div>
                           <Link
                             href="/#community"
                             className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                           >
                             Join
                           </Link>
-                        </Menu.Item>
-                        <Menu.Item>
+                        </div>
+                        <div>
                           <Link
                             href="/#team"
                             className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                           >
                             Team
                           </Link>
-                        </Menu.Item>
-                      </Menu.Items>
+                        </div>
+                      </div>
                     </Transition>
-                  </Menu>
+                  </div>
                   <ThemeChanger />
                 </div>
 

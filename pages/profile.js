@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 import { Auth, ThemeSupa } from "@supabase/auth-ui-react";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
@@ -21,6 +22,8 @@ const ProfilePage = () => {
   const session = useSession();
   const supabase = useSupabaseClient();
   const address = useAddress();
+  const { user } = useUser();
+  const router = useRouter();
 
   return (
     <>
@@ -28,24 +31,27 @@ const ProfilePage = () => {
       <LayoutDashboard>
         <div className="relative h-full mx-auto text-trueZinc-700 dark:text-trueZinc-100">
           <div className="relative mt-8 px-4 md:px-10 mx-auto w-full mb-24">
-            <div className="text-2xl font-bold uppercase text-center mb-8">
-              Update Your Profile
-            </div>
             <div className="flex flex-wrap content-center items-center justify-center ">
-              <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-                {!address ? (
-                  <>
-                    <div>
-                      <div className="text-xl text-trueZinc-700 dark:text-trueZinc-100 mb-8">
-                        Please connect your wallet to access your profile.
-                      </div>
-                      <ConnectWallet />
+              {!user ? (
+                <>
+                  <div className="w-full h-[600px] xl:w-8/12 mb-12 xl:mb-0 px-4">
+                    <div className="text-center text-xl text-trueZinc-700 dark:text-trueZinc-100 mb-8">
+                      Please connect your wallet to access your profile.
                     </div>
-                  </>
-                ) : (
-                  <Profile address={address} />
-                )}
-              </div>
+                    <ConnectWallet />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="w-full h-[700px] xl:w-8/12 mb-12 xl:mb-0 px-4">
+                    <div className="text-2xl font-bold uppercase text-center mb-8">
+                      Update Your Profile
+                    </div>
+
+                    <Profile address={address} />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

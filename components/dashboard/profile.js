@@ -118,9 +118,9 @@ export default function Profile({ address }) {
             </div>
           )}
         </div>*/}
-
+        {/*
         <div className="py-4 align-center mb-4 bg-trueZinc-900">
-          {/*   <Avatar
+             <Avatar
             uid={user.id}
             url={avatar_url}
             size={150}
@@ -130,10 +130,10 @@ export default function Profile({ address }) {
             }}
             
           />
-          */}
+          
         </div>
-
-        <div className="mb-4">
+*/}
+        <div className="mb-4 font-bold">
           <label htmlFor="walletaddress">Wallet Address</label>
           <input
             id="walletaddress"
@@ -153,7 +153,7 @@ export default function Profile({ address }) {
             className="w-full text-truePink-500 rounded-md p-2 mt-4"
           />
         </div>*/}
-        <div className="mb-4">
+        <div className="mb-4 font-bold">
           <label htmlFor="beername">Beer Name (Required)</label>
           <input
             id="beername"
@@ -164,7 +164,7 @@ export default function Profile({ address }) {
             className="w-full rounded-md p-2 mt-4"
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 font-bold">
           <label htmlFor="beertitle">Beer Title (Required)</label>
           <input
             id="beertitle"
@@ -175,7 +175,7 @@ export default function Profile({ address }) {
             className="w-full rounded-md p-2 mt-4"
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 font-bold">
           <label htmlFor="email">Email (Required)</label>
           <input
             id="email"
@@ -186,7 +186,7 @@ export default function Profile({ address }) {
             className="w-full rounded-md p-2 mt-4"
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 font-bold">
           <label htmlFor="fullname">Alias/Full Name (Optional)</label>
           <input
             id="fullname"
