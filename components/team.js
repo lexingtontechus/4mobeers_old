@@ -16,7 +16,7 @@ export default function Team() {
       data-aos-duration="3000"
       id="team"
     >
-      <h1>Team Roadiez</h1>
+      <h1 className="text-8xl xl:text-9xl">Team Roadiez</h1>
       <div className={styles.row}>
         <div
           className={styles.card}

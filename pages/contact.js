@@ -68,7 +68,7 @@ export default function Contact() {
           </div>
         </div>
         <div className="container w-10/12 p-8 mx-auto w-full place-content-center flex flex-wrap">
-          <div className=" flex flex-col overflow-hidden left-0 h-full w-full lg:w-1/2  min-h-[250px] sm:h-[600px] border border-trueZinc-300 dark:border-trueZinc-800 bg-white shadow-2xl rounded-md sm:max-h-[calc(100vh-120px)]">
+          <div className=" flex flex-col overflow-hidden left-0 h-full w-full lg:w-1/2  min-h-[250px] V border border-trueZinc-300 dark:border-trueZinc-800 bg-white shadow-2xl rounded-md sm:max-h-[calc(100vh-120px)]">
             <div className="flex flex-col justify-center h-32 p-5 bg-truePurple-600">
               <h3 className="text-lg text-white">How can we help you?</h3>
               <p className="text-white opacity-50">

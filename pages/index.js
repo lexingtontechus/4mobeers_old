@@ -17,8 +17,8 @@ export default function Home() {
           title="Exclusive Access"
           id="community"
         >
-          Connect your wallet. Update your email address in profile settings to
-          receive exclusive airdrops & offerings.
+          Connect your wallet. Sign In & Update your email address in profile
+          settings to receive exclusive airdrops & offerings.
         </SectionTitle>
         <Cta />
       </Layout>
