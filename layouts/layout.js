@@ -32,7 +32,7 @@ export default function Layout({ children }) {
           id="faqs"
         >
           <h1 className="text-8xl xl:text-9xl">FAQs</h1>
-          <h2 className="text-center max-w-2xl mt-3 text-2xl font-bold leading-snug tracking-tight text-trueZinc-700 dark:text-trueZinc-100 lg:leading-tight lg:text-4xl dark:text-white">
+          <h2 className="text-center max-w-2xl mt-3 text-2xl font-bold leading-snug tracking-tight text-trueZinc-700 dark:text-trueZinc-100 lg:leading-tight lg:text-4xl">
             How to partner and build your community with 4MoBeers?
           </h2>
           <Faq />

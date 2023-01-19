@@ -4,6 +4,8 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
 import { Collapse } from "@nextui-org/react";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function Faq() {
   return (
@@ -50,6 +52,58 @@ export default function Faq() {
                       <p className="text-md text-trueZinc-700">
                         Ongoing royalities will be attributed to the NIL owner
                         only, not the DAO.
+                      </p>
+                    </Collapse>
+                    <Collapse
+                      title="The 4MoBeers DAO Beerverse"
+                      arrowIcon={
+                        <ChevronUpIcon
+                          className={`${
+                            open ? "transform rotate-180" : ""
+                          } w-5 h-5 text-truePurple-900`}
+                        />
+                      }
+                    >
+                      <p className="text-md text-trueZinc-700">
+                        The 4MoBeer DAO & Beerverse community is not,
+                        <ul>
+                          <li className="text-trueZinc-700">
+                            <FontAwesomeIcon
+                              icon={faCircleXmark}
+                              className="text-trueRed-500 mr-2"
+                            />
+                            A Metaverse or WEB3 game
+                          </li>
+                          <li className="text-trueZinc-700">
+                            <FontAwesomeIcon
+                              icon={faCircleXmark}
+                              className="text-trueRed-500 mr-2"
+                            />
+                            Affiliated with or creating any Metaverse or WEB3
+                            game
+                          </li>
+                          <li className="text-trueZinc-700">
+                            <FontAwesomeIcon
+                              icon={faCircleXmark}
+                              className="text-trueRed-500 mr-2"
+                            />
+                            A Crypto-exchange
+                          </li>
+                          <li className="text-trueZinc-700">
+                            <FontAwesomeIcon
+                              icon={faCircleXmark}
+                              className="text-trueRed-500 mr-2"
+                            />
+                            A Cryptocurrency
+                          </li>
+                          <li className="text-trueZinc-700 mr-2">
+                            <FontAwesomeIcon
+                              icon={faCircleXmark}
+                              className="text-trueRed-500 mr-2"
+                            />
+                            A Token
+                          </li>
+                        </ul>
                       </p>
                     </Collapse>
                     <Collapse

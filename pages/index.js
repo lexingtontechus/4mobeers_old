@@ -3,6 +3,7 @@
 import SectionTitle from "../components/sectionTitle";
 import SEO from "../components/seo";
 import Cta from "../components/cta";
+import CtaPartnerSignup from "../components/ctaPartnersignup";
 
 import Layout from "../layouts/layout.js";
 
@@ -21,6 +22,14 @@ export default function Home() {
           settings to receive exclusive airdrops & offerings.
         </SectionTitle>
         <Cta />
+        <SectionTitle
+          pretitle="Partner NIL Program"
+          title="Join Our Partner Community"
+          id="partners"
+        >
+          Sign up as a partner or content creator.
+        </SectionTitle>
+        <CtaPartnerSignup />
       </Layout>
     </>
   );
