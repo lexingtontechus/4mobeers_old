@@ -5,7 +5,6 @@ module.exports = {
       {
         "preset-react": {
           runtime: "automatic",
-          importSource: "@emotion/react",
         },
       },
     ],

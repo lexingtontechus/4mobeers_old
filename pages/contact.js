@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Image } from "@nextui-org/react";
 import { useForm, useWatch } from "react-hook-form";
 import { Disclosure, Transition } from "@headlessui/react";
 import Link from "next/link";

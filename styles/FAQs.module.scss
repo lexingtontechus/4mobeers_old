@@ -4,11 +4,9 @@
   flex-direction: column;
   align-items: center;
   h1 {
-    background: linear-gradient(-45deg, #892cdc, #19d3da, #e89a3e, #e89a3e);
+    background: linear-gradient(-45deg, #0c4a6e, #0ea5e9, #f43f5e, #831843);
     background-size: 300%;
     font-family: Sora;
-    font-weight: 900;
-    
     letter-spacing: -3px;
     text-transform: uppercase;
     -webkit-background-clip: text;
@@ -18,9 +16,7 @@
     -webkit-animation: animated_text 10s ease-in-out infinite;
     text-align: center;
     margin: 40px 0px 10px;
-    @media screen and (max-width: 1226px) {
-      font-size: 40px;
-    }
+   
     @keyframes animated_text {
       0% {
         background-position: 0px 50%;
