@@ -1,5 +1,7 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
-
+//import { ConnectWallet } from "@thirdweb-dev/react";
+{
+  /*import {  useAddress,  useDisconnect, useUser,  useLogin,  useLogout,  useMetamask,} from "@thirdweb-dev/react";*/
+}
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -9,34 +11,27 @@ import ThemeChanger from "../components/darkSwitch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  useAddress,
-  useDisconnect,
-  useUser,
-  useLogin,
-  useLogout,
-  useMetamask,
-} from "@thirdweb-dev/react";
+//import { useUser } from "../utils/useUser";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+
+import ProfileModal from "../components/dashboard/profilemodal";
 
 const Navbar = () => {
   const router = useRouter();
-  const address = useAddress();
-  const { user } = useUser();
+  //const address = useAddress(); ThirdwebProvider
+  //const { user } = useUser();
+  const { address, isConnected, status } = useAccount();
+
   return (
     <>
       <Disclosure as="nav">
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-4">
+            <div className="mx-auto px-2 sm:px-6 lg:px-8 py-4">
               <div className="relative flex h-16 items-center justify-between">
-                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                  {/* Mobile menu button*/}
-                </div>
-                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div className=" sm:items-stretch sm:justify-start">
                   <div className="flex flex-shrink-0 items-center">
                     <Link
                       href="/"
@@ -47,7 +42,28 @@ const Navbar = () => {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  {/* Profile dropdown */}
+                 
+                  <div className="lg:hidden relative mx-auto inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
+                    {status == "disconnected" ? (
+                      <>
+                        <ConnectButton
+                          label="CONNECT"
+                          showBalance={false}
+                          chainStatus="none"
+                          accountStatus={{
+                            smallScreen: "avatar",
+                          }}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <div>
+                          <ProfileModal address={address} />
+                        </div>
+                      </>
+                    )}
+                  </div>
+
                   <div className="relative mx-3">
                     <Disclosure.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-100 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
                       <span className="sr-only">Open user menu</span>
@@ -68,25 +84,9 @@ const Navbar = () => {
                     >
                       <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
                         <div>
-                          <ConnectWallet />
-                        </div>
-                        {address && (
-                          <>
-                            <div>
-                              <Link
-                                href="/profile"
-                                alt="Profile"
-                                className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                              >
-                                Profile
-                              </Link>{" "}
-                            </div>
-                          </>
-                        )}
-                        <div>
                           <Link
                             href="/#about"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                            className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                           >
                             About
                           </Link>
@@ -94,23 +94,29 @@ const Navbar = () => {
                         <div>
                           <Link
                             href="/#faqs"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                            className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                           >
                             FAQs
                           </Link>
                         </div>
-                        <div>
-                          <Link
-                            href="/#community"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                          >
-                            Join
-                          </Link>
-                        </div>
+                        {status == "disconnected" ? (
+                          <>
+                            <div>
+                              <Link
+                                href="/#community"
+                                className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                              >
+                                Join
+                              </Link>
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
                         <div>
                           <Link
                             href="/#team"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                            className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                           >
                             Team
                           </Link>
@@ -121,7 +127,7 @@ const Navbar = () => {
                   <ThemeChanger />
                 </div>
 
-                {/* Menu */}
+                {/* LG Menu */}
                 <div className="hidden text-center lg:flex lg:items-center">
                   <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
                     <ul className="flex flex-col lg:flex-row list-none mr-auto">
@@ -155,24 +161,44 @@ const Navbar = () => {
                           </Link>
                         </div>
                       </li>
-                      {address && (
+                      {status == "disconnected" ? (
                         <>
-                          <li className="flex items-center">
-                            <div className="mr-3">
-                              <Link
-                                href="/profile"
-                                alt="Profile"
-                                className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                              >
-                                Profile
-                              </Link>{" "}
-                            </div>
-                          </li>
+                          <div></div>
+                        </>
+                      ) : (
+                        <>
+                          <div>
+                            <li className="flex items-center">
+                              <div className="mr-3">
+                                <ProfileModal address={address} />
+                              </div>
+                            </li>
+                          </div>
                         </>
                       )}
                       <li className="flex items-center">
-                        <div className="round-md">
+                        {/*<div className="round-md">
                           <ConnectWallet />
+                        </div>*/}
+                        <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
+                          {status == "disconnected" ? (
+                            <>
+                              <ConnectButton
+                                label="CONNECT"
+                                showBalance={false}
+                                chainStatus="none"
+                                accountStatus={{
+                                  smallScreen: "avatar",
+                                }}
+                              />
+                            </>
+                          ) : (
+                            <>
+                              <div>
+                                <ProfileModal address={address} />
+                              </div>
+                            </>
+                          )}
                         </div>
                       </li>
                     </ul>

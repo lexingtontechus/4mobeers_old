@@ -17,9 +17,7 @@ export default function Hero() {
         {/*px-8 flex flex-wrap */}
         <div
           className={styles.row}
-          data-aos="fade-in"
-          data-aos-delay="50"
-          data-aos-duration="3000"
+         
         >
           <h1 className="text-8xl xl:text-9xl animate-fade-in">4 Mo Beers!</h1>
 

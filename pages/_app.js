@@ -6,52 +6,170 @@ import "../styles/tailwind.css";
 import "../styles/custom.css";
 import { NextUIProvider } from "@nextui-org/react";
 import SEO from "../components/seo";
-import AOS from "aos";
+
 import { useEffect } from "react";
 
-import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
+import "@rainbow-me/rainbowkit/styles.css";
+import {
+  RainbowKitProvider,
+  getDefaultWallets,
+  connectorsForWallets,
+  darkTheme,
+} from "@rainbow-me/rainbowkit";
+import {
+  argentWallet,
+  trustWallet,
+  ledgerWallet,
+  injectedWallet,
+  rainbowWallet,
+  metaMaskWallet,
+  coinbaseWallet,
+  walletConnectWallet,
+  braveWallet,
+  wallet,
+} from "@rainbow-me/rainbowkit/wallets";
+import {
+  RainbowKitSiweNextAuthProvider,
+  GetSiweMessageOptions,
+} from "@rainbow-me/rainbowkit-siwe-next-auth";
 
-// This is the chainId your dApp will work on.
-const activeChainId = ChainId.Mainnet;
+import { configureChains, createClient, WagmiConfig, useSigner } from "wagmi";
+import { mainnet, polygon, optimism, arbitrum, goerli } from "wagmi/chains";
+import { publicProvider } from "wagmi/providers/public";
+
+import { SessionProvider } from "next-auth/react";
+import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { SessionContextProvider } from "@supabase/auth-helpers-react";
+import { useState } from "react";
 
 config.autoAddCss = false;
 
-function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    AOS.init();
-    {
-      /*
-    {
-      easing: "ease-out-cubic",
-      once: true,
-      offset: 50,
-    },
-    {
-      zoom : "zoom-in",
-      once: true,
-      offset: 50,
-    }
-     */
-    }
-  }, []);
+const { chains, provider, webSocketProvider } = configureChains(
+  [
+    mainnet,
+    polygon,
+    optimism,
+    arbitrum,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : []),
+  ],
+  [publicProvider()]
+);
+
+const { wallets } = getDefaultWallets({
+  appName: "4MoBeers DAO Inc.",
+  chains,
+});
+
+const AppInfo = {
+  appName: "4MoBeers DAO Inc.",
+};
+
+const connectors = connectorsForWallets([
+  ...wallets,
+
+  {
+    groupName: "Recommended",
+    wallets: [
+      injectedWallet({ chains }),
+      braveWallet({ chains }),
+      //wallet.brave({ chains, shimDisconnect: true }),
+      //metaMaskWallet({ chains }),
+      //rainbowWallet({ chains }),
+    ],
+  },
+  {
+    groupName: "Other",
+    wallets: [
+      //coinbaseWallet({ chains, appName: "My RainbowKit App" }),
+      //walletConnectWallet({ chains }),
+      trustWallet({ chains }),
+      argentWallet({ chains }),
+      ledgerWallet({ chains }),
+    ],
+  },
+]);
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+  webSocketProvider,
+});
+
+const Disclaimer = ({ Text, Link }) => (
+  <Text>
+    By connecting your wallet, you agree to the{" "}
+    <Link href="https://4mobeers.nft/terms" target="_blank">
+      TERMS
+    </Link>{" "}
+    and acknowledge you have read and understand the 4MoBeers{" "}
+    <Link href="https://4mobeers.nft/privacy" target="_blank">
+      PRIVACY
+    </Link>
+  </Text>
+);
+
+const getSiweMessageOptions = () => ({
+  statement: "Sign in to 4MoBeers DAO",
+});
+
+{
+  /*function ThirdwebProvider({ wagmiClient, children }) {
+  const { data: signer } = useSigner();
+
   return (
-   
-      <ThirdwebProvider
-        desiredChainId={activeChainId}
-        authConfig={{
-          domain: "localhost:3000",
-          authUrl: "/api/auth",
-          loginRedirect: "/",
-        }}
+    <ThirdwebSDKProvider
+      desiredChainId={1}
+      signer={signer}
+      provider={wagmiClient.provider}
+      queryClient={wagmiClient.queryClient}
+    >
+      {children}
+    </ThirdwebSDKProvider>
+  );
+}*/
+}
+
+function MyApp({ Component, pageProps }) {
+  const [supabase] = useState(() => createBrowserSupabaseClient());
+
+  return (
+    <WagmiConfig client={wagmiClient}>
+      <SessionContextProvider
+        supabaseClient={supabase}
+        initialSession={pageProps.initialSession}
       >
-        <ThemeProvider attribute="class">
-          <NextUIProvider>
-            <SEO />
-            <Component {...pageProps} />
-          </NextUIProvider>
-        </ThemeProvider>
-      </ThirdwebProvider>
-    
+        <SessionProvider refetchInterval={0} session={pageProps.session}>
+          <RainbowKitSiweNextAuthProvider
+            getSiweMessageOptions={getSiweMessageOptions}
+          >
+            {" "}
+            <RainbowKitProvider
+              coolMode
+              appInfo={{
+                appName: { AppInfo },
+                disclaimer: Disclaimer,
+              }}
+              chains={chains}
+              theme={darkTheme({
+                accentColor: "#581c87",
+                accentColorForeground: "#f4f4f5",
+                borderRadius: "small",
+                fontStack: "Sora",
+                overlayBlur: "small",
+              })}
+            >
+              <ThemeProvider attribute="class">
+                <NextUIProvider>
+                  <SEO />
+                  <Component {...pageProps} />
+                </NextUIProvider>
+              </ThemeProvider>
+            </RainbowKitProvider>
+          </RainbowKitSiweNextAuthProvider>
+        </SessionProvider>
+      </SessionContextProvider>
+    </WagmiConfig>
   );
 }
 

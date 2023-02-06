@@ -11,21 +11,17 @@ export default function Team() {
   return (
     <div
       className={styles.team}
-      data-aos="fade-in"
-      data-aos-delay="50"
-      data-aos-duration="3000"
+     
       id="team"
     >
-      <h1 className="text-center text-8xl xl:text-9xl">Team Roadiez</h1>
+      <h1 className="text-center text-8xl xl:text-9xl">Team</h1>
       <h2 className="text-center text-5xl xl:text-6xl mt-2 uppercase font-black">
-        The Brew Crew
+        Roadiez Crew
       </h2>
       <div className={styles.row}>
         <div
           className={styles.card}
-          data-aos="fade-right"
-          data-aos-delay="50"
-          data-aos-duration="2500"
+         
         >
           <Image
             loader={TeamImage}
@@ -73,9 +69,7 @@ export default function Team() {
         </div>
         <div
           className={styles.card}
-          data-aos="fade-left"
-          data-aos-delay="50"
-          data-aos-duration="2500"
+        
         >
           <Image
             loader={TeamImage}
@@ -98,9 +92,7 @@ export default function Team() {
         </div>
         <div
           className={styles.card}
-          data-aos="fade-left"
-          data-aos-delay="50"
-          data-aos-duration="2500"
+         
         >
           <Image
             loader={TeamImage}

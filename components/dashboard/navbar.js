@@ -1,9 +1,5 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
-
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
@@ -11,34 +7,25 @@ import ThemeChanger from "../../components/darkSwitch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  useAddress,
-  useDisconnect,
-  useUser,
-  useLogin,
-  useLogout,
-  useMetamask,
-} from "@thirdweb-dev/react";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+{ /*import { useAddress, useDisconnect, useUser, useLogin, useLogout, useMetamask, from "@thirdweb-dev/react";*/}
+//import { useUser } from "../../utils/useUser";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAccount } from "wagmi";
 
 const Navbar = () => {
   const router = useRouter();
-  const address = useAddress();
-  const { user } = useUser();
+  //const address = useAddress(); ThirdwebProvider
+ // const { user } = useUser();
+  const { address, isConnected } = useAccount();
+ 
   return (
     <>
       <Disclosure as="nav">
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-4">
+            <div className="mx-auto px-2 sm:px-6 lg:px-8 py-4">
               <div className="relative flex h-16 items-center justify-between">
-                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                  {/* Mobile menu button*/}
-                </div>
-                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div className=" sm:items-stretch sm:justify-start">
                   <div className="flex flex-shrink-0 items-center">
                     <Link
                       href="/"
@@ -50,6 +37,16 @@ const Navbar = () => {
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {/* Profile dropdown */}
+                  <div className="lg:hidden relative mx-auto">
+                    <ConnectButton
+                      label="CONNECT"
+                      showBalance={false}
+                      chainStatus="none"
+                      accountStatus={{
+                        smallScreen: "avatar",
+                      }}
+                    />
+                  </div>
                   <div className="relative mx-3">
                     <Disclosure.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-100 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
                       <span className="sr-only">Open user menu</span>
@@ -69,22 +66,6 @@ const Navbar = () => {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
-                        <div>
-                          <ConnectWallet />
-                        </div>
-                        {address && (
-                          <>
-                            <div>
-                              <Link
-                                href="/profile"
-                                alt="Profile"
-                                className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                              >
-                                Profile
-                              </Link>{" "}
-                            </div>
-                          </>
-                        )}
                         <div>
                           <Link
                             href="/#about"
@@ -173,8 +154,22 @@ const Navbar = () => {
                         </>
                       )}
                       <li className="flex items-center">
-                        <div className="round-md">
+                        {/*<div className="round-md">
                           <ConnectWallet />
+                        </div>*/}
+                        <div className="inline-block">
+                          <ConnectButton
+                            label="CONNECT"
+                            chainStatus="none"
+                            accountStatus={{
+                              smallScreen: "avatar",
+                              largeScreen: "full",
+                            }}
+                            showBalance={{
+                              smallScreen: false,
+                              largeScreen: true,
+                            }}
+                          />
                         </div>
                       </li>
                     </ul>

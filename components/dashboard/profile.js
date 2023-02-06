@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import Image from "next/image";
-import Avatar from "./avatar";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
-import { useUser, useAddress } from "@thirdweb-dev/react";
+//import { useUser, useAddress } from "@thirdweb-dev/react";
 
-//import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 //import { useSupabaseClient } from "@supabase/supabase-js";
-import { supabase } from "../../utils/supabase-clients";
+//import { supabase } from "../../utils/supabase-clients";
+//import { useUser } from "../../utils/useUser";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
 
-export default function Profile({ address }) {
+//export default function Profile() {
+function Profile() {
+  const { address, connector: activeConnector } = useAccount();
+
   //const router = useRouter();
-  //const supabase = useSupabaseClient();
+  const supabase = useSupabaseClient();
+  const wc = activeConnector.name;
+  const { disconnect } = useDisconnect();
 
-  const user = useUser();
-  const connectedaddress = useAddress();
+  //const connectedaddress = useAddress();
   const [loading, setLoading] = useState(true);
   const [walletaddress, setWalletAddress] = useState(null);
   const [uuid, setUUID] = useState(null);
@@ -22,26 +25,37 @@ export default function Profile({ address }) {
   const [beername, setBeername] = useState(null);
   const [fullname, setFullname] = useState(null);
   const [beertitle, setBeertitle] = useState(null);
-  const [avatar_url, setAvatarUrl] = useState(null);
+  const [provider, setProvider] = useState(null);
+  const [isProfile, setIsProfile] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     getProfile();
-  }, [address]);
+  }, [wc]);
 
-  async function getProfile(address) {
+  async function getProfile() {
     try {
       setLoading(true);
 
       let { data, error, status } = await supabase
         .from("users")
-        //.select("walletaddress, beername, fullname, email, beertitle, avatar_url")
+
         .select("*")
-        .eq("walletaddress", connectedaddress)
-        //.eq("id", user.id)
+        .eq("walletaddress", address)
+
         .single();
 
       if (error && status !== 406) {
         throw error;
+      }
+      if (!data) {
+        setProvider(activeConnector.name);
+        //const provider = setProvider;
+
+        await supabase
+          .from("users")
+          .insert({ walletaddress: address, provider: wc })
+          .single();
       }
 
       if (data) {
@@ -51,23 +65,19 @@ export default function Profile({ address }) {
         setEmail(data.email);
         setBeername(data.beername);
         setBeertitle(data.beertitle);
-        setAvatarUrl(data.avatar_url);
+        setProvider(data.provider);
       }
     } catch (error) {
-      alert("Error loading user data!");
+      //alert("Error loading user data!");
+      setIsProfile(false);
       console.log(error);
     } finally {
+      setIsProfile(true);
       setLoading(false);
     }
   }
 
-  async function updateProfile({
-    fullname,
-    email,
-    beername,
-    beertitle,
-    avatar_url,
-  }) {
+  async function updateProfile({ fullname, email, beername, beertitle }) {
     try {
       setLoading(true);
 
@@ -77,7 +87,7 @@ export default function Profile({ address }) {
         email,
         beername,
         beertitle,
-        avatar_url,
+
         updated_at: new Date().toISOString(),
       };
 
@@ -86,59 +96,45 @@ export default function Profile({ address }) {
 
       //.eq("id", id);
       if (error) throw error;
-      alert("Profile updated!");
+      //alert("Profile updated!");
     } catch (error) {
-      alert("Error updating the data!");
+      //alert("Error updating the data!");
+      setIsSuccess(false);
       console.log(error);
     } finally {
+      setIsSuccess(true);
       setLoading(false);
     }
   }
   return (
     <>
-      <div className="form-widget align-center flex-grow h-full p-6 overflow-auto">
-        {/* <div className="p-8">
-          {avatar_url ? (
-            <Image
-              src={avatar_url}
-              alt="Avatar"
-              className="rounded-full mx-auto"
-              width={150}
-              height={150}
-            />
-          ) : (
-            <div className="avatar no-image" width={150} height={150}>
-              <Image
-                src="https://storageapi.fleek.co/9ec37732-832c-4af1-a4fa-cc87c28c6dae-bucket/assets/img/memberprofile.png"
-                alt="Avatar"
-                className="rounded-half mx-auto"
-                width={150}
-                height={150}
-              />
-            </div>
-          )}
-        </div>*/}
-        {/*
-        <div className="py-4 align-center mb-4 bg-trueZinc-900">
-             <Avatar
-            uid={user.id}
-            url={avatar_url}
-            size={150}
-            onUpload={(url) => {
-              setAvatarUrl(url);
-              updateProfile({ beername, avatar_url: url });
-            }}
-            
-          />
-          
-        </div>
-*/}
+      {isProfile && isSuccess && (
+        <>
+          <div className="flex flex-col items-center justify-center text-center text-trueZinc-100 rounded-md">
+            <h3 className="py-5 text-xl text-trueEmerald-500">
+              Profile Updated Successfully!
+            </h3>
+          </div>
+        </>
+      )}
+      <div className="form-widget align-center flex-grow h-full overflow-auto">
+        {!isProfile && !isSuccess && (
+          <div className="flex flex-col items-center justify-center text-center text-trueZinc-100 rounded-md">
+            <h3 className="text-xl text-trueEmerald-400 py-8 uppercase">
+              <svg
+                className="animate-spin h-5 w-5 mr-3 fill-truePink-600"
+                viewBox="0 0 24 24"
+              ></svg>
+              Loading Profile
+            </h3>
+          </div>
+        )}
         <div className="mb-4 font-bold">
           <label htmlFor="walletaddress">Wallet Address</label>
           <input
             id="walletaddress"
             type="text"
-            value={connectedaddress || ""}
+            value={walletaddress || ""}
             disabled
             className="w-full text-truePink-500 rounded-md p-2 mt-4"
           />
@@ -199,7 +195,7 @@ export default function Profile({ address }) {
 
         <div className="align-center mb-4">
           <button
-            className="button primary block bg-truePurple-900 rounded-md mt-8 p-2 w-full text-trueZinc-100"
+            className="uppercase button primary block bg-truePurple-900 rounded-md mt-8 p-2 w-full text-trueZinc-100"
             onClick={() =>
               updateProfile({
                 fullname,
@@ -214,7 +210,41 @@ export default function Profile({ address }) {
             {loading ? "Loading ..." : "Update"}
           </button>
         </div>
+
+        {/*        <div className="align-center mb-4">
+          <button
+            className="uppercase button primary block bg-truePurple-900 rounded-md mt-8 p-2 w-full text-trueZinc-100"
+            onClick={() => disconnect()}
+          >
+            Disconnect
+          </button>
+        </div>*/}
       </div>
     </>
   );
+}
+
+export default Profile;
+
+export async function getServerSideProps() {
+  let { data: user } = await supabase
+    .from("users")
+    .select()
+    .eq("walletaddress", address)
+    .single();
+  if (!user) {
+    const res = await supabase
+      .from("users")
+      .insert({ walletaddress: address })
+      .single();
+
+    if (res.error) {
+      throw new Error("Failed to create user!");
+    }
+  }
+  return {
+    props: {
+      users: data,
+    },
+  };
 }
