@@ -6,95 +6,42 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 //import { useSupabaseClient } from "@supabase/supabase-js";
 //import { supabase } from "../../utils/supabase-clients";
 //import { useUser } from "../../utils/useUser";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
 
 //export default function Profile() {
-function Profile() {
-  const { address, connector: activeConnector } = useAccount();
-
+function Partner() {
+  
   //const router = useRouter();
   const supabase = useSupabaseClient();
-  const wc = activeConnector.name;
-  const { disconnect } = useDisconnect();
+  
 
   //const connectedaddress = useAddress();
   const [loading, setLoading] = useState(true);
-  const [walletaddress, setWalletAddress] = useState(null);
+  
   const [uuid, setUUID] = useState(null);
   const [email, setEmail] = useState(null);
-  const [beername, setBeername] = useState(null);
-  const [fullname, setFullname] = useState(null);
-  const [beertitle, setBeertitle] = useState(null);
-  const [provider, setProvider] = useState(null);
+  const [companyname, setCompanyName] = useState(null);
+  const [clientname, setClientname] = useState(null);
+  const [contactnumber, setContactNumber] = useState(null);
+  const [website, setWebsite] = useState(null);
   const [isProfile, setIsProfile] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
-    getProfile();
-  }, [wc]);
+    createPartners();
+  });
 
-  async function getProfile() {
-    try {
-      setLoading(true);
-
-      let { data, error, status } = await supabase
-        .from("users")
-
-        .select("*")
-        .eq("walletaddress", address)
-
-        .single();
-
-      if (error && status !== 406) {
-        throw error;
-      }
-      if (!data) {
-        setProvider(activeConnector.name);
-        //const provider = setProvider;
-
-        await supabase
-          .from("users")
-          .insert({ walletaddress: address, provider: wc })
-          .single();
-      }
-
-      if (data) {
-        setUUID(data.id);
-        setWalletAddress(data.walletaddress);
-        setFullname(data.fullname);
-        setEmail(data.email);
-        setBeername(data.beername);
-        setBeertitle(data.beertitle);
-        setProvider(data.provider);
-      }
-    } catch (error) {
-      //alert("Error loading user data!");
-      setIsProfile(false);
-      console.log(error);
-    } finally {
-      setIsProfile(true);
-      setLoading(false);
-    }
-  }
-
-  async function updateProfile({ fullname, email, beername, beertitle }) {
+  async function createPartners({ companyname, email, clientname, contactnumber,website, partnertype }) {
     try {
       setLoading(true);
 
       const updates = {
         id: uuid,
-        fullname,
-        email,
-        beername,
-        beertitle,
-
+        companyname, email, clientname, contactnumber,website, partnertype
         updated_at: new Date().toISOString(),
       };
 
-      let { error } = await supabase.from("users").upsert(updates);
-      //.eq("walletaddress", connectedaddress);
-
-      //.eq("id", id);
+      let { error } = await supabase.from("partners").insert(updates);
+      
       if (error) throw error;
       //alert("Profile updated!");
     } catch (error) {
@@ -112,7 +59,7 @@ function Profile() {
         <>
           <div className="flex flex-col items-center justify-center text-center text-trueZinc-100 rounded-md">
             <h3 className="py-5 text-xl text-trueEmerald-500">
-              Profile Updated Successfully!
+              Partner Request Sent Successfully!
             </h3>
           </div>
         </>
@@ -125,49 +72,33 @@ function Profile() {
                 className="animate-spin h-5 w-5 mr-3 fill-truePink-600"
                 viewBox="0 0 24 24"
               ></svg>
-              Loading Profile
+              Loading ...
             </h3>
           </div>
         )}
         <div className="mb-4 font-bold">
-          <label htmlFor="walletaddress">Wallet Address</label>
-          <input
-            id="walletaddress"
-            type="text"
-            value={walletaddress || ""}
-            disabled
-            className="w-full text-truePink-500 rounded-md p-2 mt-4"
-          />
-        </div>
-        {/*<div className="mb-4">
-          <label htmlFor="id">UserID</label>
-          <input
-            id="uuid"
-            type="text"
-            value={uuid || ""}
-            disabled
-            className="w-full text-truePink-500 rounded-md p-2 mt-4"
-          />
-        </div>*/}
+          
         <div className="mb-4 font-bold">
-          <label htmlFor="beername">Beer Name (Required)</label>
+          <label htmlFor="companyname">Company Name (Required)</label>
           <input
-            id="beername"
+            id="companyname"
             type="text"
-            value={beername || ""}
-            onChange={(e) => setBeername(e.target.value)}
-            placeholder="Drink A Lot"
+            value={companyname || ""}
+            {...register("Company Name", {required: true, maxLength: 80})}
+            onChange={(e) => setCompanyname(e.target.value)}
+            placeholder="Greatest Brewery Ever"
             className="w-full rounded-md p-2 mt-4"
           />
         </div>
         <div className="mb-4 font-bold">
-          <label htmlFor="beertitle">Beer Title (Required)</label>
+          <label htmlFor="clientname">Your Name (Required)</label>
           <input
-            id="beertitle"
+            id="clientname"
             type="text"
-            value={beertitle || ""}
-            onChange={(e) => setBeertitle(e.target.value)}
-            placeholder="Beer King"
+            value={clientname || ""}
+            {...register("Your name", {required: true, maxLength: 80})}
+            onChange={(e) => setClientName(e.target.value)}
+            placeholder="Mr. Brew Master"
             className="w-full rounded-md p-2 mt-4"
           />
         </div>
@@ -177,20 +108,36 @@ function Profile() {
             id="email"
             type="text"
             value={email || ""}
+            {...register("Email", {required: true, maxLength: 80})}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="beerking@email.com"
+            placeholder="brewmaster@email.com"
             className="w-full rounded-md p-2 mt-4"
           />
         </div>
         <div className="mb-4 font-bold">
-          <label htmlFor="fullname">Alias/Full Name (Optional)</label>
+          <label htmlFor="website">Website  (Required)</label>
           <input
-            id="fullname"
+            id="website"
             type="text"
-            value={fullname || ""}
-            onChange={(e) => setFullname(e.target.value)}
+            value={website || ""}
+            {...register("Website", {required: true, maxLength: 80})}
+            onChange={(e) => setWebsite(e.target.value)}
             className="w-full rounded-md p-2 mt-4"
           />
+        </div>
+         <div className="mb-4 font-bold">
+          <label htmlFor="partnertype">Program  (Required)</label>
+          <select   id="partnertype"
+          {...register("Partner Program", { required: true })}
+           onChange={(e) => setWebsite(e.target.value)}
+            className="w-full rounded-md p-2 mt-4">
+        <option value="Mr">Mr</option>
+        <option value="Mrs">Mrs</option>
+        <option value="Miss">Miss</option>
+        <option value="Dr">Dr</option>
+        
+      </select>
+
         </div>
 
         <div className="align-center mb-4">

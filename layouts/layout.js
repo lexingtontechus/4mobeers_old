@@ -5,9 +5,10 @@ import React from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Team from "../components/team";
-import Whitelist from "../components/whitelist";
+
 import Hero from "../components/hero";
 import Community from "../components/community";
+import Partners from "../components/partners/partner";
 
 import Cal from "../components/cal";
 import Faq from "../components/faq";
@@ -46,6 +47,7 @@ export default function Layout({ children, address }) {
           <div className="mx-auto w-full">{children}</div>
         </div>
         <Community address={address} />
+        <Partners />
         <Faq />
         <Team className="mt-4" />
         <Footer />

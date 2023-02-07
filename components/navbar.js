@@ -14,15 +14,12 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 //import { useUser } from "../utils/useUser";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
-import { useAccount, useConnect, useDisconnect } from "wagmi";
-
 import ProfileModal from "../components/dashboard/profilemodal";
 
-const Navbar = () => {
+const Navbar = ({ address }) => {
   const router = useRouter();
   //const address = useAddress(); ThirdwebProvider
   //const { user } = useUser();
-  const { address, isConnected, status } = useAccount();
 
   return (
     <>
@@ -42,26 +39,15 @@ const Navbar = () => {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                 
                   <div className="lg:hidden relative mx-auto inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-                    {status == "disconnected" ? (
-                      <>
-                        <ConnectButton
-                          label="CONNECT"
-                          showBalance={false}
-                          chainStatus="none"
-                          accountStatus={{
-                            smallScreen: "avatar",
-                          }}
-                        />
-                      </>
-                    ) : (
-                      <>
-                        <div>
-                          <ProfileModal address={address} />
-                        </div>
-                      </>
-                    )}
+                    <ConnectButton
+                      label="CONNECT"
+                      showBalance={false}
+                      chainStatus="none"
+                      accountStatus={{
+                        smallScreen: "avatar",
+                      }}
+                    />
                   </div>
 
                   <div className="relative mx-3">
@@ -83,6 +69,14 @@ const Navbar = () => {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
+                        {address && (
+                          <>
+                            <div className="text-center  block px-4 py-2 mx-auto">
+                              <ProfileModal address={address} />
+                            </div>
+                          </>
+                        )}
+
                         <div>
                           <Link
                             href="/#about"
@@ -99,20 +93,6 @@ const Navbar = () => {
                             FAQs
                           </Link>
                         </div>
-                        {status == "disconnected" ? (
-                          <>
-                            <div>
-                              <Link
-                                href="/#community"
-                                className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                              >
-                                Join
-                              </Link>
-                            </div>
-                          </>
-                        ) : (
-                          <></>
-                        )}
                         <div>
                           <Link
                             href="/#team"
@@ -161,44 +141,33 @@ const Navbar = () => {
                           </Link>
                         </div>
                       </li>
-                      {status == "disconnected" ? (
-                        <>
-                          <div></div>
-                        </>
-                      ) : (
-                        <>
-                          <div>
-                            <li className="flex items-center">
-                              <div className="mr-3">
-                                <ProfileModal address={address} />
-                              </div>
-                            </li>
-                          </div>
-                        </>
-                      )}
+                      <li className="flex items-center mr-3">
+                        {/*<div className="round-md">
+                          <ConnectWallet />
+                        </div>*/}
+                        <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
+                          {address && (
+                            <>
+                              <ProfileModal address={address} /> {address}
+                            </>
+                          )}
+                        </div>
+                      </li>
                       <li className="flex items-center">
                         {/*<div className="round-md">
                           <ConnectWallet />
                         </div>*/}
                         <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-                          {status == "disconnected" ? (
-                            <>
-                              <ConnectButton
-                                label="CONNECT"
-                                showBalance={false}
-                                chainStatus="none"
-                                accountStatus={{
-                                  smallScreen: "avatar",
-                                }}
-                              />
-                            </>
-                          ) : (
-                            <>
-                              <div>
-                                <ProfileModal address={address} />
-                              </div>
-                            </>
-                          )}
+                          <div>
+                            <ConnectButton
+                              label="CONNECT"
+                              showBalance={false}
+                              chainStatus="none"
+                              accountStatus={{
+                                smallScreen: "avatar",
+                              }}
+                            />
+                          </div>
                         </div>
                       </li>
                     </ul>

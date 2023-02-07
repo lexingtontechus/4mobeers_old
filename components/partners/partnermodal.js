@@ -1,8 +1,8 @@
 import { Modal, useModal, Button, Text, css } from "@nextui-org/react";
 import React from "react";
-import Profile from "./profile";
+import PartnerSignup from "./partnersignup";
 
-export default function ProfileModal({ address }) {
+export default function PartnerModal({ address }) {
   // const [visible, setVisible] = React.useState(false);
   const handler = () => setVisible(true);
   const closeHandler = () => {
@@ -19,7 +19,7 @@ export default function ProfileModal({ address }) {
         css={{ color: "#f4f4f5", background: "#581c87" }}
         onPress={handler}
       >
-        Profile
+        Sign Up
       </Button>
       <Modal
         animated={false}
@@ -39,13 +39,14 @@ export default function ProfileModal({ address }) {
           <Text h2 id="modal-title" size={18} css={{
           textGradient: "45deg, $blue600 -20%, $pink600 50%",
         }}
-        weight="bold">
-            Wallet Profile
+        weight="bold"
+        transform="uppercase">
+           Partners NIL Program
           </Text>
         </Modal.Header>
         <Modal.Body>
-          <Text id="modal-description">Update Your Profile</Text>
-          <Profile address={address} />
+          <Text id="modal-description">Join Now!</Text>
+          <PartnerSignup />
         </Modal.Body>
         <Modal.Footer>
           <Button
