@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import Container from "./container";
-import { supabase } from "../utils/supabase-clients";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/router";
 
 export default function Test() {
@@ -17,17 +17,33 @@ export default function Test() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   //const supabase = Supabase;
+  const supabase = useSupabaseClient();
 
-  const onSubmit = //async (beerName, beerTitle, beerEmail) => {
-    async function JoinWhitelist(beerName, beerTitle, beerEmail) {
+  const onSubmit = //async (companyName, clientName, Email) => {
+    async function createPartner(
+      companyname,
+      email,
+      clientname,
+      contactnumber,
+      website,
+      businesstype
+    ) {
       try {
-        let { error } = await supabase
-          .from("whitelist")
-          .insert(beerName, beerTitle, beerEmail);
+        const registerPartner = {
+          companyname,
+          email,
+          clientname,
+          contactnumber,
+          website,
+          businesstype,
+          updated_at: new Date().toISOString(),
+        };
+
+        let { error } = await supabase.from("partners").insert(registerPartner);
         if (error) throw error;
-        alert("Whitelist updated!");
+        //alert("Whitelist updated!");
       } catch (error) {
-        alert("Error updating the data!");
+        //alert("Error updating the data!");
         console.log(error);
         setIsSuccess(false);
       } finally {
@@ -46,43 +62,43 @@ export default function Test() {
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
               <div className="mb-4 px-4">
                 <label
-                  htmlFor="beerName"
+                  htmlFor="companyName"
                   className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
                 >
-                  Beer Name
+                  Company Name
                 </label>
                 <input
                   type="text"
-                  id="beerName"
-                  placeholder="Brewster"
-                  {...register("beerName", {
-                    required: "Beer Name is required",
+                  id="companyName"
+                  placeholder="Greatest Brew Co."
+                  {...register("companyName", {
+                    required: "Company name is required",
                     maxLength: 80,
                   })}
                   className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
-                    errors.beerName
+                    errors.companyName
                       ? "border-red-600 focus:border-red-600 ring-red-100"
                       : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
                   }`}
                 />
-                {errors.beerName && (
+                {errors.companyName && (
                   <div className="mt-1 text-sm text-red-400 invalid-feedback">
-                    {errors.beerName.message}
+                    {errors.companyName.message}
                   </div>
                 )}
               </div>
 
               <div className="mb-4 px-4">
                 <label
-                  htmlFor="beerEmail"
+                  htmlFor="Email"
                   className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
                 >
-                  Beer Email Address
+                  Email Address
                 </label>
                 <input
                   type="email"
-                  id="beerEmail"
-                  {...register("beerEmail", {
+                  id="Email"
+                  {...register("Email", {
                     required: "Enter your email",
                     pattern: {
                       value: /^\S+@\S+$/i,
@@ -91,46 +107,141 @@ export default function Test() {
                   })}
                   placeholder="brewbuddy@company.com"
                   className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
-                    errors.beerEmail
+                    errors.Email
                       ? "border-red-600 focus:border-red-600 ring-red-100"
                       : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
                   }`}
                 />
 
-                {errors.beerEmail && (
+                {errors.Email && (
                   <div className="mt-1 text-sm text-red-400 invalid-feedback">
-                    {errors.beerEmail.message}
+                    {errors.Email.message}
                   </div>
                 )}
               </div>
 
               <div className="mb-4 px-4">
                 <label
-                  htmlFor="beerTitle"
+                  htmlFor="clientName"
                   className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
                 >
-                  Beer Title
+                  Your Name
                 </label>
                 <input
                   type="text"
-                  id="beerTitle"
+                  id="clientName"
                   placeholder="Brew Buddy"
-                  {...register("beerTitle", {
-                    required: "Beer Title is required",
+                  {...register("clientName", {
+                    required: "Your full name is required",
                     maxLength: 80,
                   })}
                   className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
-                    errors.beerTitle
+                    errors.clientName
                       ? "border-red-600 focus:border-red-600 ring-red-100"
                       : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
                   }`}
                 />
-                {errors.beerTitle && (
+                {errors.clientName && (
                   <div className="mt-1 text-sm text-red-400 invalid-feedback">
-                    {errors.beerTitle.message}
+                    {errors.clientName.message}
                   </div>
                 )}
               </div>
+
+              <div className="mb-4 px-4">
+                <label
+                  htmlFor="clientName"
+                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
+                >
+                  Contact Number
+                </label>
+                <input
+                  type="text"
+                  id="contactNumber"
+                  placeholder="000-000-0000"
+                  {...register("contactNumber", {
+                    required:
+                      "Please enter your contact number e.g.000-000-0000 ",
+                    maxLength: 80,
+                  })}
+                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                    errors.contactNumber
+                      ? "border-red-600 focus:border-red-600 ring-red-100"
+                      : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                  }`}
+                />
+                {errors.contactNumber && (
+                  <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                    {errors.contactNumber.message}
+                  </div>
+                )}
+              </div>
+
+              <div className="mb-4 px-4">
+                <label
+                  htmlFor="clientName"
+                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
+                >
+                  Website
+                </label>
+                <input
+                  type="url"
+                  id="website"
+                  placeholder="000-000-0000"
+                  {...register("website", {
+                    required: "Please enter the company's website URL",
+                    maxLength: 80,
+                  })}
+                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                    errors.website
+                      ? "border-red-600 focus:border-red-600 ring-red-100"
+                      : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                  }`}
+                />
+                {errors.website && (
+                  <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                    {errors.website.message}
+                  </div>
+                )}
+              </div>
+
+              <div className="mb-4 px-4">
+                <label
+                  htmlFor="clientName"
+                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
+                >
+                  Website
+                </label>
+                <select
+                  {...register("businesstype", {
+                    required: "Please select a type of business",
+                  })}
+                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                    errors.businesstype
+                      ? "border-red-600 focus:border-red-600 ring-red-100"
+                      : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                  }`}
+                >
+                  <option value="default">Select An Option</option>
+                  <option value="Bar">Bar</option>
+
+                  <option value="Brewery">Brewery</option>
+                  <option value="Distillery">Distillery</option>
+                  <option value="Food Truck">Food Truck</option>
+                  <option value="Pub">Pub</option>
+                  <option value="Restaurant">Restaurant</option>
+                  <option value="Vineyard">Vineyard</option>
+                  <option value="Content Creator">Content Creator</option>
+                  <option value="Other">Other</option>
+                </select>
+
+                {errors.businesstype && (
+                  <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                    {errors.businesstype.message}
+                  </div>
+                )}
+              </div>
+
               <div className="mx-auto mt-8 px-4">
                 <button
                   type="submit"
@@ -158,7 +269,7 @@ export default function Test() {
                       ></path>
                     </svg>
                   ) : (
-                    "Join"
+                    "Register"
                   )}
                 </button>
               </div>

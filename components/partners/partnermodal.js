@@ -1,4 +1,8 @@
+"use client";
 import { Modal, useModal, Button, Text, css } from "@nextui-org/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignature } from "@fortawesome/free-solid-svg-icons";
+
 import React from "react";
 import PartnerSignup from "./partnersignup";
 
@@ -19,7 +23,7 @@ export default function PartnerModal({ address }) {
         css={{ color: "#f4f4f5", background: "#581c87" }}
         onPress={handler}
       >
-        Sign Up
+        <FontAwesomeIcon icon={faSignature} className="mr-2" /> Sign Up
       </Button>
       <Modal
         animated={false}
@@ -34,18 +38,21 @@ export default function PartnerModal({ address }) {
         onClose={closeHandler}
         {...bindings}
       >
-        
         <Modal.Header>
-          <Text h2 id="modal-title" size={18} css={{
-          textGradient: "45deg, $blue600 -20%, $pink600 50%",
-        }}
-        weight="bold"
-        transform="uppercase">
-           Partners NIL Program
+          <Text
+            h2
+            id="modal-title"
+            size={18}
+            css={{
+              textGradient: "45deg, $blue600 -20%, $pink600 50%",
+            }}
+            weight="bold"
+            transform="uppercase"
+          >
+            Partners NIL Program
           </Text>
         </Modal.Header>
         <Modal.Body>
-          <Text id="modal-description">Join Now!</Text>
           <PartnerSignup />
         </Modal.Body>
         <Modal.Footer>

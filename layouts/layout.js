@@ -8,7 +8,7 @@ import Team from "../components/team";
 
 import Hero from "../components/hero";
 import Community from "../components/community";
-import Partners from "../components/partners/partner";
+import Partners from "../components/partner";
 
 import Cal from "../components/cal";
 import Faq from "../components/faq";

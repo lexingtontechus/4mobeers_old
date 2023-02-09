@@ -155,6 +155,7 @@ function Profile() {
             id="beername"
             type="text"
             value={beername || ""}
+            required
             onChange={(e) => setBeername(e.target.value)}
             placeholder="Drink A Lot"
             className="w-full rounded-md p-2 mt-4"
@@ -166,6 +167,7 @@ function Profile() {
             id="beertitle"
             type="text"
             value={beertitle || ""}
+            required
             onChange={(e) => setBeertitle(e.target.value)}
             placeholder="Beer King"
             className="w-full rounded-md p-2 mt-4"
@@ -177,6 +179,7 @@ function Profile() {
             id="email"
             type="text"
             value={email || ""}
+            required
             onChange={(e) => setEmail(e.target.value)}
             placeholder="beerking@email.com"
             className="w-full rounded-md p-2 mt-4"

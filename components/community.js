@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { Modal, useModal, Button, Text, css, Link } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import ProfileModal from "../components/dashboard/profilemodal";
 
 export default function Community({ address }) {
@@ -16,21 +16,34 @@ export default function Community({ address }) {
         title="Exclusive Access"
         id="community"
       >
-        Connect your wallet. Sign In. Update your profile to receive exclusive airdrops & offerings.
+        Connect your wallet. Sign In. Update your profile to receive exclusive
+        airdrops & offerings.
       </SectionTitle>
       <div className="flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-trueZinc-700 dark:truePink-400 bg-trueZinc-100 px-7 py-7 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
         <div className="flex-grow text-center lg:text-left">
           <div>
-            <h2 className="text-2xl font-medium lg:text-3xl text-trueZinc-700 dark:text-truePink-400 uppercase">
-              Join Our Discord
-            </h2>
+            {!address && (
+              <h2 className="text-2xl font-medium lg:text-3xl text-trueZinc-700 dark:text-truePink-400 uppercase">
+                Connect Your Wallet
+              </h2>
+            )}
+            {address && (
+              <h2 className="text-2xl font-medium lg:text-3xl text-trueZinc-700 dark:text-truePink-400 uppercase">
+                Join Our Discord
+              </h2>
+            )}
           </div>
 
           <p className="text-2xl font-medium lg:text-3xl text-trueZinc-700 dark:text-truePink-400"></p>
           <p className="mt-2 font-medium text-trueZinc-700 dark:text-truePink-400 text-opacity-90 lg:text-xl"></p>
         </div>
         <div className="flex-shrink-0 mx-auto text-center lg:w-auto">
-          <div>
+          {!address && (
+            <div className="relative mx-auto inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
+              <ConnectButton label="CONNECT" />
+            </div>
+          )}
+          {address && (
             <Link
               href="https://discord.gg/d6KnD7V2gs"
               target="_blank"
@@ -46,7 +59,7 @@ export default function Community({ address }) {
                 Discord
               </Button>
             </Link>
-          </div>
+          )}
         </div>
       </div>
     </Container>

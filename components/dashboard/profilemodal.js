@@ -40,7 +40,7 @@ export default function ProfileModal({ address }) {
           textGradient: "45deg, $blue600 -20%, $pink600 50%",
         }}
         weight="bold">
-            Wallet Profile
+            Partner NIL Profile
           </Text>
         </Modal.Header>
         <Modal.Body>
