@@ -1,38 +1,40 @@
 ![4mobeers](https://avatars.githubusercontent.com/u/116686345?s=60&v=4)
 
-### 1\. Clone this Repository
-
-```bash
-git clone https://github.com/4mobeers
-```
-
-### 2\. Navigate to the directory
+### 1\. NextJS
 
 ```
-cd 0xaloysius
+Framework built on NextJS https://nextjs.org
 ```
 
-### 3\. Install dependencies
+### 2\. NextUI
 
 ```
-yarn install
-# or
-npm install
+Frontend UI built on NextUI http://nextui.org
 ```
 
-### 5\. Run Dev Server
+### 3\. RainbowKit
 
 ```
-yarn dev
-# or
-npm run dev
+WEB3 wallet connect built on RainbowKit https://rainbowkit.com
 ```
 
-## Deploy with Vercel
+### 4\. Next-Auth
 
-Deploy this template using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+```
+Authentication & session management built on NextAuth https://next-auth.js.org/
+```
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/4mobeers/)
+### 5\. Supabase
+
+```
+Backend built on Supabase https://supabase.com
+```
+
+### 5\. Thirdweb
+
+```
+WEB3 contracts built on Thirdweb https://thirdweb.com
+```
 
 ## Author
 

@@ -3,7 +3,6 @@
   /*import {  useAddress,  useDisconnect, useUser,  useLogin,  useLogout,  useMetamask,} from "@thirdweb-dev/react";*/
 }
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
@@ -13,177 +12,317 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 //import { useUser } from "../utils/useUser";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-
 import ProfileModal from "../components/dashboard/profilemodal";
 
-const Navbar = ({ address }) => {
-  const router = useRouter();
-  //const address = useAddress(); ThirdwebProvider
-  //const { user } = useUser();
+import { getSession } from "next-auth/react";
+import { getToken } from "next-auth/jwt";
 
-  return (
-    <>
-      <Disclosure as="nav">
-        {({ open }) => (
-          <>
-            <div className="mx-auto px-2 sm:px-6 lg:px-8 py-4">
-              <div className="relative flex h-16 items-center justify-between">
-                <div className=" sm:items-stretch sm:justify-start">
-                  <div className="flex flex-shrink-0 items-center">
-                    <Link
-                      href="/"
-                      className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
-                    >
-                      <Logo />
-                    </Link>
-                  </div>
-                </div>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <div className="lg:hidden relative mx-auto inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-                    <ConnectButton
-                      label="CONNECT"
-                      showBalance={false}
-                      chainStatus="none"
-                      accountStatus={{
-                        smallScreen: "avatar",
-                      }}
-                    />
-                  </div>
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context);
+  const token = await getToken({ req: context.req });
+  const address = token?.sub ?? null;
 
-                  <div className="relative mx-3">
-                    <Disclosure.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-100 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
-                      <span className="sr-only">Open user menu</span>
-                      <FontAwesomeIcon
-                        icon={faBars}
-                        className="text-truePurple-900 dark:text-truePink-600"
-                      />
-                    </Disclosure.Button>
+  // If you have a value for "address" here, your
+  // server knows the user is authenticated.
+  // You can then pass any data you want
+  // to the page component here.
 
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
-                        {address && (
-                          <>
-                            <div className="text-center  block px-4 py-2 mx-auto">
-                              <ProfileModal address={address} />
-                            </div>
-                          </>
-                        )}
-
-                        <div>
-                          <Link
-                            href="/#about"
-                            className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                          >
-                            About
-                          </Link>
-                        </div>
-                        <div>
-                          <Link
-                            href="/#faqs"
-                            className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                          >
-                            FAQs
-                          </Link>
-                        </div>
-                        <div>
-                          <Link
-                            href="/#team"
-                            className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                          >
-                            Team
-                          </Link>
-                        </div>
-                      </div>
-                    </Transition>
-                  </div>
-                  <ThemeChanger />
-                </div>
-
-                {/* LG Menu */}
-                <div className="hidden text-center lg:flex lg:items-center">
-                  <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
-                    <ul className="flex flex-col lg:flex-row list-none mr-auto">
-                      <li className="flex items-center">
-                        <div className="mr-3">
-                          <Link
-                            href="/#about"
-                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                          >
-                            About
-                          </Link>
-                        </div>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="mr-3">
-                          <Link
-                            href="/#faqs"
-                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                          >
-                            FAQs
-                          </Link>
-                        </div>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="mr-3">
-                          <Link
-                            href="/#team"
-                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                          >
-                            Team
-                          </Link>
-                        </div>
-                      </li>
-                      <li className="flex items-center mr-3">
-                        {/*<div className="round-md">
-                          <ConnectWallet />
-                        </div>*/}
-                        <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-                          {address && (
-                            <>
-                              <ProfileModal address={address} /> {address}
-                            </>
-                          )}
-                        </div>
-                      </li>
-                      <li className="flex items-center">
-                        {/*<div className="round-md">
-                          <ConnectWallet />
-                        </div>*/}
-                        <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-                          <div>
-                            <ConnectButton
-                              label="CONNECT"
-                              showBalance={false}
-                              chainStatus="none"
-                              accountStatus={{
-                                smallScreen: "avatar",
-                              }}
-                            />
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <ThemeChanger />
-                </div>
-              </div>
-            </div>
-          </>
-        )}
-      </Disclosure>
-    </>
-  );
+  return {
+    props: {
+      address,
+      session,
+    },
+  };
 };
 
-export default Navbar;
+export default function Navbar({ address }) {
+  //const Navbar = ({ address }) => {
+
+  return address ? (
+    <Disclosure as="nav">
+      {({ open }) => (
+        <>
+          <div className="mx-auto px-2 sm:px-6 lg:px-8 py-4">
+            <div className="relative flex h-16 items-center justify-between">
+              <div className=" sm:items-stretch sm:justify-start">
+                <div className="flex flex-shrink-0 items-center">
+                  <Link
+                    href="/"
+                    className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
+                  >
+                    <Logo />
+                  </Link>
+                </div>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div className="lg:hidden relative mx-auto inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
+                  <ConnectButton
+                    label="CONNECT"
+                    showBalance={false}
+                    chainStatus="none"
+                    accountStatus={{
+                      smallScreen: "avatar",
+                    }}
+                  />
+                </div>
+
+                <div className="relative mx-3">
+                  <Disclosure.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-100 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
+                    <span className="sr-only">Open user menu</span>
+                    <FontAwesomeIcon
+                      icon={faBars}
+                      className="text-truePurple-900 dark:text-truePink-400"
+                    />
+                  </Disclosure.Button>
+
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
+                      <div className="text-center  block px-4 py-2 mx-auto">
+                        <ProfileModal address={address} />
+                      </div>
+
+                      <div>
+                        <Link
+                          href="/#about"
+                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                        >
+                          About
+                        </Link>
+                      </div>
+                      <div>
+                        <Link
+                          href="/#faqs"
+                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                        >
+                          FAQs
+                        </Link>
+                      </div>
+                      <div>
+                        <Link
+                          href="/#team"
+                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                        >
+                          Team
+                        </Link>
+                      </div>
+                    </div>
+                  </Transition>
+                </div>
+                <ThemeChanger />
+              </div>
+
+              {/* LG Menu */}
+              <div className="hidden text-center lg:flex lg:items-center">
+                <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
+                  <ul className="flex flex-col lg:flex-row list-none mr-auto">
+                    <li className="flex items-center mr-3 uppercase inline-block px-4 py-2 text-xl font-black text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none">
+                      <Link href="/#about">About</Link>
+                    </li>
+                    <li className="flex items-center">
+                      <div className="mr-3">
+                        <Link
+                          href="/#faqs"
+                          className="uppercase inline-block px-4 py-2 text-xl font-black text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
+                        >
+                          FAQs
+                        </Link>
+                      </div>
+                    </li>
+                    <li className="flex items-center">
+                      <div className="mr-3">
+                        <Link
+                          href="/#team"
+                          className="uppercase inline-block px-4 py-2 text-xl font-black text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
+                        >
+                          Team
+                        </Link>
+                      </div>
+                    </li>
+                    <li className="flex items-center mr-3">
+                      {/*<div className="round-md">
+                          <ConnectWallet />
+                        </div>*/}
+                      <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
+                        <ProfileModal address={address} />
+                      </div>
+                    </li>
+                    <li className="flex items-center">
+                      {/*<div className="round-md">
+                          <ConnectWallet />
+                        </div>*/}
+                      <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
+                        <div>
+                          <ConnectButton
+                            label="CONNECT"
+                            showBalance={false}
+                            chainStatus="none"
+                            accountStatus={{
+                              smallScreen: "avatar",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <ThemeChanger />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </Disclosure>
+  ) : (
+    <Disclosure as="nav">
+      {({ open }) => (
+        <>
+          <div className="mx-auto px-2 sm:px-6 lg:px-8 py-4">
+            <div className="relative flex h-16 items-center justify-between">
+              <div className=" sm:items-stretch sm:justify-start">
+                <div className="flex flex-shrink-0 items-center">
+                  <Link
+                    href="/"
+                    className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
+                  >
+                    <Logo />
+                  </Link>
+                </div>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div className="lg:hidden relative mx-auto inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
+                  <ConnectButton
+                    label="CONNECT"
+                    showBalance={false}
+                    chainStatus="none"
+                    accountStatus={{
+                      smallScreen: "avatar",
+                    }}
+                  />
+                </div>
+
+                <div className="relative mx-3">
+                  <Disclosure.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-100 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
+                    <span className="sr-only">Open user menu</span>
+                    <FontAwesomeIcon
+                      icon={faBars}
+                      className="text-truePurple-900 dark:text-truePink-400"
+                    />
+                  </Disclosure.Button>
+
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
+                      <div>
+                        <Link
+                          href="/#about"
+                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                        >
+                          About
+                        </Link>
+                      </div>
+                      <div>
+                        <Link
+                          href="/#faqs"
+                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                        >
+                          FAQs
+                        </Link>
+                      </div>
+                      <div>
+                        <Link
+                          href="/#team"
+                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                        >
+                          Team
+                        </Link>
+                      </div>
+                    </div>
+                  </Transition>
+                </div>
+                <ThemeChanger />
+              </div>
+
+              {/* LG Menu */}
+              <div className="hidden text-center lg:flex lg:items-center">
+                <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
+                  <ul className="flex flex-col lg:flex-row list-none mr-auto">
+                    <li className="flex items-center">
+                      <div className="mr-3">
+                        <Link
+                          href="/#about"
+                          className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
+                        >
+                          About
+                        </Link>
+                      </div>
+                    </li>
+                    <li className="flex items-center">
+                      <div className="mr-3">
+                        <Link
+                          href="/#faqs"
+                          className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
+                        >
+                          FAQs
+                        </Link>
+                      </div>
+                    </li>
+                    <li className="flex items-center">
+                      <div className="mr-3">
+                        <Link
+                          href="/#team"
+                          className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
+                        >
+                          Team
+                        </Link>
+                      </div>
+                    </li>
+
+                    <li className="flex items-center">
+                      {/*<div className="round-md">
+                          <ConnectWallet />
+                        </div>*/}
+                      <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
+                        <div>
+                          <ConnectButton
+                            label="CONNECT"
+                            showBalance={false}
+                            chainStatus="none"
+                            accountStatus={{
+                              smallScreen: "avatar",
+                            }}
+                          />
+                          {address}
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <ThemeChanger />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </Disclosure>
+  );
+}
+
+//export default Navbar;
 
 function Logo() {
   return (

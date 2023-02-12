@@ -139,35 +139,34 @@ function MyApp({ Component, pageProps }) {
         supabaseClient={supabase}
         initialSession={pageProps.initialSession}
       >
-        <SessionProvider refetchInterval={0} session={pageProps.session}>
+        {/*   <SessionProvider refetchInterval={0} session={pageProps.session}>
           <RainbowKitSiweNextAuthProvider
             getSiweMessageOptions={getSiweMessageOptions}
-          >
-            {" "}
-            <RainbowKitProvider
-              coolMode
-              appInfo={{
-                appName: { AppInfo },
-                disclaimer: Disclaimer,
-              }}
-              chains={chains}
-              theme={darkTheme({
-                accentColor: "#581c87",
-                accentColorForeground: "#f4f4f5",
-                borderRadius: "small",
-                fontStack: "Sora",
-                overlayBlur: "small",
-              })}
-            >
-              <ThemeProvider attribute="class">
-                <NextUIProvider>
-                  <SEO />
-                  <Component {...pageProps} />
-                </NextUIProvider>
-              </ThemeProvider>
-            </RainbowKitProvider>
-          </RainbowKitSiweNextAuthProvider>
-        </SessionProvider>
+          >*/}
+
+        <RainbowKitProvider
+          coolMode
+          appInfo={{
+            appName: { AppInfo },
+            disclaimer: Disclaimer,
+          }}
+          chains={chains}
+          theme={darkTheme({
+            accentColor: "#7e22ce",
+            accentColorForeground: "#f4f4f5",
+            borderRadius: "small",
+            overlayBlur: "small",
+          })}
+        >
+          <ThemeProvider attribute="class">
+            <NextUIProvider>
+              <SEO />
+              <Component {...pageProps} />
+            </NextUIProvider>
+          </ThemeProvider>
+        </RainbowKitProvider>
+        {/*</RainbowKitSiweNextAuthProvider>
+        </SessionProvider>*/}
       </SessionContextProvider>
     </WagmiConfig>
   );

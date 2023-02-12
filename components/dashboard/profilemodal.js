@@ -16,7 +16,7 @@ export default function ProfileModal({ address }) {
         className="uppercase button primary block bg-truePurple-900 rounded-md p-2 w-full text-trueZinc-100 mx-auto w-full"
         auto
         shadow
-        css={{ color: "#f4f4f5", background: "#581c87" }}
+        css={{ color: "#f4f4f5", background: "#7e22ce" }}
         onPress={handler}
       >
         Profile
@@ -34,12 +34,16 @@ export default function ProfileModal({ address }) {
         onClose={closeHandler}
         {...bindings}
       >
-        
         <Modal.Header>
-          <Text h2 id="modal-title" size={18} css={{
-          textGradient: "45deg, $blue600 -20%, $pink600 50%",
-        }}
-        weight="bold">
+          <Text
+            h2
+            id="modal-title"
+            size={18}
+            css={{
+              textGradient: "45deg, $blue600 -20%, $pink600 50%",
+            }}
+            weight="bold"
+          >
             Partner NIL Profile
           </Text>
         </Modal.Header>

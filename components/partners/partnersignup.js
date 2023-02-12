@@ -241,8 +241,8 @@ export default function Test() {
                 >
                   <option value="default">Select An Option</option>
                   <option value="Bar">Bar</option>
-
                   <option value="Brewery">Brewery</option>
+                                    <option value="Club">Club</option>
                   <option value="Distillery">Distillery</option>
                   <option value="Food Truck">Food Truck</option>
                   <option value="Pub">Pub</option>
