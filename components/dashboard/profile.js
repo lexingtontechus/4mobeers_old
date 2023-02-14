@@ -4,9 +4,7 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 //import { useUser, useAddress } from "@thirdweb-dev/react";
 
-//import { useSupabaseClient } from "@supabase/supabase-js";
-//import { supabase } from "../../utils/supabase-clients";
-//import { useUser } from "../../utils/useUser";
+
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 
 //export default function Profile() {

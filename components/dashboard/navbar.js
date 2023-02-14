@@ -7,8 +7,7 @@ import ThemeChanger from "../../components/darkSwitch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-{ /*import { useAddress, useDisconnect, useUser, useLogin, useLogout, useMetamask, from "@thirdweb-dev/react";*/}
-//import { useUser } from "../../utils/useUser";
+
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 

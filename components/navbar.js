@@ -10,7 +10,7 @@ import ThemeChanger from "../components/darkSwitch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-//import { useUser } from "../utils/useUser";
+
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import ProfileModal from "../components/dashboard/profilemodal";
 
