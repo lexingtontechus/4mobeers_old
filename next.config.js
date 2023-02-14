@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  basePath: "",
   images: {
     //domains: ["storageapi.fleek.co", "savivets.wpengine.com"],
     remotePatterns: [

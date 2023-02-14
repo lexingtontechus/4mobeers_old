@@ -14,7 +14,6 @@ import Cal from "../components/cal";
 import Faq from "../components/faq";
 import PopupWidget from "../components/popupWidget";
 
-import Auth from "../components/auth";
 import stylesteam from "../styles/Team.module.scss";
 
 import { getSession } from "next-auth/react";
@@ -43,7 +42,7 @@ export default function Layout({ children, address }) {
     <>
       <div className="relative h-full w-full mx-auto px-8">
         <Navbar />
-        <Auth />
+
         <Hero className="mt-4" />
         <div className="relative mb-4">
           <div className="mx-auto w-full">{children}</div>

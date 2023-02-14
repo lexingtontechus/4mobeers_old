@@ -91,14 +91,6 @@ export default function Navbar({ address }) {
 
                       <div>
                         <Link
-                          href="/#about"
-                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                        >
-                          About
-                        </Link>
-                      </div>
-                      <div>
-                        <Link
                           href="/#faqs"
                           className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
                         >
@@ -124,7 +116,7 @@ export default function Navbar({ address }) {
                 <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
                   <ul className="flex flex-col lg:flex-row list-none mr-auto">
                     <li className="flex items-center mr-3 uppercase inline-block px-4 py-2 text-xl font-black text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none">
-                      <Link href="/#about">About</Link>
+                      <Link href="/#about">ABOUT</Link>
                     </li>
                     <li className="flex items-center">
                       <div className="mr-3">
@@ -227,14 +219,6 @@ export default function Navbar({ address }) {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
-                      <div>
-                        <Link
-                          href="/#about"
-                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                        >
-                          About
-                        </Link>
-                      </div>
                       <div>
                         <Link
                           href="/#faqs"
