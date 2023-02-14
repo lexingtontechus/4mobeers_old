@@ -115,9 +115,6 @@ export default function Navbar({ address }) {
               <div className="hidden text-center lg:flex lg:items-center">
                 <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
                   <ul className="flex flex-col lg:flex-row list-none mr-auto">
-                    <li className="flex items-center mr-3 uppercase inline-block px-4 py-2 text-xl font-black text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none">
-                      <Link href="/#about">ABOUT</Link>
-                    </li>
                     <li className="flex items-center">
                       <div className="mr-3">
                         <Link
