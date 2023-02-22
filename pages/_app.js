@@ -126,39 +126,38 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <WagmiConfig client={wagmiClient}>
-      <SessionContextProvider
+      {/*<SessionContextProvider
         supabaseClient={supabase}
         initialSession={pageProps.initialSession}
-      >
-        {/*   <SessionProvider refetchInterval={0} session={pageProps.session}>
-          <RainbowKitSiweNextAuthProvider
-            getSiweMessageOptions={getSiweMessageOptions}
-          >*/}
-
-        <RainbowKitProvider
-          coolMode
-          appInfo={{
-            appName: { AppInfo },
-            disclaimer: Disclaimer,
-          }}
-          chains={chains}
-          theme={darkTheme({
-            accentColor: "#7e22ce",
-            accentColorForeground: "#f4f4f5",
-            borderRadius: "small",
-            overlayBlur: "small",
-          })}
+      >*/}
+      <SessionProvider refetchInterval={0} session={pageProps.session}>
+        <RainbowKitSiweNextAuthProvider
+          getSiweMessageOptions={getSiweMessageOptions}
         >
-          <ThemeProvider attribute="class">
-            <NextUIProvider>
-              <SEO />
-              <Component {...pageProps} />
-            </NextUIProvider>
-          </ThemeProvider>
-        </RainbowKitProvider>
-        {/*</RainbowKitSiweNextAuthProvider>
-        </SessionProvider>*/}
-      </SessionContextProvider>
+          <RainbowKitProvider
+            coolMode
+            appInfo={{
+              appName: { AppInfo },
+              disclaimer: Disclaimer,
+            }}
+            chains={chains}
+            theme={darkTheme({
+              accentColor: "#7e22ce",
+              accentColorForeground: "#f4f4f5",
+              borderRadius: "small",
+              overlayBlur: "small",
+            })}
+          >
+            <ThemeProvider attribute="class">
+              <NextUIProvider>
+                <SEO />
+                <Component {...pageProps} />
+              </NextUIProvider>
+            </ThemeProvider>
+          </RainbowKitProvider>
+        </RainbowKitSiweNextAuthProvider>
+      </SessionProvider>
+      {/*</SessionContextProvider>*/}
     </WagmiConfig>
   );
 }

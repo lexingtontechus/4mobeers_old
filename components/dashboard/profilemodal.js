@@ -15,13 +15,13 @@ export default function ProfileModal({ address }) {
   return (
     <div>
       <Button
-        className="uppercase button primary block bg-truePurple-900 rounded-md p-2 w-full text-trueZinc-100 mx-auto w-full"
+        className="primary p-2 w-full mx-auto"
         auto
-        shadow
         css={{ color: "#f4f4f5", background: "#7e22ce" }}
         onPress={handler}
+        icon={<FontAwesomeIcon icon={faIdCard} />}
       >
-        <FontAwesomeIcon icon={faIdCard} />
+        
       </Button>
       <Modal
         animated={false}

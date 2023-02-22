@@ -13,9 +13,9 @@ export function getAuthOptions(req) {
           );
 
           const nextAuthUrl =
-            process.env.NEXTAUTH_URL ||
-            (process.env.VERCEL_URL
-              ? `https://${process.env.VERCEL_URL}`
+            process.env.NEXT_PUBLIC_NEXTAUTH_URL ||
+            (process.env.NEXT_PUBLIC_VERCEL_URL
+              ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
               : null);
           if (!nextAuthUrl) {
             return null;
@@ -66,7 +66,7 @@ export function getAuthOptions(req) {
     },
     // https://next-auth.js.org/configuration/providers/oauth
     providers,
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
     session: {
       strategy: "jwt",
     },
@@ -78,7 +78,6 @@ export function getAuthOptions(req) {
 export default async function auth(req, res) {
   const authOptions = getAuthOptions(req);
 
-  
   if (!Array.isArray(req.query.nextauth)) {
     res.status(400).send("Bad request");
     return;
@@ -95,4 +94,3 @@ export default async function auth(req, res) {
 
   return await NextAuth(req, res, authOptions);
 }
-

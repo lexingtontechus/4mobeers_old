@@ -67,19 +67,7 @@ export default function Navbar({ address }) {
                 </div>
 
                 <div className="relative mx-3">
-                  <Disclosure.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-100 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
-                    <span className="sr-only">Open user menu</span>
-                    <FontAwesomeIcon
-                      icon={faBars}
-                      className="text-truePurple-900 dark:text-truePink-400"
-                    />
-                  </Disclosure.Button>
-                    <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
-                      <div className="text-center  block px-4 py-2 mx-auto">
-                        <ProfileModal address={address} />
-                      </div>
-                    </div>
-                
+                  <ProfileModal address={address} />
                 </div>
                 <ThemeChanger />
               </div>
@@ -88,45 +76,18 @@ export default function Navbar({ address }) {
               <div className="hidden text-center lg:flex lg:items-center">
                 <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
                   <ul className="flex flex-col lg:flex-row list-none mr-auto">
-                    <li className="flex items-center">
-                      <div className="mr-3">
-                        <Link
-                          href="/#faqs"
-                          className="uppercase inline-block px-4 py-2 text-xl font-black text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                        >
-                          FAQs
-                        </Link>
-                      </div>
-                    </li>
-                    <li className="flex items-center">
-                      <div className="mr-3">
-                        <Link
-                          href="/#team"
-                          className="uppercase inline-block px-4 py-2 text-xl font-black text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                        >
-                          Team
-                        </Link>
-                      </div>
-                    </li>
                     <li className="flex items-center mr-3">
-                      <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-                        <ProfileModal address={address} />
-                      </div>
+                      <ProfileModal address={address} />
                     </li>
                     <li className="flex items-center">
-                      <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-                        <div>
-                          <ProfileModal address={address} />
-                          <ConnectButton
-                            label="CONNECT"
-                            showBalance={false}
-                            chainStatus="none"
-                            accountStatus={{
-                              smallScreen: "avatar",
-                            }}
-                          />
-                        </div>
-                      </div>
+                      <ConnectButton
+                        label="CONNECT"
+                        showBalance={false}
+                        chainStatus="none"
+                        accountStatus={{
+                          smallScreen: "avatar",
+                        }}
+                      />
                     </li>
                   </ul>
                 </div>
@@ -151,6 +112,7 @@ export default function Navbar({ address }) {
                   >
                     <Logo />
                   </Link>
+                  {address}
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -211,42 +173,15 @@ export default function Navbar({ address }) {
                 <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
                   <ul className="flex flex-col lg:flex-row list-none mr-auto">
                     <li className="flex items-center">
-                      <div className="mr-3">
-                        <Link
-                          href="/#faqs"
-                          className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                        >
-                          FAQs
-                        </Link>
-                      </div>
-                    </li>
-                    <li className="flex items-center">
-                      <div className="mr-3">
-                        <Link
-                          href="/#team"
-                          className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                        >
-                          Team
-                        </Link>
-                      </div>
-                    </li>
-
-                    <li className="flex items-center">
-                      {/*<div className="round-md">
-                          <ConnectWallet />
-                        </div>*/}
                       <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-                        <div>
-                          <ConnectButton
-                            label="CONNECT"
-                            showBalance={false}
-                            chainStatus="none"
-                            accountStatus={{
-                              smallScreen: "avatar",
-                            }}
-                          />
-                          {address}
-                        </div>
+                        <ConnectButton
+                          label="CONNECT"
+                          showBalance={false}
+                          chainStatus="none"
+                          accountStatus={{
+                            smallScreen: "avatar",
+                          }}
+                        />
                       </div>
                     </li>
                   </ul>
