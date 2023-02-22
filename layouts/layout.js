@@ -43,14 +43,14 @@ export default function Layout({ children, address }) {
       <div className="relative h-full w-full mx-auto px-8">
         <Navbar />
 
-        <Hero className="mt-4" />
+        <Hero />
         <div className="relative mb-4">
           <div className="mx-auto w-full">{children}</div>
         </div>
         <Community />
         <Partners />
         <Faq />
-        <Team className="mt-4" />
+        <Team />
         <Footer />
         <PopupWidget />
         <Cal />

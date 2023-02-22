@@ -65,26 +65,17 @@ const AppInfo = {
 };
 
 const connectors = connectorsForWallets([
-  ...wallets,
+  //...wallets,
 
   {
     groupName: "Recommended",
     wallets: [
-      injectedWallet({ chains }),
+      //injectedWallet({ chains }),
       braveWallet({ chains }),
       //wallet.brave({ chains, shimDisconnect: true }),
-      //metaMaskWallet({ chains }),
-      //rainbowWallet({ chains }),
-    ],
-  },
-  {
-    groupName: "Other",
-    wallets: [
-      //coinbaseWallet({ chains, appName: "My RainbowKit App" }),
-      //walletConnectWallet({ chains }),
-      trustWallet({ chains }),
-      argentWallet({ chains }),
-      ledgerWallet({ chains }),
+      metaMaskWallet({ chains }),
+      rainbowWallet({ chains }),
+      walletConnectWallet({ chains }),
     ],
   },
 ]);

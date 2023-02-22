@@ -1,6 +1,8 @@
 import { Modal, useModal, Button, Text, css } from "@nextui-org/react";
 import React from "react";
 import Profile from "./profile";
+import { faIdCard } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ProfileModal({ address }) {
   // const [visible, setVisible] = React.useState(false);
@@ -19,7 +21,7 @@ export default function ProfileModal({ address }) {
         css={{ color: "#f4f4f5", background: "#7e22ce" }}
         onPress={handler}
       >
-        Profile
+        <FontAwesomeIcon icon={faIdCard} />
       </Button>
       <Modal
         animated={false}

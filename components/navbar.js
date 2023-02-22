@@ -10,7 +10,7 @@ import ThemeChanger from "../components/darkSwitch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-
+import { Button, css } from "@nextui-org/react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import ProfileModal from "../components/dashboard/profilemodal";
 
@@ -74,39 +74,12 @@ export default function Navbar({ address }) {
                       className="text-truePurple-900 dark:text-truePink-400"
                     />
                   </Disclosure.Button>
-
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
                     <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
                       <div className="text-center  block px-4 py-2 mx-auto">
                         <ProfileModal address={address} />
                       </div>
-
-                      <div>
-                        <Link
-                          href="/#faqs"
-                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                        >
-                          FAQs
-                        </Link>
-                      </div>
-                      <div>
-                        <Link
-                          href="/#team"
-                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                        >
-                          Team
-                        </Link>
-                      </div>
                     </div>
-                  </Transition>
+                
                 </div>
                 <ThemeChanger />
               </div>
@@ -136,19 +109,14 @@ export default function Navbar({ address }) {
                       </div>
                     </li>
                     <li className="flex items-center mr-3">
-                      {/*<div className="round-md">
-                          <ConnectWallet />
-                        </div>*/}
                       <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
                         <ProfileModal address={address} />
                       </div>
                     </li>
                     <li className="flex items-center">
-                      {/*<div className="round-md">
-                          <ConnectWallet />
-                        </div>*/}
                       <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
                         <div>
+                          <ProfileModal address={address} />
                           <ConnectButton
                             label="CONNECT"
                             showBalance={false}
@@ -242,16 +210,6 @@ export default function Navbar({ address }) {
               <div className="hidden text-center lg:flex lg:items-center">
                 <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
                   <ul className="flex flex-col lg:flex-row list-none mr-auto">
-                    <li className="flex items-center">
-                      <div className="mr-3">
-                        <Link
-                          href="/#about"
-                          className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-400 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                        >
-                          About
-                        </Link>
-                      </div>
-                    </li>
                     <li className="flex items-center">
                       <div className="mr-3">
                         <Link
