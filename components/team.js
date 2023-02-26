@@ -10,7 +10,7 @@ const TeamImage = ({ src, width, quality }) => {
 export default function Team() {
   return (
     <div className={styles.team} id="team">
-      <h1 className="text-center text-8xl xl:text-9xl">Team</h1>
+      <h1 className="text-center text-8xl xl:text-9xl font-black">Team</h1>
       <h2 className="text-center text-5xl xl:text-6xl mt-2 mb-4 uppercase font-black">
         Roadiez Crew
       </h2>

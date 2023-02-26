@@ -16,7 +16,7 @@ export default function Hero() {
       <div className={styles.hero}>
         {/*px-8 flex flex-wrap */}
         <div className={styles.row}>
-          <h1 className="text-8xl xl:text-9xl animate-bounce">4 Mo Beers!</h1>
+          <h1 className="text-8xl xl:text-9xl font-black">4 Mo Beers!</h1>
 
           <div className="flex items-center place-content-center align=center">
             <div className="visible lg:block">

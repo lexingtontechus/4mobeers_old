@@ -15,7 +15,7 @@ export default function Faq() {
           id="faqs"
           className={styles.row}
         >
-          <h1 className="text-center text-8xl xl:text-9xl animate-fade-out">
+          <h1 className="text-center text-8xl xl:text-9xl animate-fade-out font-black">
             FAQs
           </h1>
           <h2 className="text-center max-w-2xl mt-3 text-2xl font-bold leading-snug tracking-tight text-trueZinc-700 dark:text-trueZinc-100 lg:leading-tight lg:text-4xl dark:text-white">

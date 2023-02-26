@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import ThemeChanger from "../components/darkSwitch";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import ProfileModal from "../components/dashboard/profilemodal";
@@ -11,70 +13,46 @@ import { useAccount, useConnect } from "wagmi";
 export default function Header() {
   const { address, isDisconnected, status } = useAccount();
   return (
-    <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-      <div className="relative flex h-16 items-center justify-between">
-        <div className="flex flex-1 items-start justify-start sm:items-stretch sm:justify-start">
-          <div className="flex flex-shrink-0 items-center">
-            <Link
-              href="/"
-              className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
-            >
-              <Logo />
-            </Link>
-          </div>
-        </div>
-        <div className="relative inset-y-0 right-0 flex items-center items-stretch px-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <div className="lg:hidden relative mx-auto inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-            <div>
-              <ConnectButton
-                label="CONNECT"
-                showBalance={false}
-                chainStatus="none"
-              />
-            </div>
-            <div>
-              {status == "connected" ? (
-                <>
-                  <ProfileModal address={address} />
-                </>
-              ) : (
-                <></>
-              )}
-            </div>
-            <div className="mx-2">
-              <ThemeChanger />
+    <>
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-4">
+        <div className="relative flex h-16 items-center justify-between">
+          <div className="flex flex-1 items-start justify-start">
+            <div className="flex flex-shrink-0 items-center">
+              <Link
+                href="/"
+                className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
+              >
+                <Logo />
+              </Link>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Menu */}
-      <div className="hidden text-center lg:flex lg:items-center">
-        <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
-          <ul className="flex flex-row lg:flex-row list-none mr-auto">
-            <li className="flex items-center mx-2">
-              <ConnectButton
-                label="CONNECT"
-                showBalance={false}
-                chainStatus="none"
-              />
-            </li>
-            <li className="flex items-center mx-2">
-              {status == "connected" ? (
-                <>
-                  <ProfileModal address={address} />
-                </>
-              ) : (
-                <></>
-              )}
-            </li>
-            <li className="flex items-center mx-2">
-              <ThemeChanger />
-            </li>
-          </ul>
+          <div className="relative inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div className="relative mx-3">
+              <div className="flex flex-row inherit origin-top-right ">
+                <div>
+                  {status == "connected" ? (
+                    <>
+                      <ProfileModal address={address} />
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+                <div>
+                  <ConnectButton
+                    label="CONNECT"
+                    showBalance={false}
+                    chainStatus="none"
+                  />
+                </div>
+              </div>
+            </div>
+            <ThemeChanger />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -88,7 +66,6 @@ function Logo() {
       height="70"
       className="fill-truePurple-900 dark:fill-truePink-600"
     >
-      <defs id="SvgjsDefs1966" />
       <g
         featurekey="rootContainer"
         transform="matrix(2.8938654362463287,0,0,2.8938654362463287,-0.00346661711164234,-0.028938799252233225)"
