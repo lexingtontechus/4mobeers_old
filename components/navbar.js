@@ -1,13 +1,12 @@
 import Link from "next/link";
-
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import ThemeChanger from "../components/darkSwitch";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import ProfileModal from "../components/dashboard/profilemodal";
+
 import { useAccount, useConnect } from "wagmi";
 
 export default function Header() {
@@ -39,11 +38,15 @@ export default function Header() {
                     <></>
                   )}
                 </div>
-                <div>
+                <div className="">
                   <ConnectButton
                     label="CONNECT"
                     showBalance={false}
                     chainStatus="none"
+                    accountStatus={{
+                      smallScreen: "avatar",
+                      largeScreen: "full",
+                    }}
                   />
                 </div>
               </div>

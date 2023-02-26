@@ -62,11 +62,9 @@ export default function Community() {
                   rel="noreferrer"
                 >
                   <Button
-                    className="uppercase button block rounded-md p-2 w-full mx-auto "
                     auto
                     shadow
-                    css={{ color: "#f4f4f5", background: "#581c87" }}
-                    icon={<FontAwesomeIcon icon={faDiscord} />}
+                    css={{ color: "#f4f4f5", background: "#7e22ce" }}
                   >
                     Discord
                   </Button>

@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useAccount, useConnect } from "wagmi";
 
-export default function Button() {
+export default function RainbowConnect() {
   const { supabase } = useSupabaseClient();
   const { status, address, connector: activeConnector } = useAccount();
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect();
-  const walletconnector = { activeConnector };
+  const provider = { activeConnector };
 
   useEffect(() => {
     checkProfile();
@@ -23,8 +23,9 @@ export default function Button() {
         .single();
 
       if (!data) {
-         await supabase.from("users").insert({
+        await supabase.from("users").insert({
           walletaddress: address,
+          provider: provider,
         });
       }
       if (res.error) {
@@ -37,21 +38,14 @@ export default function Button() {
   }
 
   return (
-    <>
-    
-        <ConnectButton
-          label="CONNECT"
-          chainStatus="none"
-          accountStatus={{
-            smallScreen: "full",
-            largeScreen: "full",
-          }}
-          showBalance={{
-            smallScreen: false,
-            largeScreen: true,
-          }}
-        />
-    
-    </>
+    <ConnectButton
+      label="CONNECT"
+      chainStatus="none"
+      accountStatus={{
+        smallScreen: "full",
+        largeScreen: "full",
+      }}
+      showBalance="none"
+    />
   );
 }

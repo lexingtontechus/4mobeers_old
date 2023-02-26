@@ -16,10 +16,9 @@ export default function ProfileModal() {
   };
   const { setVisible, bindings } = useModal();
   return (
-    <div className="mt-4 mx-2">
+    <div className="mx-2 ">
       <Button
         css={{ color: "#f4f4f5", background: "#18181b" }}
-        color="gradient"
         bordered
         shadow
         auto

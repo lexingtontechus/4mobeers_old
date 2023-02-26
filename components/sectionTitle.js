@@ -9,7 +9,7 @@ export default function SectionTitle(props) {
       }`}
     >
       {props.pretitle && (
-        <div className="text-md font-bold tracking-wider text-trueZinc-700 dark:text-trueZinc-100 uppercase">
+        <div className="text-md font-bold tracking-wider text-truePink-700 dark:text-trueZinc-100 uppercase">
           {props.pretitle}
         </div>
       )}

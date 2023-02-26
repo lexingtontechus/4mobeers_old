@@ -1,20 +1,15 @@
 import React from "react";
-import Container from "./container";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
-import { Collapse, css } from "@nextui-org/react";
+import { Button, Collapse, css, Text } from "@nextui-org/react";
 
 import styles from "../styles/FAQs.module.scss";
 
 export default function Faq() {
   return (
     <>
-      <Container className={styles.faq}>
-        <div
-         
-          id="faqs"
-          className={styles.row}
-        >
+      <div className={styles.faq} id="faqs">
+        <div id="faqs" className={styles.row}>
           <h1 className="text-center text-8xl xl:text-9xl animate-fade-out font-black">
             FAQs
           </h1>
@@ -22,21 +17,26 @@ export default function Faq() {
             How to partner and build your community with 4MoBeers?
           </h2>
         </div>
-        <div className="flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-trueZinc-700 dark:truePink-400 bg-trueZinc-100 p-8 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
+        <div className="mt-4 flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-trueZinc-700 dark:truePink-400 bg-trueZinc-100 p-8 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
           <div className="w-full mx-auto rounded-2xl">
             <Disclosure>
               {({ open }) => (
                 <>
-                  <Collapse.Group
-                    splitted
-                    className="text-trueZinc-700 dark:text-trueZinc-100"
-                  >
+                  <Collapse.Group splitted>
                     <Collapse
                       title="4MoBeers DAO"
-                      subtitle="What is the 4MoBeers DAO?"
-                      css={{
-                        fontSize: "$xs",
-                      }}
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            What is the 4MoBeers DAO?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
@@ -45,36 +45,69 @@ export default function Faq() {
                         />
                       }
                     >
-                      <p className="text-md sm:text-sm text-trueZinc-700">
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         Thank you for choosing to be part of our community at
                         4MoBeers DAO Inc, doing business as 4MoBeers. We are
                         creating a Beerverse that supports the beer community
                         and roadie lovers. The 4MoBeers DAO will orchestrate the
                         goverance, voting, airdrops, splits and
                         management/security of smart contracts.
-                      </p>
-                      <p className="text-md sm:text-sm text-trueZinc-700">
+                      </Text>
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         4MoBeers will be responsible for the design & creation
                         of each Non-Fungible Token (NFT).
-                      </p>
-                      <p className="text-md sm:text-sm text-trueZinc-700">
+                      </Text>
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         Each NFT will be offered at a fixed price.
-                      </p>
-                      <p className="text-md sm:text-sm text-trueZinc-700">
+                      </Text>
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         Each NIL owner will be their own limited edition NFT
                         set, to be managed at their own discretion.
-                      </p>
-                      <p className="text-md sm:text-sm text-trueZinc-700">
+                      </Text>
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         Ongoing royalities will be attributed to the NIL owner
                         only, not the DAO.
-                      </p>
+                      </Text>
                     </Collapse>
                     <Collapse
                       title="NFT Collectibles Edition"
-                      subtitle="What is the 4MoBeers NFT Collectibles Edition?"
-                      css={{
-                        fontSize: "$xs",
-                      }}
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            What is the 4MoBeers NFT Collectibles Edition?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
@@ -83,18 +116,31 @@ export default function Faq() {
                         />
                       }
                     >
-                      <p className="text-md sm:text-sm text-trueZinc-700">
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         The 4MoBeer NFT Collectibles Edition will support the
                         Name, Image & Likeness (NIL) of nominated & voted on
                         community partners.
-                      </p>
+                      </Text>
                     </Collapse>
                     <Collapse
                       title="NFT Signature Series"
-                      subtitle="What is the 4MoBeers NFT Signature Series?"
-                      css={{
-                        fontSize: "$xs",
-                      }}
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            What is the 4MoBeers NFT Signature Series?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
@@ -103,18 +149,31 @@ export default function Faq() {
                         />
                       }
                     >
-                      <p className="text-md sm:text-sm text-trueZinc-700">
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         The 4MoBeer NFT Collectibles Edition will support the
                         Name Image & Likeness (NIL) of nominated & voted on
                         community members.
-                      </p>
+                      </Text>
                     </Collapse>
                     <Collapse
                       title="Partners & Collabs"
-                      subtitle="How do I work with 4MoBeers?"
-                      css={{
-                        fontSize: "$xs",
-                      }}
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            How do I work with 4MoBeers?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
@@ -123,16 +182,29 @@ export default function Faq() {
                         />
                       }
                     >
-                      <p className="text-md sm:text-sm text-trueZinc-700">
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         We love colabs! Send us a message or Beer Us!
-                      </p>
+                      </Text>
                     </Collapse>
                     <Collapse
                       title="Hire Me"
-                      subtitle="Is 4MoBeers hiring?"
-                      css={{
-                        fontSize: "$xs",
-                      }}
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            Is 4MoBeers hiring?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
@@ -141,13 +213,30 @@ export default function Faq() {
                         />
                       }
                     >
-                      <p className="text-md sm:text-sm text-trueZinc-700">
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         Yes, we are growing the Beerverse community one beer for
                         the road at a time.
-                      </p>
+                      </Text>
                     </Collapse>
                     <Collapse
                       title="Who is 4MoBeers?"
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            Hint ... Beer us?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
@@ -156,9 +245,14 @@ export default function Faq() {
                         />
                       }
                     >
-                      <p className="text-md sm:text-sm text-trueZinc-700">
-                        Beer me!
-                      </p>
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
+                        Beer us!
+                      </Text>
                     </Collapse>
                   </Collapse.Group>
                 </>
@@ -166,7 +260,7 @@ export default function Faq() {
             </Disclosure>
           </div>
         </div>
-      </Container>
+      </div>
     </>
   );
 }

@@ -6,8 +6,8 @@ export default function MyCal() {
     (async function () {
       const cal = await getCalApi();
       cal("floatingButton", {
-        calLink: "4mobeers/30min",
-        buttonText: "Beer Me",
+        calLink: "4mobeers/15min",
+        buttonText: "Beer Us",
         buttonColor: "#7e22ce",
         buttonTextColor: "#f4f4f5",
         buttonPosition: "bottom-left",

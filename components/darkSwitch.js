@@ -14,12 +14,18 @@ const ThemeChanger = () => {
   return (
     <div className="flex items-center">
       {theme === "light" ? (
-        <button onClick={() => setTheme("dark")} className="shadow-2xl shadow-truePink-600">
+        <button
+          onClick={() => setTheme("dark")}
+          className="shadow shadow-2xl shadow-trueAmber-400/50 hover:shadow-trueAmber-400/50 focus:shadow-trueAmber-400/50"
+        >
           <span className="sr-only">Dark Mode</span>
           <Beer />
         </button>
       ) : (
-        <button onClick={() => setTheme("light")} className="shadow-2xl shadow-truePurple-700">
+        <button
+          onClick={() => setTheme("light")}
+          className="shadow shadow-2xl shadow-trueAmber-800/50 hover:shadow-trueAmber-800/50 focus:shadow-trueAmber-800/50"
+        >
           <span className="sr-only">Light Mode</span>
           <Beer />
         </button>

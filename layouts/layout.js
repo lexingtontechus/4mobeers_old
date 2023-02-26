@@ -10,9 +10,9 @@ import Hero from "../components/hero";
 import Community from "../components/community";
 import Partners from "../components/partner";
 
-import Cal from "../components/cal";
 import Faq from "../components/faq";
 import PopupWidget from "../components/popupWidget";
+import Cal from "../components/cal";
 
 import stylesteam from "../styles/Team.module.scss";
 
@@ -42,7 +42,6 @@ export default function Layout({ children, address }) {
     <>
       <div className="relative h-full w-full mx-auto px-8 py-4">
         <Navbar />
-
         <Hero />
         <div className="relative mb-4">
           <div className="mx-auto w-full">{children}</div>

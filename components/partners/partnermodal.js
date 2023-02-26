@@ -17,9 +17,9 @@ export default function PartnerModal({ address }) {
   return (
     <div>
       <Button
-        className=" bg-truePurple-700 rounded-md text-trueZinc-100 mx-auto"
         auto
         shadow
+        css={{ color: "#f4f4f5", background: "#7e22ce" }}
         onPress={handler}
       >
         REGISTER
