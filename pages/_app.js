@@ -4,7 +4,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { ThemeProvider } from "next-themes";
 import "../styles/tailwind.css";
 import "../styles/custom.css";
-import { NextUIProvider } from "@nextui-org/react";
+import { createTheme, NextUIProvider } from "@nextui-org/react";
 import SEO from "../components/seo";
 
 import { useEffect } from "react";
@@ -17,16 +17,12 @@ import {
   darkTheme,
 } from "@rainbow-me/rainbowkit";
 import {
-  argentWallet,
-  trustWallet,
-  ledgerWallet,
   injectedWallet,
   rainbowWallet,
   metaMaskWallet,
   coinbaseWallet,
   walletConnectWallet,
   braveWallet,
-  wallet,
 } from "@rainbow-me/rainbowkit/wallets";
 import {
   RainbowKitSiweNextAuthProvider,
@@ -65,8 +61,7 @@ const AppInfo = {
 };
 
 const connectors = connectorsForWallets([
-  //...wallets,
-
+  ...wallets,
   {
     groupName: "Recommended",
     wallets: [
@@ -81,7 +76,7 @@ const connectors = connectorsForWallets([
 ]);
 
 const wagmiClient = createClient({
-  autoConnect: true,
+  autoConnect: false,
   connectors,
   provider,
   webSocketProvider,
@@ -103,61 +98,56 @@ const Disclaimer = ({ Text, Link }) => (
 const getSiweMessageOptions = () => ({
   statement: "Sign in to 4MoBeers DAO",
 });
-
-{
-  /*function ThirdwebProvider({ wagmiClient, children }) {
-  const { data: signer } = useSigner();
-
-  return (
-    <ThirdwebSDKProvider
-      desiredChainId={1}
-      signer={signer}
-      provider={wagmiClient.provider}
-      queryClient={wagmiClient.queryClient}
-    >
-      {children}
-    </ThirdwebSDKProvider>
-  );
-}*/
-}
+//NextUI Theme
+const theme = createTheme({
+  type: "dark", // it could be "light" or "dark"
+  theme: {
+    colors: {
+      primary: "#18181b",
+      secondary: "#F9CB80",
+      error: "#FCC5D8",
+    },
+  },
+});
 
 function MyApp({ Component, pageProps }) {
   const [supabase] = useState(() => createBrowserSupabaseClient());
 
   return (
     <WagmiConfig client={wagmiClient}>
-      {/*<SessionContextProvider
+      <SessionContextProvider
         supabaseClient={supabase}
         initialSession={pageProps.initialSession}
-      >*/}
-      <SessionProvider refetchInterval={0} session={pageProps.session}>
-        <RainbowKitSiweNextAuthProvider
-          getSiweMessageOptions={getSiweMessageOptions}
-        >
-          <RainbowKitProvider
-            coolMode
-            appInfo={{
-              appName: { AppInfo },
-              disclaimer: Disclaimer,
-            }}
-            chains={chains}
-            theme={darkTheme({
-              accentColor: "#7e22ce",
-              accentColorForeground: "#f4f4f5",
-              borderRadius: "small",
-              overlayBlur: "small",
-            })}
+      >
+        <SessionProvider session={pageProps.session} refetchInterval={0}>
+          <RainbowKitSiweNextAuthProvider
+            getSiweMessageOptions={getSiweMessageOptions}
           >
-            <ThemeProvider attribute="class">
-              <NextUIProvider>
+            <RainbowKitProvider
+              coolMode
+              appInfo={{
+                appName: { AppInfo },
+                disclaimer: Disclaimer,
+              }}
+              chains={chains}
+              theme={darkTheme({
+                accentColor: "#7e22ce",
+                accentColorForeground: "#f4f4f5",
+                borderRadius: "medium",
+                overlayBlur: "small",
+                shadows: {
+                  connectButton: "#dc2626",
+                },
+              })}
+            >
+              <ThemeProvider attribute="class">
                 <SEO />
                 <Component {...pageProps} />
-              </NextUIProvider>
-            </ThemeProvider>
-          </RainbowKitProvider>
-        </RainbowKitSiweNextAuthProvider>
-      </SessionProvider>
-      {/*</SessionContextProvider>*/}
+              </ThemeProvider>
+            </RainbowKitProvider>
+          </RainbowKitSiweNextAuthProvider>
+        </SessionProvider>
+      </SessionContextProvider>
     </WagmiConfig>
   );
 }

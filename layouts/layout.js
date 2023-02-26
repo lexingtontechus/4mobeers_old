@@ -40,7 +40,7 @@ export const getServerSideProps = async (context) => {
 export default function Layout({ children, address }) {
   return (
     <>
-      <div className="relative h-full w-full mx-auto px-8">
+      <div className="relative h-full w-full mx-auto px-8 py-4">
         <Navbar />
 
         <Hero />

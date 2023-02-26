@@ -1,11 +1,14 @@
-import { Modal, useModal, Button, Text, css } from "@nextui-org/react";
+import { Avatar, Modal, useModal, Button, Text, css } from "@nextui-org/react";
 import React from "react";
 import Profile from "./profile";
-import { faIdCard } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-export default function ProfileModal({ address }) {
+import { useEnsAvatar, useAccount } from "wagmi";
+export default function ProfileModal() {
   // const [visible, setVisible] = React.useState(false);
+  const { address } = useAccount();
+  const { ensAvatar } = useEnsAvatar({
+    address: { address },
+  });
+
   const handler = () => setVisible(true);
   const closeHandler = () => {
     setVisible(false);
@@ -13,15 +16,18 @@ export default function ProfileModal({ address }) {
   };
   const { setVisible, bindings } = useModal();
   return (
-    <div>
+    <div className="mt-4 mx-2">
       <Button
-        className="primary p-2 w-full mx-auto"
+        css={{ color: "#f4f4f5", background: "#18181b" }}
+        color="gradient"
+        bordered
+        shadow
         auto
-        css={{ color: "#f4f4f5", background: "#7e22ce" }}
+        ripple
+        animated
         onPress={handler}
-        icon={<FontAwesomeIcon icon={faIdCard} />}
       >
-        
+        PROFILE
       </Button>
       <Modal
         animated={false}

@@ -17,13 +17,13 @@ export default function PartnerModal({ address }) {
   return (
     <div>
       <Button
-        className="uppercase button primary block bg-truePurple-900 rounded-md p-2 w-full text-trueZinc-100 mx-auto w-full"
+        className="uppercase block bg-truePurple-700 rounded-md p-2 w-full text-trueZinc-100 mx-auto w-full"
         auto
         shadow
         css={{ color: "#f4f4f5", background: "#7e22ce" }}
         onPress={handler}
       >
-        <FontAwesomeIcon icon={faSignature} className="mr-2" /> Sign Up
+        SIGN UP
       </Button>
       <Modal
         animated={false}

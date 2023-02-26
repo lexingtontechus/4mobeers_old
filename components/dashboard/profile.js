@@ -4,7 +4,6 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 //import { useUser, useAddress } from "@thirdweb-dev/react";
 
-
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 
 //export default function Profile() {
@@ -38,22 +37,21 @@ function Profile() {
 
       let { data, error, status } = await supabase
         .from("users")
-
         .select("*")
         .eq("walletaddress", address)
-
         .single();
 
       if (error && status !== 406) {
         throw error;
       }
       if (!data) {
-        setProvider(activeConnector.name);
+        //setProvider(activeConnector.name);
         //const provider = setProvider;
 
         await supabase
           .from("users")
           .insert({ walletaddress: address, provider: wc })
+          .upsert(true)
           .single();
       }
 
@@ -90,10 +88,16 @@ function Profile() {
         updated_at: new Date().toISOString(),
       };
 
-      let { error } = await supabase.from("users").upsert(updates);
-      //.eq("walletaddress", connectedaddress);
-
-      //.eq("id", id);
+      let { error } = await supabase
+        .from("users")
+        .update({
+          fullname: fullname,
+          email: email,
+          beername: beername,
+          beertitle: beertitle,
+        })
+        //.eq("walletaddress", {address});
+        .eq("id", id);
       if (error) throw error;
       //alert("Profile updated!");
     } catch (error) {
@@ -137,6 +141,7 @@ function Profile() {
             disabled
             className="w-full text-truePink-500 rounded-md p-2 mt-4"
           />
+          {address}
         </div>
         {/*<div className="mb-4">
           <label htmlFor="id">UserID</label>
@@ -180,7 +185,7 @@ function Profile() {
             value={email || ""}
             required
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="beerking@email.com"
+            placeholder="beerking@brewlandia.xyz"
             className="w-full rounded-md p-2 mt-4"
           />
         </div>
@@ -204,7 +209,6 @@ function Profile() {
                 email,
                 beername,
                 beertitle,
-                avatar_url,
               })
             }
             disabled={loading}

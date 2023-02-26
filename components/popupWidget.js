@@ -52,7 +52,7 @@ export default function PopupWidget() {
       <Disclosure>
         {({ open }) => (
           <>
-            <Disclosure.Button className="fixed z-40 flex items-center justify-center transition duration-300 bg-truePurple-700 rounded-full shadow-lg right-5 bottom-5 w-14 h-14 focus:outline-none hover:bg-trueSky-500 focus:bg-truePurple-600 ease">
+            <Disclosure.Button className="fixed z-40 flex items-center justify-center transition duration-300 bg-truePurple-700 rounded-full shadow-lg right-5 bottom-5 w-14 h-14 focus:outline-none hover:bg-truePink-600 focus:bg-truePurple-600 ease">
               <span className="sr-only">Open Contact form Widget</span>
               <Transition
                 show={!open}
@@ -235,7 +235,7 @@ export default function PopupWidget() {
                       <div className="mb-3">
                         <button
                           type="submit"
-                          className="w-full px-3 py-4 text-trueZinc-100 bg-truePurple-700 rounded-md focus:bg-trueSky-600 focus:outline-none"
+                          className="w-full px-3 py-4 text-trueZinc-100 bg-truePurple-700 rounded-md focus:bg-truePink-600 focus:outline-none"
                         >
                           {isSubmitting ? (
                             <svg

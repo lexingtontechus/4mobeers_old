@@ -13,9 +13,9 @@ export function getAuthOptions(req) {
           );
 
           const nextAuthUrl =
-            process.env.NEXT_PUBLIC_NEXTAUTH_URL ||
-            (process.env.NEXT_PUBLIC_VERCEL_URL
-              ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+            process.env.NEXTAUTH_URL ||
+            (process.env.VERCEL_URL
+              ? `https://${process.env.VERCEL_URL}`
               : null);
           if (!nextAuthUrl) {
             return null;
@@ -66,7 +66,7 @@ export function getAuthOptions(req) {
     },
     // https://next-auth.js.org/configuration/providers/oauth
     providers,
-    secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     session: {
       strategy: "jwt",
     },

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { Button } from "@nextui-org/react";
 
 const ThemeChanger = () => {
   const [mounted, setMounted] = useState(false);
@@ -13,18 +14,12 @@ const ThemeChanger = () => {
   return (
     <div className="flex items-center">
       {theme === "light" ? (
-        <button
-          onClick={() => setTheme("dark")}
-          className="rounded-full outline-none focus:outline-none"
-        >
+        <button onClick={() => setTheme("dark")} className="shadow-2xl shadow-truePink-600">
           <span className="sr-only">Dark Mode</span>
           <Beer />
         </button>
       ) : (
-        <button
-          onClick={() => setTheme("light")}
-          className="rounded-full outline-none focus:outline-none"
-        >
+        <button onClick={() => setTheme("light")} className="shadow-2xl shadow-truePurple-700">
           <span className="sr-only">Light Mode</span>
           <Beer />
         </button>

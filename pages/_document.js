@@ -1,6 +1,6 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-
+import { CssBaseline } from "@nextui-org/react";
 //import Head from "next/head";
 
 class MyDocument extends Document {
@@ -16,6 +16,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          {CssBaseline.flush()}
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://4mobeers.nft/" />
           <meta property="og:title" content="4mobeers DAO Inc." />

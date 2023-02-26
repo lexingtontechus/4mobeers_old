@@ -1,202 +1,82 @@
-//import { ConnectWallet } from "@thirdweb-dev/react";
-{
-  /*import {  useAddress,  useDisconnect, useUser,  useLogin,  useLogout,  useMetamask,} from "@thirdweb-dev/react";*/
-}
 import Link from "next/link";
 
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import ThemeChanger from "../components/darkSwitch";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-import { Button, css } from "@nextui-org/react";
+import ThemeChanger from "../components/darkSwitch";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import ProfileModal from "../components/dashboard/profilemodal";
+import { useAccount, useConnect } from "wagmi";
 
-import { getSession } from "next-auth/react";
-import { getToken } from "next-auth/jwt";
-
-export const getServerSideProps = async (context) => {
-  const session = await getSession(context);
-  const token = await getToken({ req: context.req });
-  const address = token?.sub ?? null;
-
-  // If you have a value for "address" here, your
-  // server knows the user is authenticated.
-  // You can then pass any data you want
-  // to the page component here.
-
-  return {
-    props: {
-      address,
-      session,
-    },
-  };
-};
-
-export default function Navbar({ address }) {
-  //const Navbar = ({ address }) => {
-
-  return address ? (
-    <Disclosure as="nav">
-      {({ open }) => (
-        <>
-          <div className="mx-auto px-2 sm:px-6 lg:px-8 py-4">
-            <div className="relative flex h-16 items-center justify-between">
-              <div className=" sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <Link
-                    href="/"
-                    className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
-                  >
-                    <Logo />
-                  </Link>
-                </div>
-              </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <div className="lg:hidden relative mx-auto inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-                  <ConnectButton
-                    label="CONNECT"
-                    showBalance={false}
-                    chainStatus="none"
-                    accountStatus={{
-                      smallScreen: "avatar",
-                    }}
-                  />
-                </div>
-
-                <div className="relative mx-3">
+export default function Header() {
+  const { address, isDisconnected, status } = useAccount();
+  return (
+    <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+      <div className="relative flex h-16 items-center justify-between">
+        <div className="flex flex-1 items-start justify-start sm:items-stretch sm:justify-start">
+          <div className="flex flex-shrink-0 items-center">
+            <Link
+              href="/"
+              className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
+            >
+              <Logo />
+            </Link>
+          </div>
+        </div>
+        <div className="relative inset-y-0 right-0 flex items-center items-stretch px-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div className="lg:hidden relative mx-auto inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
+            <div>
+              <ConnectButton
+                label="CONNECT"
+                showBalance={false}
+                chainStatus="none"
+              />
+            </div>
+            <div>
+              {status == "connected" ? (
+                <>
                   <ProfileModal address={address} />
-                </div>
-                <ThemeChanger />
-              </div>
-
-              {/* LG Menu */}
-              <div className="hidden text-center lg:flex lg:items-center">
-                <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
-                  <ul className="flex flex-col lg:flex-row list-none mr-auto">
-                    <li className="flex items-center mr-3">
-                      <ProfileModal address={address} />
-                    </li>
-                    <li className="flex items-center">
-                      <ConnectButton
-                        label="CONNECT"
-                        showBalance={false}
-                        chainStatus="none"
-                        accountStatus={{
-                          smallScreen: "avatar",
-                        }}
-                      />
-                    </li>
-                  </ul>
-                </div>
-                <ThemeChanger />
-              </div>
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
+            <div className="mx-2">
+              <ThemeChanger />
             </div>
           </div>
-        </>
-      )}
-    </Disclosure>
-  ) : (
-    <Disclosure as="nav">
-      {({ open }) => (
-        <>
-          <div className="mx-auto px-2 sm:px-6 lg:px-8 py-4">
-            <div className="relative flex h-16 items-center justify-between">
-              <div className=" sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <Link
-                    href="/"
-                    className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
-                  >
-                    <Logo />
-                  </Link>
-                  {address}
-                </div>
-              </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <div className="lg:hidden relative mx-auto inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-                  <ConnectButton
-                    label="CONNECT"
-                    showBalance={false}
-                    chainStatus="none"
-                    accountStatus={{
-                      smallScreen: "avatar",
-                    }}
-                  />
-                </div>
+        </div>
+      </div>
 
-                <div className="relative mx-3">
-                  <Disclosure.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-100 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
-                    <span className="sr-only">Open user menu</span>
-                    <FontAwesomeIcon
-                      icon={faBars}
-                      className="text-truePurple-900 dark:text-truePink-400"
-                    />
-                  </Disclosure.Button>
-
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
-                      <div>
-                        <Link
-                          href="/#faqs"
-                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                        >
-                          FAQs
-                        </Link>
-                      </div>
-                      <div>
-                        <Link
-                          href="/#team"
-                          className="text-center uppercase block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                        >
-                          Team
-                        </Link>
-                      </div>
-                    </div>
-                  </Transition>
-                </div>
-                <ThemeChanger />
-              </div>
-
-              {/* LG Menu */}
-              <div className="hidden text-center lg:flex lg:items-center">
-                <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
-                  <ul className="flex flex-col lg:flex-row list-none mr-auto">
-                    <li className="flex items-center">
-                      <div className="inline-block uppercase button primary block bg-truePurple-900 rounded-md w-full text-trueZinc-100 mx-auto w-full">
-                        <ConnectButton
-                          label="CONNECT"
-                          showBalance={false}
-                          chainStatus="none"
-                          accountStatus={{
-                            smallScreen: "avatar",
-                          }}
-                        />
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <ThemeChanger />
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-    </Disclosure>
+      {/* Menu */}
+      <div className="hidden text-center lg:flex lg:items-center">
+        <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
+          <ul className="flex flex-row lg:flex-row list-none mr-auto">
+            <li className="flex items-center mx-2">
+              <ConnectButton
+                label="CONNECT"
+                showBalance={false}
+                chainStatus="none"
+              />
+            </li>
+            <li className="flex items-center mx-2">
+              {status == "connected" ? (
+                <>
+                  <ProfileModal address={address} />
+                </>
+              ) : (
+                <></>
+              )}
+            </li>
+            <li className="flex items-center mx-2">
+              <ThemeChanger />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 }
-
-//export default Navbar;
 
 function Logo() {
   return (

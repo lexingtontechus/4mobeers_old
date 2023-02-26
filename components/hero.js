@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Container from "./container";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBeer, faBeerMugEmpty, fa4 } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/Hero.module.scss";
@@ -13,7 +13,7 @@ const HeroImage = ({ src, width, quality }) => {
 export default function Hero() {
   return (
     <>
-      <Container className={styles.hero}>
+      <div className={styles.hero}>
         {/*px-8 flex flex-wrap */}
         <div className={styles.row}>
           <h1 className="text-8xl xl:text-9xl animate-bounce">4 Mo Beers!</h1>
@@ -41,7 +41,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </>
   );
 }
