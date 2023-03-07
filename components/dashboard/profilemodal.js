@@ -1,13 +1,11 @@
-import { Avatar, Modal, useModal, Button, Text, css } from "@nextui-org/react";
+import { Modal, useModal, Button, Text, css } from "@nextui-org/react";
 import React from "react";
 import Profile from "./profile";
-import { useEnsAvatar, useAccount } from "wagmi";
+import { useAccount } from "wagmi";
+
 export default function ProfileModal() {
   // const [visible, setVisible] = React.useState(false);
   const { address } = useAccount();
-  const { ensAvatar } = useEnsAvatar({
-    address: { address },
-  });
 
   const handler = () => setVisible(true);
   const closeHandler = () => {
@@ -16,17 +14,17 @@ export default function ProfileModal() {
   };
   const { setVisible, bindings } = useModal();
   return (
-    <div className="mx-2 ">
+    <div className="mx-2 relative mx-auto inline-block uppercase block bg-truePurple-700 rounded-md">
       <Button
         css={{ color: "#f4f4f5", background: "#18181b" }}
-        bordered
-        shadow
         auto
         ripple
         animated
         onPress={handler}
       >
-        PROFILE
+        <Text color="#f4f4f5" size="$md" weight="semibold">
+          PROFILE
+        </Text>
       </Button>
       <Modal
         animated={false}
@@ -46,16 +44,22 @@ export default function ProfileModal() {
             h2
             id="modal-title"
             size={18}
+            transform="uppercase"
             css={{
               textGradient: "45deg, $blue600 -20%, $pink600 50%",
             }}
             weight="bold"
           >
-            Partner NIL Profile
+            Wallet Profile
           </Text>
         </Modal.Header>
         <Modal.Body>
-          <Text id="modal-description">Update Your Profile</Text>
+          <Text
+            id="modal-description"
+            className="mx-auto align-center text-center"
+          >
+            Update Your Profile
+          </Text>
           <Profile address={address} />
         </Modal.Body>
         <Modal.Footer>

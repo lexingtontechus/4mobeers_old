@@ -15,15 +15,20 @@ export default function PartnerModal({ address }) {
   };
   const { setVisible, bindings } = useModal();
   return (
-    <div>
-      <Button
-        auto
-        shadow
-        css={{ color: "#f4f4f5", background: "#7e22ce" }}
-        onPress={handler}
-      >
-        REGISTER
-      </Button>
+    <>
+      <div className="relative mx-auto inline-block uppercase block bg-truePurple-700 rounded-md w-full text-trueZinc-100 font-black">
+        <Button
+          auto
+          shadow
+          ripple
+          animated   
+          onPress={handler}
+        >
+          <Text color="#f4f4f5" size="$md" weight="semibold">
+            REGISTER
+          </Text>
+        </Button>
+      </div>
       <Modal
         animated={false}
         //scroll
@@ -65,6 +70,6 @@ export default function PartnerModal({ address }) {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 }

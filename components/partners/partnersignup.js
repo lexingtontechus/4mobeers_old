@@ -9,7 +9,7 @@ import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { Button, Link } from "@nextui-org/react";
 
-export default function Test() {
+export default function ParterSignup() {
   const {
     register,
     handleSubmit,

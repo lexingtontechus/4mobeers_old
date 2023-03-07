@@ -1,16 +1,13 @@
 import React from "react";
-import Container from "./container";
-
 import SectionTitle from "./sectionTitle";
 import PartnerModal from "./partners/partnermodal";
 
 export default function Partner() {
   return (
-    <Container>
+    <div id="partners" className="my-8">
       <SectionTitle
         pretitle="Become A Partner"
         title="Join Our NIL Program"
-        id="partners"
       >
         Partner with the 4MoBeers Community and create your own 4MoBeers NFT
         Collectibles Edition using the Name Image & Likeness (NIL) of your
@@ -31,6 +28,6 @@ export default function Partner() {
           <PartnerModal />
         </div>
       </div>
-    </Container>
+    </div>
   );
 }

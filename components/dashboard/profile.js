@@ -1,31 +1,29 @@
 /* eslint-disable */
 import { useState, useEffect } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useAccount, useConnect } from "wagmi";
+import { Button } from "@nextui-org/react";
 
-//import { useUser, useAddress } from "@thirdweb-dev/react";
-
-import { useAccount, useConnect, useDisconnect } from "wagmi";
-
-//export default function Profile() {
-function Profile() {
+export default function Profile() {
   const { address, connector: activeConnector } = useAccount();
 
-  //const router = useRouter();
-  const supabase = useSupabaseClient();
+  //const wa = { address };
   const wc = activeConnector.name;
-  const { disconnect } = useDisconnect();
+  const supabase = useSupabaseClient();
+  //const user = useUser();
 
-  //const connectedaddress = useAddress();
   const [loading, setLoading] = useState(true);
-  const [walletaddress, setWalletAddress] = useState(null);
-  const [uuid, setUUID] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [beername, setBeername] = useState(null);
-  const [fullname, setFullname] = useState(null);
-  const [beertitle, setBeertitle] = useState(null);
-  const [provider, setProvider] = useState(null);
   const [isProfile, setIsProfile] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  //const [walletaddress, setWalletAddress] = useState(null);
+  const [uuid, setUUID] = useState(null);
+  const [beername, setBeername] = useState(null);
+  const [beertitle, setBeertitle] = useState(null);
+  const [fullname, setFullname] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [provider, setProvider] = useState(null);
+  const [walletaddress, setWalletAddress] = useState(null);
 
   useEffect(() => {
     getProfile();
@@ -48,21 +46,29 @@ function Profile() {
         //setProvider(activeConnector.name);
         //const provider = setProvider;
 
-        await supabase
-          .from("users")
-          .insert({ walletaddress: address, provider: wc })
-          .upsert(true)
-          .single();
+        await supabase.from("users").upsert({
+          walletaddress: address,
+          provider: wc,
+        });
+        setUUID(data.id);
+        setWalletAddress(data.walletaddress);
+        setEmail(data.email);
+        setBeername(data.beername);
+        setBeertitle(data.beertitle);
+        setFullname(data.fullname);
+        setProvider(data.provider);
       }
 
       if (data) {
         setUUID(data.id);
         setWalletAddress(data.walletaddress);
-        setFullname(data.fullname);
         setEmail(data.email);
         setBeername(data.beername);
         setBeertitle(data.beertitle);
+        setFullname(data.fullname);
         setProvider(data.provider);
+        //setWebsite(data.website)
+        //setAvatarUrl(data.avatar_url)
       }
     } catch (error) {
       //alert("Error loading user data!");
@@ -74,20 +80,13 @@ function Profile() {
     }
   }
 
-  async function updateProfile({ fullname, email, beername, beertitle }) {
+  async function updateProfile({ beername, email, beertitle, fullname }) {
     try {
       setLoading(true);
 
-      const updates = {
-        id: uuid,
-        fullname,
-        email,
-        beername,
-        beertitle,
+      const updated_at = new Date().toISOString();
 
-        updated_at: new Date().toISOString(),
-      };
-
+      //let { error } = await supabase.from("users").upsert(updates);
       let { error } = await supabase
         .from("users")
         .update({
@@ -95,11 +94,11 @@ function Profile() {
           email: email,
           beername: beername,
           beertitle: beertitle,
+          updated_at: updated_at,
         })
-        //.eq("walletaddress", {address});
         .eq("id", id);
       if (error) throw error;
-      //alert("Profile updated!");
+      alert("Profile updated!");
     } catch (error) {
       //alert("Error updating the data!");
       setIsSuccess(false);
@@ -109,6 +108,7 @@ function Profile() {
       setLoading(false);
     }
   }
+
   return (
     <>
       {isProfile && isSuccess && (
@@ -120,7 +120,7 @@ function Profile() {
           </div>
         </>
       )}
-      <div className="form-widget align-center flex-grow h-full overflow-auto">
+      <div className="form-widget align-center flex-grow h-full  overflow-auto">
         {!isProfile && !isSuccess && (
           <div className="flex flex-col items-center justify-center text-center text-trueZinc-100 rounded-md">
             <h3 className="text-xl text-trueEmerald-400 py-8 uppercase">
@@ -133,15 +133,14 @@ function Profile() {
           </div>
         )}
         <div className="mb-4 font-bold">
-          <label htmlFor="walletaddress">Wallet Address</label>
+          <label htmlFor="uuid">Profile ID</label>
           <input
-            id="walletaddress"
+            id="uuid"
             type="text"
-            value={walletaddress || ""}
+            value={uuid || ""}
             disabled
-            className="w-full text-truePink-500 rounded-md p-2 mt-4"
+            className="w-full text-truePink-600 rounded-md p-2 mt-4"
           />
-          {address}
         </div>
         {/*<div className="mb-4">
           <label htmlFor="id">UserID</label>
@@ -162,7 +161,7 @@ function Profile() {
             required
             onChange={(e) => setBeername(e.target.value)}
             placeholder="Drink A Lot"
-            className="w-full rounded-md p-2 mt-4"
+            className="w-full text-truePink-600 rounded-md p-2 mt-4"
           />
         </div>
         <div className="mb-4 font-bold">
@@ -174,7 +173,7 @@ function Profile() {
             required
             onChange={(e) => setBeertitle(e.target.value)}
             placeholder="Beer King"
-            className="w-full rounded-md p-2 mt-4"
+            className="w-full text-truePink-600 rounded-md p-2 mt-4"
           />
         </div>
         <div className="mb-4 font-bold">
@@ -186,7 +185,7 @@ function Profile() {
             required
             onChange={(e) => setEmail(e.target.value)}
             placeholder="beerking@brewlandia.xyz"
-            className="w-full rounded-md p-2 mt-4"
+            className="w-full text-truePink-600 rounded-md p-2 mt-4"
           />
         </div>
         <div className="mb-4 font-bold">
@@ -196,13 +195,13 @@ function Profile() {
             type="text"
             value={fullname || ""}
             onChange={(e) => setFullname(e.target.value)}
-            className="w-full rounded-md p-2 mt-4"
+            className="w-full text-truePink-600 rounded-md p-2 mt-4"
           />
         </div>
 
         <div className="align-center mb-4">
           <button
-            className="uppercase button primary block bg-truePurple-900 rounded-md mt-8 p-2 w-full text-trueZinc-100"
+            className="uppercase button primary block bg-truePurple-700 rounded-md mt-8 p-2 w-full text-trueZinc-100"
             onClick={() =>
               updateProfile({
                 fullname,
@@ -213,7 +212,7 @@ function Profile() {
             }
             disabled={loading}
           >
-            {loading ? "Loading ..." : "Update"}
+            {loading ? "LOADING ..." : "UPDATE"}
           </button>
         </div>
 
@@ -228,29 +227,4 @@ function Profile() {
       </div>
     </>
   );
-}
-
-export default Profile;
-
-export async function getServerSideProps() {
-  let { data: user } = await supabase
-    .from("users")
-    .select()
-    .eq("walletaddress", address)
-    .single();
-  if (!user) {
-    const res = await supabase
-      .from("users")
-      .insert({ walletaddress: address })
-      .single();
-
-    if (res.error) {
-      throw new Error("Failed to create user!");
-    }
-  }
-  return {
-    props: {
-      users: data,
-    },
-  };
 }

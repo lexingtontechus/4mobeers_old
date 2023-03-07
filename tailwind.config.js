@@ -17,8 +17,18 @@ module.exports = {
         "gradient-1": "animate-gradient-1 5s infinite",
         "gradient-2": "animate-gradient-2 5s infinite",
         "gradient-3": "animate-gradient-3 5s infinite",
+        linear: "backgroundLinear 3s linear infinite",
+        wiggle: "4s linear infinite wiggle",
       },
       keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-5deg)" },
+          "50%": { transform: "rotate(20deg)" },
+        },
+        backgroundLinear: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "100%": { backgroundPosition: "200% 50%" },
+        },
         "animate-gradient-1": {
           "0%, 16.667%, 100%": { opacity: "1" },
           "33.333%, 83.333%": { opacity: "0" },

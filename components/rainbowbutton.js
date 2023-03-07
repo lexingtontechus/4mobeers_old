@@ -4,36 +4,52 @@ import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useAccount, useConnect } from "wagmi";
 
 export default function RainbowConnect() {
-  const { supabase } = useSupabaseClient();
-  const { status, address, connector: activeConnector } = useAccount();
-  const { connect, connectors, error, isLoading, pendingConnector } =
-    useConnect();
-  const provider = { activeConnector };
+  const { address, connector: activeConnector } = useAccount();
+  const wc = { activeConnector };
+  const supabase = useSupabaseClient();
+  const user = useUser();
+
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
+  const [profile, setIsProfile] = useState(true);
 
   useEffect(() => {
-    checkProfile();
-  });
-  async function checkProfile(address) {
-    if (status == "isconnected") {
-      //auth is initialized and there is no user
+    getProfile();
+  }, [wc]);
+
+  async function getProfile() {
+    try {
+      const newaddress = { address };
+      setLoading(true);
+
       let { data, error, status } = await supabase
         .from("users")
         .select("*")
-        .eq("walletaddress", address)
+        .eq("walletaddress", newaddress)
         .single();
 
-      if (!data) {
-        await supabase.from("users").insert({
-          walletaddress: address,
-          provider: provider,
-        });
-      }
-      if (res.error) {
-        throw new Error("Failed to create user!");
-      }
       if (error && status !== 406) {
-        throw error;
+        // throw error;
+        await supabase
+          .from("users")
+          .insert({ walletaddress: address, provider: wc });
       }
+      if (!data) {
+        //setProvider(activeConnector.name);
+        //const provider = setProvider;
+
+        await supabase
+          .from("users")
+          .insert({ walletaddress: address, provider: wc });
+        //.upsert(true);
+      }
+    } catch (error) {
+      //alert("Error loading user data!");
+      setIsProfile(false);
+      console.log(error);
+    } finally {
+      setIsProfile(true);
+      setLoading(false);
     }
   }
 
@@ -41,11 +57,11 @@ export default function RainbowConnect() {
     <ConnectButton
       label="CONNECT"
       chainStatus="none"
+      showBalance={false}
       accountStatus={{
-        smallScreen: "full",
+        smallScreen: "avatar",
         largeScreen: "full",
       }}
-      showBalance="none"
     />
   );
 }

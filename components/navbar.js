@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
@@ -5,12 +6,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import ThemeChanger from "../components/darkSwitch";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import RainbowButton from "./rainbowbutton";
 import ProfileModal from "../components/dashboard/profilemodal";
-
 import { useAccount, useConnect } from "wagmi";
+import { useSession } from "next-auth/react";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
-export default function Header() {
-  const { address, isDisconnected, status } = useAccount();
+//export default function Header() {
+function Header() {
+  const { address, isConnected } = useAccount();
+  const { data: session, status } = useSession();
+
   return (
     <>
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-4">
@@ -29,26 +35,20 @@ export default function Header() {
           <div className="relative inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div className="relative mx-3">
               <div className="flex flex-row inherit origin-top-right ">
-                <div>
-                  {status == "connected" ? (
-                    <>
-                      <ProfileModal address={address} />
-                    </>
-                  ) : (
-                    <></>
-                  )}
-                </div>
-                <div className="">
-                  <ConnectButton
-                    label="CONNECT"
-                    showBalance={false}
-                    chainStatus="none"
-                    accountStatus={{
-                      smallScreen: "avatar",
-                      largeScreen: "full",
-                    }}
-                  />
-                </div>
+                {/*{status == "connected"} (*/}
+                {session?.user && isConnected && (
+                  <ProfileModal address={address} />
+                )}
+
+                <ConnectButton
+                  label="CONNECT"
+                  showBalance={false}
+                  chainStatus="none"
+                  accountStatus={{
+                    smallScreen: "avatar",
+                    largeScreen: "full",
+                  }}
+                />
               </div>
             </div>
             <ThemeChanger />
@@ -58,6 +58,7 @@ export default function Header() {
     </>
   );
 }
+export default Header;
 
 function Logo() {
   return (

@@ -61,7 +61,7 @@ const AppInfo = {
 };
 
 const connectors = connectorsForWallets([
-  ...wallets,
+  // ...wallets,
   {
     groupName: "Recommended",
     wallets: [
@@ -98,17 +98,6 @@ const Disclaimer = ({ Text, Link }) => (
 const getSiweMessageOptions = () => ({
   statement: "Sign in to 4MoBeers DAO",
 });
-//NextUI Theme
-const theme = createTheme({
-  type: "dark", // it could be "light" or "dark"
-  theme: {
-    colors: {
-      primary: "#18181b",
-      secondary: "#F9CB80",
-      error: "#FCC5D8",
-    },
-  },
-});
 
 function MyApp({ Component, pageProps }) {
   const [supabase] = useState(() => createBrowserSupabaseClient());
@@ -119,7 +108,11 @@ function MyApp({ Component, pageProps }) {
         supabaseClient={supabase}
         initialSession={pageProps.initialSession}
       >
-        <SessionProvider session={pageProps.session} refetchInterval={0}>
+        <SessionProvider
+          session={pageProps.session}
+          refetchInterval={5 * 60}
+          refetchOnWindowFocus={true}
+        >
           <RainbowKitSiweNextAuthProvider
             getSiweMessageOptions={getSiweMessageOptions}
           >

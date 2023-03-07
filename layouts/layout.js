@@ -37,7 +37,7 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-export default function Layout({ children, address }) {
+export default function Layout({ children, address, session }) {
   return (
     <>
       <div className="relative h-full w-full mx-auto px-8 py-4">

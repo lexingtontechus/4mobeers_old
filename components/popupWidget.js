@@ -16,7 +16,7 @@ export default function PopupWidget() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [Message, setMessage] = useState("");
 
-  const userName = useWatch({ control, name: "name", defaultValue: "Someone" });
+  const userName = useWatch({ control, name: "name", defaultValue: "Beer Guy" });
 
   const onSubmit = async (data, e) => {
     console.log(data);

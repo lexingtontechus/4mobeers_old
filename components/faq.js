@@ -2,21 +2,25 @@ import React from "react";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
 import { Button, Collapse, css, Text } from "@nextui-org/react";
+import SectionTitle from "../components/sectionTitle";
 
 import styles from "../styles/FAQs.module.scss";
 
 export default function Faq() {
   return (
     <>
-      <div className={styles.faq} id="faqs">
-        <div id="faqs" className={styles.row}>
-          <h1 className="text-center text-8xl xl:text-9xl animate-fade-out font-black">
-            FAQs
-          </h1>
-          <h2 className="text-center max-w-2xl mt-3 text-2xl font-bold leading-snug tracking-tight text-trueZinc-700 dark:text-trueZinc-100 lg:leading-tight lg:text-4xl dark:text-white">
+      <div id="faqs" className="my-8">
+        
+        <h1 className="uppercase text-center text-8xl xl:text-9xl font-black animate-linear bg-gradient-to-r from-trueBlue-500 via-trueOrange-500 to-trueBlue-500 bg-[length:200%_auto] bg-clip-text text-transparent">
+          FAQs
+        </h1>
+         <SectionTitle
+            pretitle="Ask Us Anything"
+            title="Learn More"
+          >
             How to partner and build your community with 4MoBeers?
-          </h2>
-        </div>
+          </SectionTitle>
+
         <div className="mt-4 flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-trueZinc-700 dark:truePink-400 bg-trueZinc-100 p-8 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
           <div className="w-full mx-auto rounded-2xl">
             <Disclosure>
@@ -55,8 +59,7 @@ export default function Faq() {
                         4MoBeers DAO Inc, doing business as 4MoBeers. We are
                         creating a Beerverse that supports the beer community
                         and roadie lovers. The 4MoBeers DAO will orchestrate the
-                        goverance, voting, airdrops, splits and
-                        management/security of smart contracts.
+                        goverance, voting, airdrops, splits, management & security of smart contracts.
                       </Text>
                       <Text
                         css={{
@@ -158,6 +161,37 @@ export default function Faq() {
                         The 4MoBeer NFT Collectibles Edition will support the
                         Name Image & Likeness (NIL) of nominated & voted on
                         community members.
+                      </Text>
+                    </Collapse>
+                       <Collapse
+                      title="Connecting A Wallet"
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            Which wallets are supported?
+                          </Text>
+                        </>
+                      }
+                      arrowIcon={
+                        <ChevronUpIcon
+                          className={`${
+                            open ? "transform rotate-180" : ""
+                          } w-5 h-5 text-truePink-600`}
+                        />
+                      }
+                    >
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
+                        The dApp is integrated with Rainbow Wallet. Rainbow Wallet & Wallet Connect support security notifications for sign-in verificaton and secure DAO messages.
                       </Text>
                     </Collapse>
                     <Collapse

@@ -13,23 +13,21 @@ const HeroImage = ({ src, width, quality }) => {
 export default function Hero() {
   return (
     <>
-      <div className={styles.hero}>
-        {/*px-8 flex flex-wrap */}
-        <div className={styles.row}>
-          <h1 className="text-8xl xl:text-9xl font-black">4 Mo Beers!</h1>
+      <div id="hero">
+        <h1 className="my-8 uppercase text-center text-8xl xl:text-9xl font-black animate-linear bg-gradient-to-r from-truePurple-500 via-truePink-500 to-truePurple-500 bg-[length:200%_auto] bg-clip-text text-transparent">
+          4 Mo Beers!
+        </h1>
 
-          <div className="flex items-center place-content-center align=center">
-            <div className="visible lg:block">
-              <div className={styles.mainImg}>
-                <Image
-                  loader={HeroImage}
-                  alt="Beer"
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAFIUlEQVR4nO2azW8bRRiHn7UT23GcTychKbSkKEWCShAi0qpIQCMuvSBOcKkEKge4Vr1xy38AKDdOnHtBQqAIBEJCVaUQoKEVQmpL2pKkSR2TOPZubMf7wWGd2ml2vR8zDaDsI1lez/zm6/XMO/PuLkRERERERERERBxOFJHC1jcvdJId+ZHM8Djt6Vi4SnQoXvGn1WsG25WrlMxzypv3t0O19wjhOr1L9skr9D0zEXrwAEbJv7atPU5316t0K9+Gbu/RKoVKZ4Ze3JfW/xb0vAGKS9WWDlvfwcaX9u/qUvB20+kzwQs5IzYD2tP7l1D3WffBg53Xfda+rtwDfSN4u/E2sX43Ia2ihxR/sP9lNywdCrOgXYfqHenNB0VsCTjx1zQYl6RX+7iQPwOMovQqHydiM2DJwYGt/CFU5UEjfwb8zzj0BpDrBFMpGB2FZBKqVcjnQVX3ajIZGBgQ1pxe2LCafmrALSxmdcOY+eXlwVW/XZY3A1IpGByEjg6Ixezvo0ehq6uhyWTsNFHNfjqBcRQ+amuL3z51bfM9v92WZ4CeHuf0bLZxPTgoR9OatKJYn59a2PjQj1ieAeJtzgegRLJx3Z5wLhtU4wMFPnnl182nvXTyDGDozoHNTrVxXdtxLhtU44+UETcveonkGWBryzmwyecb1+vrzmWDavxiKee8JPJ2gfUbYK609t6qah+eQmrUCmxqUNVh7nz/w0Bs8lp+MqbEfnLo1ahXt8UMYOpQK4C6CJVcYwCtUNVQmnwJNlyKzb80MH96wTGqTLVuSHgG/Ab9XdDXA2occjkwjEZ2PA6DQ9CVsX+raiiNWouz0dEPA2lQFNA0wGWpBETMAL29e69TSbhzt56gwLGjkOoQ1MBmzwjQtAt0dSPLAHKPwqkO+yADkOncO7DQmgzVWLAtMAjyY4FEfR9PuuznITSmKadrTsg3wE59H6+67OcyNRKQa4ByueG9NRXKDneuw2iqZandbEbMCRYKdpBiWaCWINfkmCxgaRmGhhrrOaxm9QFk+yDd2bQLyEHMAKur9scNw2idH0STywMhToMeyL0fICnW36cp5kBzfxB0ZiF/ysVPVry6LM8Au3H8Lrtx/PIylEpimuERWFvbM/Wbb4i02CTuumfZyHOCsmJ9N01fr3N6CxSUWS+NPAPIivXdNG7p7pRjJp96ieQZQFas76ZxS3fn4tWJvnteInkGkBXru2k2N/32RAPl3bnx/s/8iOU5QcFYv6VmrfUuAGgW3IxZzBoJfWb+5NCa327L3QZDxvqeGodzz9x4v9DLHbsc+gcjh94AQktg6rklqxzrlDIV3TDL2+xk9h6V02xb8LqU+oUM8FTtrnorebLlIxsvjG0No1jArFXBtLwLAMPWA2nRkNASOFG+/pVIeb3wN7X1NcxqxffgAU7w59ci7TYjZIBj1vr7Y+XfPVy6M8a2hr5VCFzuOHe04Z3chTBtOiFkgAtT05XXKt9PPlu5Efi1EKMYfPBj5mLpjPHz5KV3PpZ2h0SKA7t8eTpx84nszO3E828vJ473luK9nvVWlhZ9TfsMmnXEur81Zi5+kezTP5iemm7xBlZEREREREQQZJ/j49gvLHU4fGL1/Bj2EVwB2uvlathPAHTse5xG/bvs8NHq+VKQYYBe4AiQBbol1dkKCyhiPyRYBYKfqJoQ7ewE9uD/TVaAa2ELi94P8B/B/EeRMV17sGfBAAe/BO4DWyKVHZQTTNXzgjhBA/vR1mN1gv8AhHI5RNEtzwEAAAAASUVORK5CYII="
-                  width={200}
-                  height={200}
-                  className={styles.token}
-                />
-                {/* <Image
+        <div className="flex items-center place-content-center align=centervisible">
+          <div className="animate-wiggle">
+            <Image
+              loader={HeroImage}
+              alt="Beer"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAFIUlEQVR4nO2azW8bRRiHn7UT23GcTychKbSkKEWCShAi0qpIQCMuvSBOcKkEKge4Vr1xy38AKDdOnHtBQqAIBEJCVaUQoKEVQmpL2pKkSR2TOPZubMf7wWGd2ml2vR8zDaDsI1lez/zm6/XMO/PuLkRERERERERERBxOFJHC1jcvdJId+ZHM8Djt6Vi4SnQoXvGn1WsG25WrlMxzypv3t0O19wjhOr1L9skr9D0zEXrwAEbJv7atPU5316t0K9+Gbu/RKoVKZ4Ze3JfW/xb0vAGKS9WWDlvfwcaX9u/qUvB20+kzwQs5IzYD2tP7l1D3WffBg53Xfda+rtwDfSN4u/E2sX43Ia2ihxR/sP9lNywdCrOgXYfqHenNB0VsCTjx1zQYl6RX+7iQPwOMovQqHydiM2DJwYGt/CFU5UEjfwb8zzj0BpDrBFMpGB2FZBKqVcjnQVX3ajIZGBgQ1pxe2LCafmrALSxmdcOY+eXlwVW/XZY3A1IpGByEjg6Ixezvo0ehq6uhyWTsNFHNfjqBcRQ+amuL3z51bfM9v92WZ4CeHuf0bLZxPTgoR9OatKJYn59a2PjQj1ieAeJtzgegRLJx3Z5wLhtU4wMFPnnl182nvXTyDGDozoHNTrVxXdtxLhtU44+UETcveonkGWBryzmwyecb1+vrzmWDavxiKee8JPJ2gfUbYK609t6qah+eQmrUCmxqUNVh7nz/w0Bs8lp+MqbEfnLo1ahXt8UMYOpQK4C6CJVcYwCtUNVQmnwJNlyKzb80MH96wTGqTLVuSHgG/Ab9XdDXA2occjkwjEZ2PA6DQ9CVsX+raiiNWouz0dEPA2lQFNA0wGWpBETMAL29e69TSbhzt56gwLGjkOoQ1MBmzwjQtAt0dSPLAHKPwqkO+yADkOncO7DQmgzVWLAtMAjyY4FEfR9PuuznITSmKadrTsg3wE59H6+67OcyNRKQa4ByueG9NRXKDneuw2iqZandbEbMCRYKdpBiWaCWINfkmCxgaRmGhhrrOaxm9QFk+yDd2bQLyEHMAKur9scNw2idH0STywMhToMeyL0fICnW36cp5kBzfxB0ZiF/ysVPVry6LM8Au3H8Lrtx/PIylEpimuERWFvbM/Wbb4i02CTuumfZyHOCsmJ9N01fr3N6CxSUWS+NPAPIivXdNG7p7pRjJp96ieQZQFas76ZxS3fn4tWJvnteInkGkBXru2k2N/32RAPl3bnx/s/8iOU5QcFYv6VmrfUuAGgW3IxZzBoJfWb+5NCa327L3QZDxvqeGodzz9x4v9DLHbsc+gcjh94AQktg6rklqxzrlDIV3TDL2+xk9h6V02xb8LqU+oUM8FTtrnorebLlIxsvjG0No1jArFXBtLwLAMPWA2nRkNASOFG+/pVIeb3wN7X1NcxqxffgAU7w59ci7TYjZIBj1vr7Y+XfPVy6M8a2hr5VCFzuOHe04Z3chTBtOiFkgAtT05XXKt9PPlu5Efi1EKMYfPBj5mLpjPHz5KV3PpZ2h0SKA7t8eTpx84nszO3E828vJ473luK9nvVWlhZ9TfsMmnXEur81Zi5+kezTP5iemm7xBlZEREREREQQZJ/j49gvLHU4fGL1/Bj2EVwB2uvlathPAHTse5xG/bvs8NHq+VKQYYBe4AiQBbol1dkKCyhiPyRYBYKfqJoQ7ewE9uD/TVaAa2ELi94P8B/B/EeRMV17sGfBAAe/BO4DWyKVHZQTTNXzgjhBA/vR1mN1gv8AhHI5RNEtzwEAAAAASUVORK5CYII="
+              width={200}
+              height={200}
+            />
+            {/* <Image
                   className={Hero.token}
                   loader={HeroImage}
                   alt="Beer"
@@ -37,8 +35,6 @@ export default function Hero() {
                   width={150}
                   height={150}
                 />*/}
-              </div>
-            </div>
           </div>
         </div>
       </div>
