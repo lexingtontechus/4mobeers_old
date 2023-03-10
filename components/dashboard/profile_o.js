@@ -38,8 +38,7 @@ export default function Profile() {
         .eq("walletaddress", address)
         .single();
 
-      {
-        /* if (!data) {
+      if (!data) {
         //setProvider(activeConnector.name);
         //const provider = setProvider;
         await supabase.from("users").insert({
@@ -49,8 +48,6 @@ export default function Profile() {
         //setUUID(data.id);
         //setWalletAddress(data.walletaddress);
         //setProvider(data.provider);
-      }
-      */
       }
 
       if (data) {
@@ -66,7 +63,7 @@ export default function Profile() {
       }
     } catch (error) {
       //alert("Error loading user data!");
-      //setIsProfile(false);
+      setIsProfile(false);
       console.log(error);
     } finally {
       setIsProfile(true);

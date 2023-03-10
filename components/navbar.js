@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import ThemeChanger from "../components/darkSwitch";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import RainbowButton from "./rainbowbutton";
+
 import ProfileModal from "../components/dashboard/profilemodal";
 import { useAccount, useConnect } from "wagmi";
 import { useSession } from "next-auth/react";
@@ -39,7 +39,7 @@ function Header() {
                 {session?.user && isConnected && (
                   <ProfileModal address={address} />
                 )}
-
+               
                 <ConnectButton
                   label="CONNECT"
                   showBalance={false}

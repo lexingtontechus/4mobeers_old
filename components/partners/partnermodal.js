@@ -17,13 +17,7 @@ export default function PartnerModal({ address }) {
   return (
     <>
       <div className="relative mx-auto inline-block uppercase block bg-truePurple-700 rounded-md w-full text-trueZinc-100 font-black">
-        <Button
-          auto
-          shadow
-          ripple
-          animated   
-          onPress={handler}
-        >
+        <Button auto ripple animated onPress={handler}>
           <Text color="#f4f4f5" size="$md" weight="semibold">
             REGISTER
           </Text>

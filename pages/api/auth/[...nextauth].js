@@ -2,6 +2,13 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { getCsrfToken } from "next-auth/react";
 import { SiweMessage } from "siwe";
+import { createClient } from "@supabase/supabase-js";
+
+export const supabase = createClient(
+  process.env.SUPABASE_URL || "",
+  process.env.SUPABASE_SERVICE_ROLE || "",
+  process.env.SUPABASE_PUBLIC_ANON_KEY || ""
+);
 
 export function getAuthOptions(req) {
   const providers = [
@@ -61,6 +68,22 @@ export function getAuthOptions(req) {
         session.user = {
           name: token.sub,
         };
+        const { data: user } = await supabase
+          .from("users")
+          .select("*")
+          .eq("walletaddress", session.address)
+          .single();
+
+        if (!user) {
+          const res = await supabase
+            .from("users")
+            .insert({ walletaddress: session.address })
+            .single();
+
+          if (res.error) {
+            throw new Error("Failed to create user!");
+          }
+        }
         return session;
       },
     },

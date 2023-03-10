@@ -60,7 +60,6 @@ export default function Community() {
                 >
                   <Button
                     auto
-                    shadow
                     ripple
                     animated
                     css={{ color: "#f4f4f5", background: "#7e22ce" }}
