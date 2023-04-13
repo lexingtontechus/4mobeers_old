@@ -1,3 +1,5 @@
+"use client";
+import prettier from "prettier";
 import React from "react";
 import SectionTitle from "../components/sectionTitle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,10 +36,10 @@ export default function Community() {
         </SectionTitle>
       )}
 
-      <div className="flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-trueZinc-700 dark:truePink-400 bg-trueZinc-100 px-7 py-7 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
+      <div className="dark:truePink-400 mx-auto flex w-full max-w-4xl flex-wrap items-center justify-between gap-5 rounded-xl bg-trueZinc-100 px-7 py-7 text-trueZinc-700 lg:flex-nowrap lg:px-12 lg:py-12">
         <div className="flex-grow text-center lg:text-left">
           <div>
-            <h2 className="text-2xl font-medium lg:text-3xl text-trueZinc-700 dark:text-truePink-400 uppercase">
+            <h2 className="text-2xl font-medium uppercase text-trueZinc-700 dark:text-truePink-400 lg:text-3xl">
               {session?.user && isConnected ? (
                 <>Join Our Discord</>
               ) : (
@@ -46,11 +48,11 @@ export default function Community() {
             </h2>
           </div>
 
-          <p className="text-2xl font-medium lg:text-3xl text-trueZinc-700 dark:text-truePink-400"></p>
-          <p className="mt-2 font-medium text-trueZinc-700 dark:text-truePink-400 text-opacity-90 lg:text-xl"></p>
+          <p className="text-2xl font-medium text-trueZinc-700 dark:text-truePink-400 lg:text-3xl"></p>
+          <p className="mt-2 font-medium text-trueZinc-700 text-opacity-90 dark:text-truePink-400 lg:text-xl"></p>
         </div>
-        <div className="flex-shrink-0 mx-auto text-center lg:w-auto">
-          <div className="relative mx-auto inline-block uppercase button primary block bg-truePurple-700 rounded-md w-full text-trueZinc-100 w-full">
+        <div className="mx-auto flex-shrink-0 text-center lg:w-auto">
+          <div className="button primary relative mx-auto block inline-block w-full w-full rounded-md bg-trueFushia-700 uppercase text-trueZinc-100">
             {session?.user && isConnected ? (
               <>
                 <Link
@@ -62,10 +64,9 @@ export default function Community() {
                     auto
                     ripple
                     animated
-                    css={{ color: "#f4f4f5", background: "#7e22ce" }}
+                    css={{ color: "#f4f4f5", background: "#a21caf" }}
                   >
                     <Text color="#f4f4f5" size="$md" weight="semibold">
-                      {" "}
                       DISCORD
                     </Text>
                   </Button>

@@ -187,7 +187,7 @@ export default function Profile() {
         </div>
         <div className="align-center mb-4">
           <button
-            className="uppercase button primary block bg-truePurple-700 rounded-md mt-8 p-2 w-full text-trueZinc-100"
+            className="uppercase button primary block bg-trueFushia-700 rounded-md mt-8 p-2 w-full text-trueZinc-100"
             onClick={() =>
               updateProfile({
                 beername,

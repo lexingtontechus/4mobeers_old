@@ -1,3 +1,4 @@
+import prettier from "prettier";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -7,36 +8,35 @@ import ThemeChanger from "../../components/darkSwitch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 
 const Navbar = () => {
   const router = useRouter();
   //const address = useAddress(); ThirdwebProvider
- // const { user } = useUser();
+  // const { user } = useUser();
   const { address, isConnected } = useAccount();
- 
+
   return (
     <>
       <Disclosure as="nav">
         {({ open }) => (
           <>
-            <div className="mx-auto px-2 sm:px-6 lg:px-8 py-4">
+            <div className="mx-auto px-2 py-4 sm:px-6 lg:px-8">
               <div className="relative flex h-16 items-center justify-between">
                 <div className=" sm:items-stretch sm:justify-start">
                   <div className="flex flex-shrink-0 items-center">
                     <Link
                       href="/"
-                      className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
+                      className="h-content inline-flex w-auto fill-trueZinc-900 stroke-2 dark:fill-trueZinc-100"
                     >
                       <Logo />
                     </Link>
                   </div>
                 </div>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 lg:hidden">
                   {/* Profile dropdown */}
-                  <div className="lg:hidden relative mx-auto">
+                  <div className="relative mx-auto lg:hidden">
                     <ConnectButton
                       label="CONNECT"
                       showBalance={false}
@@ -51,7 +51,7 @@ const Navbar = () => {
                       <span className="sr-only">Open user menu</span>
                       <FontAwesomeIcon
                         icon={faBars}
-                        className="text-truePurple-900 dark:text-truePink-600"
+                        className="text-trueFushia-900 dark:text-truePink-600"
                       />
                     </Disclosure.Button>
 
@@ -64,11 +64,11 @@ const Navbar = () => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
+                      <div className="absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md border-2 bg-trueFushia-900 py-1 shadow-lg ring-1 ring-trueFushia-900 ring-opacity-5 focus:outline-none">
                         <div>
                           <Link
                             href="/#about"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                            className="block bg-trueFushia-900 px-4 py-2 text-sm text-trueZinc-100"
                           >
                             About
                           </Link>
@@ -76,7 +76,7 @@ const Navbar = () => {
                         <div>
                           <Link
                             href="/#faqs"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                            className="block bg-trueFushia-900 px-4 py-2 text-sm text-trueZinc-100"
                           >
                             FAQs
                           </Link>
@@ -84,7 +84,7 @@ const Navbar = () => {
                         <div>
                           <Link
                             href="/#community"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                            className="block bg-trueFushia-900 px-4 py-2 text-sm text-trueZinc-100"
                           >
                             Join
                           </Link>
@@ -92,7 +92,7 @@ const Navbar = () => {
                         <div>
                           <Link
                             href="/#team"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
+                            className="block bg-trueFushia-900 px-4 py-2 text-sm text-trueZinc-100"
                           >
                             Team
                           </Link>
@@ -105,13 +105,13 @@ const Navbar = () => {
 
                 {/* Menu */}
                 <div className="hidden text-center lg:flex lg:items-center">
-                  <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
-                    <ul className="flex flex-col lg:flex-row list-none mr-auto">
+                  <div className="flex-grow flex-nowrap space-y-1 px-4 pb-4 pt-8">
+                    <ul className="mr-auto flex list-none flex-col lg:flex-row">
                       <li className="flex items-center">
                         <div className="mr-3">
                           <Link
                             href="/#about"
-                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
+                            className="inline-block rounded-md px-4 py-2 text-lg font-normal text-trueFushia-900 no-underline hover:text-trueFushia-500 focus:bg-trueZinc-100 focus:text-trueZinc-500 focus:outline-none dark:text-truePink-600"
                           >
                             About
                           </Link>
@@ -121,7 +121,7 @@ const Navbar = () => {
                         <div className="mr-3">
                           <Link
                             href="/#faqs"
-                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
+                            className="inline-block rounded-md px-4 py-2 text-lg font-normal text-trueFushia-900 no-underline hover:text-trueFushia-500 focus:bg-trueZinc-100 focus:text-trueZinc-500 focus:outline-none dark:text-truePink-600"
                           >
                             FAQs
                           </Link>
@@ -131,7 +131,7 @@ const Navbar = () => {
                         <div className="mr-3">
                           <Link
                             href="/#team"
-                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
+                            className="inline-block rounded-md px-4 py-2 text-lg font-normal text-trueFushia-900 no-underline hover:text-trueFushia-500 focus:bg-trueZinc-100 focus:text-trueZinc-500 focus:outline-none dark:text-truePink-600"
                           >
                             Team
                           </Link>
@@ -144,7 +144,7 @@ const Navbar = () => {
                               <Link
                                 href="/profile"
                                 alt="Profile"
-                                className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
+                                className="inline-block rounded-md px-4 py-2 text-lg font-normal text-trueFushia-900 no-underline hover:text-trueFushia-500 focus:bg-trueZinc-100 focus:text-trueZinc-500 focus:outline-none dark:text-truePink-600"
                               >
                                 Profile
                               </Link>{" "}
@@ -194,7 +194,7 @@ function Logo() {
       preserveAspectRatio="xMidYMid meet"
       width="70"
       height="70"
-      className="fill-truePurple-900 dark:fill-truePink-600"
+      className="fill-trueFushia-900 dark:fill-truePink-600"
     >
       <defs id="SvgjsDefs1966" />
       <g

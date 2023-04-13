@@ -1,3 +1,4 @@
+import prettier from "prettier";
 import { useRouter } from "next/router";
 
 function classNames(...classes) {
@@ -18,9 +19,9 @@ function ActiveLink({ children, href }) {
       onClick={handleClick}
       className={classNames(
         router.asPath === href
-          ? "bg-truePurple-700 decoration-trueZinc-700 dark:text-trueZinc-100 decoration-solid underline-offset-8 text-trueZinc-700 dark:text-trueZinc-100"
+          ? "bg-trueFushia-700 text-trueZinc-700 decoration-trueZinc-700 decoration-solid underline-offset-8 dark:text-trueZinc-100 dark:text-trueZinc-100"
           : "text-trueZinc-700 hover:underline hover:decoration-trueZinc-700 dark:text-trueZinc-100 dark:hover:decoration-trueZinc-100",
-        "block px-3 py-2 rounded-md text-base font-medium"
+        "block rounded-md px-3 py-2 text-base font-medium"
       )}
     >
       {children}

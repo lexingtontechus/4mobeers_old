@@ -20,7 +20,7 @@ export default function Cta() {
           </div>
           {/*      <Link
             href="/portfolio"
-            className="inline-block py-3 mx-auto text-lg font-medium text-center text-truePink-400 bg-truePurple-600 rounded-md px-7 lg:px-10 lg:py-5 "
+            className="inline-block py-3 mx-auto text-lg font-medium text-center text-truePink-400 bg-trueFushia-700 rounded-md px-7 lg:px-10 lg:py-5 "
           >
             View The Portfolio
           </Link>*/}

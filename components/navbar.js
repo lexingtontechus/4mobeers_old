@@ -1,3 +1,5 @@
+'use client';
+import prettier from "prettier";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Fragment } from "react";
@@ -19,13 +21,13 @@ function Header() {
 
   return (
     <>
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-4">
+      <div className="mx-auto max-w-7xl px-2 py-4 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex flex-1 items-start justify-start">
             <div className="flex flex-shrink-0 items-center">
               <Link
                 href="/"
-                className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
+                className="h-content inline-flex w-auto fill-trueZinc-900 stroke-2 dark:fill-trueZinc-100"
               >
                 <Logo />
               </Link>
@@ -34,12 +36,12 @@ function Header() {
 
           <div className="relative inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div className="relative mx-3">
-              <div className="flex flex-row inherit origin-top-right ">
-                {/*{status == "connected"} (*/}
-                {session?.user && isConnected && (
-                  <ProfileModal address={address} />
-                )}
-               
+              <div className="inherit flex origin-top-right flex-row ">
+                {/* <div className="pr-3">
+                  {session?.user && isConnected && (
+                    <ProfileModal address={address} />
+                  )}
+                </div>*/}
                 <ConnectButton
                   label="CONNECT"
                   showBalance={false}
@@ -68,7 +70,7 @@ function Logo() {
       preserveAspectRatio="xMidYMid meet"
       width="70"
       height="70"
-      className="fill-truePurple-900 dark:fill-truePink-600"
+      className="fill-trueFushia-700 dark:fill-truePink-600"
     >
       <g
         featurekey="rootContainer"

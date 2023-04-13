@@ -97,7 +97,7 @@ export const Whitelistform = ({ setFormState }) => {
             label="Submit"
             action="submit"
             onClick={() => submit()}
-            className="w-full px-3 py-4 text-white bg-truePurple-500 rounded-md focus:bg-truePurple-600 focus:outline-none"
+            className="w-full px-3 py-4 text-white bg-trueFushia-500 rounded-md focus:bg-trueFushia-600 focus:outline-none"
           >
             Join
           </button>

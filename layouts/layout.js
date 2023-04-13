@@ -1,7 +1,4 @@
-import React from "react";
-
 // components
-
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Team from "../components/team";
@@ -12,35 +9,18 @@ import Partners from "../components/partner";
 
 import Faq from "../components/faq";
 import PopupWidget from "../components/popupWidget";
-import Cal from "../components/cal";
 
-import stylesteam from "../styles/Team.module.scss";
-
-import { getSession } from "next-auth/react";
-import { getToken } from "next-auth/jwt";
-
-export const getServerSideProps = async (context) => {
-  const session = await getSession(context);
-  const token = await getToken({ req: context.req });
-  const address = token?.sub ?? null;
-
-  // If you have a value for "address" here, your
-  // server knows the user is authenticated.
-  // You can then pass any data you want
-  // to the page component here.
-
-  return {
-    props: {
-      address,
-      session,
-    },
-  };
-};
-
-export default function Layout({ children, address, session }) {
+//import stylesteam from "../styles/Team.module.scss";
+export const dynamic = "auto";
+export const dynamicParams = true;
+export const revalidate = false;
+export const fetchCache = "auto";
+export const runtime = "nodejs";
+export const preferredRegion = "auto";
+export default function Layout({ children }) {
   return (
     <>
-      <div className="relative h-full w-full mx-auto px-8 py-4">
+      <div className="relative mx-auto h-full w-full px-8 py-4">
         <Navbar />
         <Hero />
         <div className="relative mb-4">
@@ -52,7 +32,6 @@ export default function Layout({ children, address, session }) {
         <Team />
         <Footer />
         <PopupWidget />
-        <Cal />
       </div>
     </>
   );

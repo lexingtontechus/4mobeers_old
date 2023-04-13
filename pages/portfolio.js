@@ -95,7 +95,7 @@ function Card1() {
         loader={LogoLXT}
           alt="Lexington Tech LLC"
           src="/logo-lxt.svg"
-          className="shadow-lg rounded-full mx-auto max-w-120-px hover:bg-truePurple-600 hover:border-truePurple-600"
+          className="shadow-lg rounded-full mx-auto max-w-120-px hover:bg-trueFushia-600 hover:border-trueFushia-600"
           height={150}
           width={150}
           priority="true"
@@ -118,7 +118,7 @@ function Card1() {
             alt="Lexington Tech | LinkedIn"
           >
             <button
-              className="bg-truePurple-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              className="bg-trueFushia-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
               type="button"
             >
               <FontAwesomeIcon icon={faLinkedin} />
@@ -138,7 +138,7 @@ function Card2() {
         loader={LogoDSVI}
           alt="del SOL"
           src="/logo-dsvi-light.svg"
-          className="shadow-lg rounded-half mx-auto max-w-120-px fill-trueZinc-700 dark:fill-trueZinc-100 border-2 border-solid border-trueZinc-100 p-2 hover:bg-truePurple-600"
+          className="shadow-lg rounded-half mx-auto max-w-120-px fill-trueZinc-700 dark:fill-trueZinc-100 border-2 border-solid border-trueZinc-100 p-2 hover:bg-trueFushia-600"
           height={150}
           width={150}
         />
@@ -161,7 +161,7 @@ function Card2() {
             alt="del SOL | LinkedIn"
           >
             <button
-              className="bg-truePurple-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              className="bg-trueFushia-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
               type="button"
             >
               <FontAwesomeIcon icon={faLinkedin} />
@@ -181,7 +181,7 @@ function Card3() {
         loader={Logo4MB}
           alt="4 Mo Beers"
           src="/logo-4mobeers.svg"
-          className="shadow-lg rounded-full mx-auto max-w-120-px hover:bg-truePurple-600"
+          className="shadow-lg rounded-full mx-auto max-w-120-px hover:bg-trueFushia-600"
           height={150}
           width={150}
         />
@@ -203,7 +203,7 @@ function Card3() {
             alt="4 Mo Beers | LinkedIn"
           >
             <button
-              className="bg-truePurple-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              className="bg-trueFushia-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
               type="button"
             >
               <FontAwesomeIcon icon={faLinkedin} />
@@ -223,7 +223,7 @@ function Card4() {
         loader={LogoLasPlayas}
           alt="las Playas"
           src="/logo-lasplayas.svg"
-          className="shadow-lg rounded-full mx-auto max-w-120-px hover:bg-truePurple-600"
+          className="shadow-lg rounded-full mx-auto max-w-120-px hover:bg-trueFushia-600"
           height={150}
           width={150}
         />
@@ -246,7 +246,7 @@ function Card4() {
             alt="Las PLayas | LinkedIn"
           >
             <button
-              className="bg-truePurple-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              className="bg-trueFushia-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
               type="button"
             >
               <FontAwesomeIcon icon={faLinkedin} />
@@ -270,7 +270,7 @@ function Card5() {
         loader={LogoSV}
           alt="Sunset Ventures"
           src="/logo-sunset.svg"
-          className="shadow-lg rounded-full mx-auto max-w-120-px hover:bg-truePurple-600"
+          className="shadow-lg rounded-full mx-auto max-w-120-px hover:bg-trueFushia-600"
           height={150}
           width={150}
         />
@@ -292,7 +292,7 @@ function Card5() {
             alt="Sunset Ventures| LinkedIn"
           >
             <button
-              className="bg-truePurple-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              className="bg-trueFushia-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
               type="button"
             >
               <FontAwesomeIcon icon={faLinkedin} />
@@ -312,7 +312,7 @@ function Card6() {
         loader={LogoSAVI}
           alt="SAVI"
           src="/logo-savi.svg"
-          className="shadow-lg rounded-half mx-auto max-w-120-px hover:bg-truePurple-600"
+          className="shadow-lg rounded-half mx-auto max-w-120-px hover:bg-trueFushia-600"
           height={150}
           width={150}
         />
@@ -334,7 +334,7 @@ function Card6() {
             alt="SAVI | LinkedIn"
           >
             <button
-              className="bg-truePurple-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              className="bg-trueFushia-600 text-trueZinc-100 w-10 h-10 rounded-full outline-none focus:outline-none mr-1 mb-1"
               type="button"
             >
               <FontAwesomeIcon icon={faLinkedin} />

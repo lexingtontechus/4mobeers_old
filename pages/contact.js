@@ -68,7 +68,7 @@ export default function Contact() {
         </div>
         <div className="container w-10/12 p-8 mx-auto w-full place-content-center flex flex-wrap">
           <div className=" flex flex-col overflow-hidden left-0 h-full w-full lg:w-1/2  min-h-[250px] V border border-trueZinc-300 dark:border-trueZinc-800 bg-white shadow-2xl rounded-md sm:max-h-[calc(100vh-120px)]">
-            <div className="flex flex-col justify-center h-32 p-5 bg-truePurple-600">
+            <div className="flex flex-col justify-center h-32 p-5 bg-trueFushia-600">
               <h3 className="text-lg text-white">How can we help you?</h3>
               <p className="text-white opacity-50">
                 We usually respond in a few hours.
@@ -117,7 +117,7 @@ export default function Contact() {
                       className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-white border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
                         errors.name
                           ? "border-red-600 focus:border-red-600 ring-red-100"
-                          : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                          : "border-trueZinc-300 focus:border-trueFushia-600 ring-trueFushia-100"
                       }`}
                     />
                     {errors.name && (
@@ -148,7 +148,7 @@ export default function Contact() {
                       className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-white border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
                         errors.email
                           ? "border-red-600 focus:border-red-600 ring-red-100"
-                          : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                          : "border-trueZinc-300 focus:border-trueFushia-600 ring-trueFushia-100"
                       }`}
                     />
 
@@ -177,7 +177,7 @@ export default function Contact() {
                       className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-white border border-trueZinc-300 rounded-md h-28 focus:outline-none focus:ring   ${
                         errors.message
                           ? "border-red-600 focus:border-red-600 ring-red-100"
-                          : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                          : "border-trueZinc-300 focus:border-trueFushia-600 ring-trueFushia-100"
                       }`}
                       required
                     ></textarea>
@@ -190,7 +190,7 @@ export default function Contact() {
                   <div className="mb-3">
                     <button
                       type="submit"
-                      className="w-full px-3 py-4 text-white bg-truePurple-500 rounded-md focus:bg-truePurple-600 focus:outline-none"
+                      className="w-full px-3 py-4 text-white bg-trueFushia-500 rounded-md focus:bg-trueFushia-600 focus:outline-none"
                     >
                       {isSubmitting ? (
                         <svg
@@ -252,7 +252,7 @@ export default function Contact() {
                     </h2>
                     <p className="text-trueZinc-700 md:px-3">{Message}</p>
                     <button
-                      className="mt-6 text-truePurple-600 focus:outline-none"
+                      className="mt-6 text-trueFushia-600 focus:outline-none"
                       onClick={() => reset()}
                     >
                       Go back
@@ -283,7 +283,7 @@ export default function Contact() {
                   </h3>
                   <p className="text-trueZinc-700 md:px-3">{Message}</p>
                   <button
-                    className="mt-6 text-truePurple-600 focus:outline-none"
+                    className="mt-6 text-trueFushia-600 focus:outline-none"
                     onClick={() => reset()}
                   >
                     Go back

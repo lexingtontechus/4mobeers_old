@@ -1,4 +1,5 @@
 "use client";
+import prettier from "prettier";
 import { Modal, useModal, Button, Text, css } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignature } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +17,7 @@ export default function PartnerModal({ address }) {
   const { setVisible, bindings } = useModal();
   return (
     <>
-      <div className="relative mx-auto inline-block uppercase block bg-truePurple-700 rounded-md w-full text-trueZinc-100 font-black">
+      <div className="relative mx-auto block inline-block w-full rounded-md bg-trueFushia-700 font-black uppercase text-trueZinc-100">
         <Button auto ripple animated onPress={handler}>
           <Text color="#f4f4f5" size="$md" weight="semibold">
             REGISTER

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -5,9 +6,6 @@ import { ThemeProvider } from "next-themes";
 import "../styles/tailwind.css";
 import "../styles/custom.css";
 import { createTheme, NextUIProvider } from "@nextui-org/react";
-import SEO from "../components/seo";
-
-import { useEffect } from "react";
 
 import "@rainbow-me/rainbowkit/styles.css";
 import {
@@ -37,8 +35,6 @@ import { SessionProvider } from "next-auth/react";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import { useState } from "react";
-
-config.autoAddCss = false;
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -124,7 +120,7 @@ function MyApp({ Component, pageProps }) {
               }}
               chains={chains}
               theme={darkTheme({
-                accentColor: "#7e22ce",
+                accentColor: "#a21caf",
                 accentColorForeground: "#f4f4f5",
                 borderRadius: "medium",
                 overlayBlur: "small",
@@ -134,7 +130,6 @@ function MyApp({ Component, pageProps }) {
               })}
             >
               <ThemeProvider attribute="class">
-                <SEO />
                 <Component {...pageProps} />
               </ThemeProvider>
             </RainbowKitProvider>

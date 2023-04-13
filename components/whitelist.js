@@ -1,3 +1,4 @@
+import prettier from "prettier";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
@@ -55,15 +56,15 @@ export default function Test() {
     };
 
   return (
-    <div className="container w-10/12 p-8 mx-auto w-full place-content-center flex flex-wrap">
-      <div className="bg-trueBlue-300 dark:bg-trueZinc-900 flex flex-col  overflow-hidden left-0 h-full w-full sm:w-[350px] min-h-[250px] sm:h-[600px] sm:max-h-[calc(100vh-120px)]">
-        <div className="flex-grow h-full p-6 overflow-auto">
+    <div className="container mx-auto flex w-10/12 w-full flex-wrap place-content-center p-8">
+      <div className="left-0 flex h-full min-h-[250px]  w-full flex-col overflow-hidden bg-trueBlue-300 dark:bg-trueZinc-900 sm:h-[600px] sm:max-h-[calc(100vh-120px)] sm:w-[350px]">
+        <div className="h-full flex-grow overflow-auto p-6">
           {!isSubmitSuccessful && (
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
               <div className="mb-4 px-4">
                 <label
                   htmlFor="companyName"
-                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
+                  className="mb-2 block text-sm text-truePink-600 dark:text-truePink-400"
                 >
                   Company Name
                 </label>
@@ -75,14 +76,14 @@ export default function Test() {
                     required: "Company name is required",
                     maxLength: 80,
                   })}
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                  className={`w-full rounded-md border border-trueZinc-300 bg-trueZinc-100 px-3 py-2 placeholder-trueZinc-300 focus:outline-none focus:ring   ${
                     errors.companyName
-                      ? "border-red-600 focus:border-red-600 ring-red-100"
-                      : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                      ? "border-red-600 ring-red-100 focus:border-red-600"
+                      : "border-trueZinc-300 ring-trueFushia-100 focus:border-trueFushia-600"
                   }`}
                 />
                 {errors.companyName && (
-                  <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                  <div className="invalid-feedback mt-1 text-sm text-red-400">
                     {errors.companyName.message}
                   </div>
                 )}
@@ -91,7 +92,7 @@ export default function Test() {
               <div className="mb-4 px-4">
                 <label
                   htmlFor="Email"
-                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
+                  className="mb-2 block text-sm text-truePink-600 dark:text-truePink-400"
                 >
                   Email Address
                 </label>
@@ -106,15 +107,15 @@ export default function Test() {
                     },
                   })}
                   placeholder="brewbuddy@company.com"
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                  className={`w-full rounded-md border border-trueZinc-300 bg-trueZinc-100 px-3 py-2 placeholder-trueZinc-300 focus:outline-none focus:ring   ${
                     errors.Email
-                      ? "border-red-600 focus:border-red-600 ring-red-100"
-                      : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                      ? "border-red-600 ring-red-100 focus:border-red-600"
+                      : "border-trueZinc-300 ring-trueFushia-100 focus:border-trueFushia-600"
                   }`}
                 />
 
                 {errors.Email && (
-                  <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                  <div className="invalid-feedback mt-1 text-sm text-red-400">
                     {errors.Email.message}
                   </div>
                 )}
@@ -123,7 +124,7 @@ export default function Test() {
               <div className="mb-4 px-4">
                 <label
                   htmlFor="clientName"
-                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
+                  className="mb-2 block text-sm text-truePink-600 dark:text-truePink-400"
                 >
                   Your Name
                 </label>
@@ -135,14 +136,14 @@ export default function Test() {
                     required: "Your full name is required",
                     maxLength: 80,
                   })}
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                  className={`w-full rounded-md border border-trueZinc-300 bg-trueZinc-100 px-3 py-2 placeholder-trueZinc-300 focus:outline-none focus:ring   ${
                     errors.clientName
-                      ? "border-red-600 focus:border-red-600 ring-red-100"
-                      : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                      ? "border-red-600 ring-red-100 focus:border-red-600"
+                      : "border-trueZinc-300 ring-trueFushia-100 focus:border-trueFushia-600"
                   }`}
                 />
                 {errors.clientName && (
-                  <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                  <div className="invalid-feedback mt-1 text-sm text-red-400">
                     {errors.clientName.message}
                   </div>
                 )}
@@ -151,7 +152,7 @@ export default function Test() {
               <div className="mb-4 px-4">
                 <label
                   htmlFor="clientName"
-                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
+                  className="mb-2 block text-sm text-truePink-600 dark:text-truePink-400"
                 >
                   Contact Number
                 </label>
@@ -164,14 +165,14 @@ export default function Test() {
                       "Please enter your contact number e.g.000-000-0000 ",
                     maxLength: 80,
                   })}
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                  className={`w-full rounded-md border border-trueZinc-300 bg-trueZinc-100 px-3 py-2 placeholder-trueZinc-300 focus:outline-none focus:ring   ${
                     errors.contactNumber
-                      ? "border-red-600 focus:border-red-600 ring-red-100"
-                      : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                      ? "border-red-600 ring-red-100 focus:border-red-600"
+                      : "border-trueZinc-300 ring-trueFushia-100 focus:border-trueFushia-600"
                   }`}
                 />
                 {errors.contactNumber && (
-                  <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                  <div className="invalid-feedback mt-1 text-sm text-red-400">
                     {errors.contactNumber.message}
                   </div>
                 )}
@@ -180,7 +181,7 @@ export default function Test() {
               <div className="mb-4 px-4">
                 <label
                   htmlFor="clientName"
-                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
+                  className="mb-2 block text-sm text-truePink-600 dark:text-truePink-400"
                 >
                   Website
                 </label>
@@ -192,14 +193,14 @@ export default function Test() {
                     required: "Please enter the company's website URL",
                     maxLength: 80,
                   })}
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                  className={`w-full rounded-md border border-trueZinc-300 bg-trueZinc-100 px-3 py-2 placeholder-trueZinc-300 focus:outline-none focus:ring   ${
                     errors.website
-                      ? "border-red-600 focus:border-red-600 ring-red-100"
-                      : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                      ? "border-red-600 ring-red-100 focus:border-red-600"
+                      : "border-trueZinc-300 ring-trueFushia-100 focus:border-trueFushia-600"
                   }`}
                 />
                 {errors.website && (
-                  <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                  <div className="invalid-feedback mt-1 text-sm text-red-400">
                     {errors.website.message}
                   </div>
                 )}
@@ -208,7 +209,7 @@ export default function Test() {
               <div className="mb-4 px-4">
                 <label
                   htmlFor="clientName"
-                  className="block mb-2 text-sm text-truePink-600 dark:text-truePink-400"
+                  className="mb-2 block text-sm text-truePink-600 dark:text-truePink-400"
                 >
                   Website
                 </label>
@@ -216,10 +217,10 @@ export default function Test() {
                   {...register("businesstype", {
                     required: "Please select a type of business",
                   })}
-                  className={`w-full px-3 py-2 placeholder-trueZinc-300 bg-trueZinc-100 border border-trueZinc-300 rounded-md focus:outline-none focus:ring   ${
+                  className={`w-full rounded-md border border-trueZinc-300 bg-trueZinc-100 px-3 py-2 placeholder-trueZinc-300 focus:outline-none focus:ring   ${
                     errors.businesstype
-                      ? "border-red-600 focus:border-red-600 ring-red-100"
-                      : "border-trueZinc-300 focus:border-truePurple-600 ring-truePurple-100"
+                      ? "border-red-600 ring-red-100 focus:border-red-600"
+                      : "border-trueZinc-300 ring-trueFushia-100 focus:border-trueFushia-600"
                   }`}
                 >
                   <option value="default">Select An Option</option>
@@ -236,7 +237,7 @@ export default function Test() {
                 </select>
 
                 {errors.businesstype && (
-                  <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                  <div className="invalid-feedback mt-1 text-sm text-red-400">
                     {errors.businesstype.message}
                   </div>
                 )}
@@ -245,11 +246,11 @@ export default function Test() {
               <div className="mx-auto mt-8 px-4">
                 <button
                   type="submit"
-                  className="w-full px-2 py-2 text-trueZinc-100 bg-truePurple-700 rounded-md focus:bg-trueBlue-600 focus:outline-none"
+                  className="w-full rounded-md bg-trueFushia-700 px-2 py-2 text-trueZinc-100 focus:bg-trueBlue-600 focus:outline-none"
                 >
                   {isSubmitting ? (
                     <svg
-                      className="w-5 h-5 mx-auto text-trueZinc-100 animate-spin"
+                      className="mx-auto h-5 w-5 animate-spin text-trueZinc-100"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -278,11 +279,11 @@ export default function Test() {
 
           {isSubmitSuccessful && isSuccess && (
             <>
-              <div className="flex flex-col items-center justify-center h-full text-center text-trueZinc-100 rounded-md">
+              <div className="flex h-full flex-col items-center justify-center rounded-md text-center text-trueZinc-100">
                 <svg
                   width="60"
                   height="60"
-                  className="text-truePurple-900 dark:text-truePink-400"
+                  className="text-trueFushia-900 dark:text-truePink-400"
                   viewBox="0 0 100 100"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -308,7 +309,7 @@ export default function Test() {
                 </h2>
 
                 <button
-                  className="rounded-md py-2 px-4 bg-truePurple-900 mt-6 text-trueZinc-100 focus:outline-none"
+                  className="mt-6 rounded-md bg-trueFushia-900 px-4 py-2 text-trueZinc-100 focus:outline-none"
                   onClick={() => reset()}
                 >
                   Go back
@@ -318,7 +319,7 @@ export default function Test() {
           )}
 
           {isSubmitSuccessful && !isSuccess && (
-            <div className="flex flex-col items-center justify-center h-full text-center text-trueZinc-100 rounded-md">
+            <div className="flex h-full flex-col items-center justify-center rounded-md text-center text-trueZinc-100">
               <svg
                 width="60"
                 height="60"
@@ -334,12 +335,12 @@ export default function Test() {
                 />
               </svg>
 
-              <h3 className="text-xl text-red-400 py-7">
+              <h3 className="py-7 text-xl text-red-400">
                 Oops, Something went wrong!
               </h3>
 
               <button
-                className="mt-6 text-truePurple-600 focus:outline-none"
+                className="mt-6 text-trueFushia-600 focus:outline-none"
                 onClick={() => reset()}
               >
                 Go back

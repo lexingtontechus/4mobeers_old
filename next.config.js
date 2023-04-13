@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   basePath: "",
+  pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
   images: {
     //domains: ["storageapi.fleek.co", "savivets.wpengine.com"],
     remotePatterns: [

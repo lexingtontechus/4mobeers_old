@@ -1,9 +1,10 @@
+'use client';
 import Head from "next/head";
 import Script from "next/script";
 
 export default function SEO({
   title = "4mobeers",
-  description = "Entrepreneur in technology, biotech, cleantech, foodtech & mobility.",
+  description = "Home of the Road Kingz",
 }) {
   return (
     <>

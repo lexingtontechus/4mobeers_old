@@ -3,7 +3,7 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   mode: "jit",
-  content: ["./pages/**/*.{html,js}", "./components/**/*.{html,js}"],
+  content: ["./pages/**/*.{html,js}", "./components/**/*.{html,js,jsx}"],
   darkMode: "class", // or 'media' or 'class'
 
   backgroundImage: {
@@ -53,6 +53,7 @@ module.exports = {
         trueEmerald: colors.emerald,
         trueBlue: colors.blue,
         truePink: colors.pink,
+        trueFushia: colors.fuchsia,
       },
     },
     fontFamily: {
@@ -63,5 +64,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [
+    require("@tailwindcss/aspect-ratio", "prettier-plugin-tailwindcss"),
+  ],
 };

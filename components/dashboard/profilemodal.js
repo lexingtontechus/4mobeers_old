@@ -1,3 +1,4 @@
+import prettier from "prettier";
 import { Modal, useModal, Button, Text, css } from "@nextui-org/react";
 import React from "react";
 import Profile from "./profile";
@@ -14,7 +15,7 @@ export default function ProfileModal() {
   };
   const { setVisible, bindings } = useModal();
   return (
-    <div className="mx-2 relative mx-auto inline-block uppercase block bg-truePurple-700 rounded-md">
+    <div className="relative mx-2 mx-auto block inline-block rounded-md bg-trueFushia-700 uppercase">
       <Button
         css={{ color: "#f4f4f5", background: "#18181b" }}
         auto
@@ -38,13 +39,14 @@ export default function ProfileModal() {
         //open={visible}
         onClose={closeHandler}
         {...bindings}
+        className="bg-gradient-to-r from-trueBlue-400 to-trueBlue-600"
       >
         <Modal.Header>
           <Text
             h2
             id="modal-title"
             size={18}
-            transform="uppercase"
+            transform="uppercase font-black"
             css={{
               textGradient: "45deg, $blue600 -20%, $pink600 50%",
             }}
@@ -54,23 +56,23 @@ export default function ProfileModal() {
           </Text>
         </Modal.Header>
         <Modal.Body>
-          <Text
-            id="modal-description"
-            className="mx-auto align-center text-center"
-          >
-            Update Your Profile
-          </Text>
           <Profile address={address} />
         </Modal.Body>
-        <Modal.Footer>
-          <Button
-            auto
-            flat
-            css={{ color: "#f4f4f5", background: "#581c87" }}
-            onPress={closeHandler}
-          >
-            Close
-          </Button>
+        <Modal.Footer justify="center">
+          <div className="rounded-md bg-trueFushia-700">
+            <Button
+              auto
+              ripple
+              animated
+              shadow
+              bordered
+              color="gradient"
+              css={{ color: "#f4f4f5", background: "#581c87" }}
+              onPress={closeHandler}
+            >
+              CLOSE
+            </Button>
+          </div>
         </Modal.Footer>
       </Modal>
     </div>
