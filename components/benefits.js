@@ -1,3 +1,4 @@
+import prettier from "prettier";
 import Image from "next/image";
 import React from "react";
 import Container from "./container";
@@ -7,9 +8,9 @@ export default function Benefits(props) {
 
   return (
     <>
-      <Container className="flex flex-wrap mb-20 lg:gap-10 lg:flex-nowrap ">
+      <Container className="mb-20 flex flex-wrap lg:flex-nowrap lg:gap-10 ">
         <div
-          className={`flex items-center justify-center w-full lg:w-1/2 ${
+          className={`flex w-full items-center justify-center lg:w-1/2 ${
             props.imgPos === "right" ? "lg:order-1" : ""
           }`}
         >
@@ -26,22 +27,22 @@ export default function Benefits(props) {
         </div>
 
         <div
-          className={`flex flex-wrap items-center w-full lg:w-1/2 ${
+          className={`flex w-full flex-wrap items-center lg:w-1/2 ${
             props.imgPos === "right" ? "lg:justify-end" : ""
           }`}
         >
           <div>
-            <div className="flex flex-col w-full mt-4">
-              <h3 className="max-w-2xl mt-3 text-3xl font-bold leading-snug tracking-tight text-trueZinc-800 lg:leading-tight lg:text-4xl dark:text-white">
+            <div className="mt-4 flex w-full flex-col">
+              <h3 className="mt-3 max-w-2xl text-3xl font-bold leading-snug tracking-tight text-trueZinc-800 lg:text-4xl lg:leading-tight">
                 {data.title}
               </h3>
 
-              <p className="max-w-2xl py-4 text-lg leading-normal text-trueZinc-500 lg:text-xl xl:text-xl dark:text-trueZinc-300">
+              <p className="max-w-2xl py-4 text-lg leading-normal text-trueZinc-500 dark:text-trueZinc-300 lg:text-xl xl:text-xl">
                 {data.desc}
               </p>
             </div>
 
-            <div className="w-full mt-5">
+            <div className="mt-5 w-full">
               {data.bullets.map((item, index) => (
                 <Benefit key={index} title={item.title} icon={item.icon}>
                   {item.desc}
@@ -58,10 +59,10 @@ export default function Benefits(props) {
 function Benefit(props) {
   return (
     <>
-      <div className="flex items-start mt-8 space-x-3">
-        <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-trueSky-600 rounded-md w-11 h-11 ">
+      <div className="mt-8 flex items-start space-x-3">
+        <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-md bg-trueSky-600 ">
           {React.cloneElement(props.icon, {
-            className: "w-7 h-7 text-trueSky-100"
+            className: "w-7 h-7 text-trueSky-100",
           })}
         </div>
         <div>

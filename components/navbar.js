@@ -1,194 +1,66 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
-
+'use client';
+import prettier from "prettier";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
-
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import ThemeChanger from "../components/darkSwitch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import ThemeChanger from "../components/darkSwitch";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
-import {
-  useAddress,
-  useDisconnect,
-  useUser,
-  useLogin,
-  useLogout,
-  useMetamask,
-} from "@thirdweb-dev/react";
+import ProfileModal from "../components/dashboard/profilemodal";
+import { useAccount, useConnect } from "wagmi";
+import { useSession } from "next-auth/react";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+//export default function Header() {
+function Header() {
+  const { address, isConnected } = useAccount();
+  const { data: session, status } = useSession();
 
-const Navbar = () => {
-  const router = useRouter();
-  const address = useAddress();
-  const { user } = useUser();
   return (
     <>
-      <Disclosure as="nav">
-        {({ open }) => (
-          <>
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-4">
-              <div className="relative flex h-16 items-center justify-between">
-                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                  {/* Mobile menu button*/}
-                </div>
-                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                  <div className="flex flex-shrink-0 items-center">
-                    <Link
-                      href="/"
-                      className="inline-flex h-content w-auto fill-trueZinc-900 dark:fill-trueZinc-100 stroke-2"
-                    >
-                      <Logo />
-                    </Link>
-                  </div>
-                </div>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:hidden sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  {/* Profile dropdown */}
-                  <div className="relative mx-3">
-                    <Disclosure.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trueZinc-100 focus:ring-offset-2 focus:ring-offset-trueZinc-800">
-                      <span className="sr-only">Open user menu</span>
-                      <FontAwesomeIcon
-                        icon={faBars}
-                        className="text-truePurple-900 dark:text-truePink-600"
-                      />
-                    </Disclosure.Button>
+      <div className="mx-auto max-w-7xl px-2 py-4 sm:px-6 lg:px-8">
+        <div className="relative flex h-16 items-center justify-between">
+          <div className="flex flex-1 items-start justify-start">
+            <div className="flex flex-shrink-0 items-center">
+              <Link
+                href="/"
+                className="h-content inline-flex w-auto fill-trueZinc-900 stroke-2 dark:fill-trueZinc-100"
+              >
+                <Logo />
+              </Link>
+            </div>
+          </div>
 
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <div className="bg-truePurple-900 absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-truePurple-900 ring-opacity-5 focus:outline-none border-2">
-                        <div>
-                          <ConnectWallet />
-                        </div>
-                        {address && (
-                          <>
-                            <div>
-                              <Link
-                                href="/profile"
-                                alt="Profile"
-                                className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                              >
-                                Profile
-                              </Link>{" "}
-                            </div>
-                          </>
-                        )}
-                        <div>
-                          <Link
-                            href="/#about"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                          >
-                            About
-                          </Link>
-                        </div>
-                        <div>
-                          <Link
-                            href="/#faqs"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                          >
-                            FAQs
-                          </Link>
-                        </div>
-                        <div>
-                          <Link
-                            href="/#community"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                          >
-                            Join
-                          </Link>
-                        </div>
-                        <div>
-                          <Link
-                            href="/#team"
-                            className="block px-4 py-2 text-sm text-trueZinc-100 bg-truePurple-900"
-                          >
-                            Team
-                          </Link>
-                        </div>
-                      </div>
-                    </Transition>
-                  </div>
-                  <ThemeChanger />
-                </div>
-
-                {/* Menu */}
-                <div className="hidden text-center lg:flex lg:items-center">
-                  <div className="flex-nowrap flex-grow space-y-1 px-4 pt-8 pb-4">
-                    <ul className="flex flex-col lg:flex-row list-none mr-auto">
-                      <li className="flex items-center">
-                        <div className="mr-3">
-                          <Link
-                            href="/#about"
-                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                          >
-                            About
-                          </Link>
-                        </div>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="mr-3">
-                          <Link
-                            href="/#faqs"
-                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                          >
-                            FAQs
-                          </Link>
-                        </div>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="mr-3">
-                          <Link
-                            href="/#team"
-                            className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                          >
-                            Team
-                          </Link>
-                        </div>
-                      </li>
-                      {address && (
-                        <>
-                          <li className="flex items-center">
-                            <div className="mr-3">
-                              <Link
-                                href="/profile"
-                                alt="Profile"
-                                className="inline-block px-4 py-2 text-lg font-normal text-truePurple-900 no-underline rounded-md dark:text-truePink-600 hover:text-truePurple-500 focus:text-trueZinc-500 focus:bg-trueZinc-100 focus:outline-none"
-                              >
-                                Profile
-                              </Link>{" "}
-                            </div>
-                          </li>
-                        </>
-                      )}
-                      <li className="flex items-center">
-                        <div className="round-md">
-                          <ConnectWallet />
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <ThemeChanger />
-                </div>
+          <div className="relative inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div className="relative mx-3">
+              <div className="inherit flex origin-top-right flex-row ">
+                {/* <div className="pr-3">
+                  {session?.user && isConnected && (
+                    <ProfileModal address={address} />
+                  )}
+                </div>*/}
+                <ConnectButton
+                  label="CONNECT"
+                  showBalance={false}
+                  chainStatus="none"
+                  accountStatus={{
+                    smallScreen: "avatar",
+                    largeScreen: "full",
+                  }}
+                />
               </div>
             </div>
-          </>
-        )}
-      </Disclosure>
+            <ThemeChanger />
+          </div>
+        </div>
+      </div>
     </>
   );
-};
-
-export default Navbar;
+}
+export default Header;
 
 function Logo() {
   return (
@@ -198,9 +70,8 @@ function Logo() {
       preserveAspectRatio="xMidYMid meet"
       width="70"
       height="70"
-      className="fill-truePurple-900 dark:fill-truePink-600"
+      className="fill-trueFushia-700 dark:fill-truePink-600"
     >
-      <defs id="SvgjsDefs1966" />
       <g
         featurekey="rootContainer"
         transform="matrix(2.8938654362463287,0,0,2.8938654362463287,-0.00346661711164234,-0.028938799252233225)"

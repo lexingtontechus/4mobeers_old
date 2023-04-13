@@ -1,3 +1,4 @@
+import prettier from "prettier";
 export default function Slogan() {
   return (
     <>
@@ -5,7 +6,7 @@ export default function Slogan() {
         <div class="sm:max-w-auto relative p-8 sm:mx-auto sm:rounded-lg sm:px-20">
           <h1 class="flex flex-col gap-2 text-center text-8xl font-black md:flex-row lg:tracking-tight xl:text-9xl">
             <span
-              class="before:absolute before:-z-10 text-white before:content-[attr(data-text1)]"
+              class="text-white before:absolute before:-z-10 before:content-[attr(data-text1)]"
               data-text1="4."
             >
               <span class="isolate animate-gradient-1  bg-gradient-to-r from-indigo-400 to-pink-800 bg-clip-text text-transparent">

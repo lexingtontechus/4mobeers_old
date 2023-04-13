@@ -1,5 +1,5 @@
-import { supabase } from "../../utils/supabase-clients";
 
+import { supabase } from "@supabase/auth-helpers-react";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const body = req.body;

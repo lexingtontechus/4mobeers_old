@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Container from "./container";
-import { ConnectWallet } from "@thirdweb-dev/react";
 import styles from "../styles/Home.module.css";
 
 export default function Cta() {
@@ -17,11 +16,11 @@ export default function Cta() {
         </div>
         <div className="flex-shrink-0 w-full text-center lg:w-auto">
           <div className="{styles.connect}">
-            <ConnectWallet />
+
           </div>
           {/*      <Link
             href="/portfolio"
-            className="inline-block py-3 mx-auto text-lg font-medium text-center text-truePink-400 bg-truePurple-600 rounded-md px-7 lg:px-10 lg:py-5 "
+            className="inline-block py-3 mx-auto text-lg font-medium text-center text-truePink-400 bg-trueFushia-700 rounded-md px-7 lg:px-10 lg:py-5 "
           >
             View The Portfolio
           </Link>*/}

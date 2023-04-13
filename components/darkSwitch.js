@@ -1,5 +1,8 @@
+'use client';
+import prettier from "prettier";
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { Button } from "@nextui-org/react";
 
 const ThemeChanger = () => {
   const [mounted, setMounted] = useState(false);
@@ -11,20 +14,14 @@ const ThemeChanger = () => {
   if (!mounted) return null;
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center stroke-2 shadow-md shadow-trueAmber-600">
       {theme === "light" ? (
-        <button
-          onClick={() => setTheme("dark")}
-          className="rounded-full outline-none focus:outline-none"
-        >
+        <button onClick={() => setTheme("dark")}>
           <span className="sr-only">Dark Mode</span>
           <Beer />
         </button>
       ) : (
-        <button
-          onClick={() => setTheme("light")}
-          className="rounded-full outline-none focus:outline-none"
-        >
+        <button onClick={() => setTheme("light")}>
           <span className="sr-only">Light Mode</span>
           <Beer />
         </button>
@@ -57,7 +54,7 @@ function Beer() {
       viewBox="0 0 100 123.58800478239715"
       width="30"
       height="30"
-      className="fill-truePurple-900 dark:fill-truePink-600"
+      className="fill-trueFushia-900 dark:fill-truePink-600"
     >
       <g transform="translate(0, 0) scale(1.2358800478239715)">
         <path

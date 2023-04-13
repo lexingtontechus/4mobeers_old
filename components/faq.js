@@ -1,144 +1,293 @@
+"use client";
+import prettier from "prettier";
 import React from "react";
-import Container from "./container";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
-import { Collapse } from "@nextui-org/react";
+import { Button, Collapse, css, Text } from "@nextui-org/react";
+import SectionTitle from "../components/sectionTitle";
 
-import styles from "../styles/FAQs.module.scss";
+//import styles from "../styles/FAQs.module.scss";
 
 export default function Faq() {
   return (
     <>
-      <Container className={styles.faq}>
-        <div
-          data-aos="fade-left"
-          data-aos-delay="50"
-          data-aos-duration="2500"
-          id="faqs"
-          className={styles.row}
-        >
-          <h1 className="text-center text-8xl xl:text-9xl animate-fade-out">
-            FAQs
-          </h1>
-          <h2 className="text-center max-w-2xl mt-3 text-2xl font-bold leading-snug tracking-tight text-trueZinc-700 dark:text-trueZinc-100 lg:leading-tight lg:text-4xl dark:text-white">
-            How to partner and build your community with 4MoBeers?
-          </h2>
-        </div>
-        <div className="flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-trueZinc-700 dark:truePink-400 bg-trueZinc-100 p-8 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
-          <div className="w-full p-8 mx-auto rounded-2xl">
+      <div id="faqs" className="my-8">
+        <h1 className="animate-linear bg-gradient-to-r from-trueBlue-500 via-trueOrange-500 to-trueBlue-500 bg-[length:200%_auto] bg-clip-text text-center text-8xl font-black uppercase text-transparent xl:text-9xl">
+          FAQs
+        </h1>
+        <SectionTitle pretitle="Ask Us Anything" title="Learn More">
+          How to partner and build your community with 4MoBeers?
+        </SectionTitle>
+
+        <div className="dark:truePink-400 mx-auto mt-4 flex w-full max-w-4xl flex-wrap items-center justify-between gap-5 rounded-xl bg-trueZinc-100 p-8 text-trueZinc-700 lg:flex-nowrap lg:px-12 lg:py-12">
+          <div className="mx-auto w-full rounded-2xl">
             <Disclosure>
               {({ open }) => (
                 <>
-                  <Collapse.Group
-                    splitted
-                    className="text-trueZinc-700 dark:text-trueZinc-100"
-                  >
+                  <Collapse.Group splitted>
                     <Collapse
-                      title="What is the 4MoBeers DAO?"
+                      title="4MoBeers DAO"
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            What is the 4MoBeers DAO?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
-                            open ? "transform rotate-180" : ""
-                          } w-5 h-5 text-truePurple-900`}
+                            open ? "rotate-180 transform" : ""
+                          } h-5 w-5 text-truePink-600`}
                         />
                       }
                     >
-                      <p className="text-md text-trueZinc-700">
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         Thank you for choosing to be part of our community at
                         4MoBeers DAO Inc, doing business as 4MoBeers. We are
                         creating a Beerverse that supports the beer community
                         and roadie lovers. The 4MoBeers DAO will orchestrate the
-                        goverance, voting, airdrops, splits and
-                        management/security of smart contracts.
-                      </p>
-                      <p className="text-md text-trueZinc-700">
+                        goverance, voting, airdrops, splits, management &
+                        security of smart contracts.
+                      </Text>
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         4MoBeers will be responsible for the design & creation
                         of each Non-Fungible Token (NFT).
-                      </p>
-                      <p className="text-md text-trueZinc-700">
+                      </Text>
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         Each NFT will be offered at a fixed price.
-                      </p>
-                      <p className="text-md text-trueZinc-700">
+                      </Text>
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         Each NIL owner will be their own limited edition NFT
                         set, to be managed at their own discretion.
-                      </p>
-                      <p className="text-md text-trueZinc-700">
+                      </Text>
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         Ongoing royalities will be attributed to the NIL owner
                         only, not the DAO.
-                      </p>
+                      </Text>
                     </Collapse>
                     <Collapse
-                      title="What is the 4MoBeers NFT Collectibles Edition?"
+                      title="NFT Collectibles Edition"
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            What is the 4MoBeers NFT Collectibles Edition?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
-                            open ? "transform rotate-180" : ""
-                          } w-5 h-5 text-truePurple-900`}
+                            open ? "rotate-180 transform" : ""
+                          } h-5 w-5 text-truePink-600`}
                         />
                       }
                     >
-                      <p className="text-md text-trueZinc-700">
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         The 4MoBeer NFT Collectibles Edition will support the
                         Name, Image & Likeness (NIL) of nominated & voted on
                         community partners.
-                      </p>
+                      </Text>
                     </Collapse>
                     <Collapse
-                      title="What is the 4MoBeers NFT Signature Series?"
+                      title="NFT Signature Series"
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            What is the 4MoBeers NFT Signature Series?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
-                            open ? "transform rotate-180" : ""
-                          } w-5 h-5 text-truePurple-900`}
+                            open ? "rotate-180 transform" : ""
+                          } h-5 w-5 text-truePink-600`}
                         />
                       }
                     >
-                      <p className="text-md text-trueZinc-700">
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         The 4MoBeer NFT Collectibles Edition will support the
                         Name Image & Likeness (NIL) of nominated & voted on
                         community members.
-                      </p>
+                      </Text>
                     </Collapse>
                     <Collapse
-                      title="How do I work with 4MoBeers?"
+                      title="Connecting A Wallet"
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            Which wallets are supported?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
-                            open ? "transform rotate-180" : ""
-                          } w-5 h-5 text-truePurple-900`}
+                            open ? "rotate-180 transform" : ""
+                          } h-5 w-5 text-truePink-600`}
                         />
                       }
                     >
-                      <p className="text-md text-trueZinc-700">
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
+                        The dApp is integrated with Rainbow Wallet. Rainbow
+                        Wallet & Wallet Connect support security notifications
+                        for sign-in verificaton and secure DAO messages.
+                      </Text>
+                    </Collapse>
+                    <Collapse
+                      title="Partners & Collabs"
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            How do I work with 4MoBeers?
+                          </Text>
+                        </>
+                      }
+                      arrowIcon={
+                        <ChevronUpIcon
+                          className={`${
+                            open ? "rotate-180 transform" : ""
+                          } h-5 w-5 text-truePink-600`}
+                        />
+                      }
+                    >
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         We love colabs! Send us a message or Beer Us!
-                      </p>
+                      </Text>
                     </Collapse>
                     <Collapse
-                      title="Is 4MoBeers hiring?"
+                      title="Hire Me"
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            Is 4MoBeers hiring?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
-                            open ? "transform rotate-180" : ""
-                          } w-5 h-5 text-truePurple-900`}
+                            open ? "rotate-180 transform" : ""
+                          } h-5 w-5 text-truePink-600`}
                         />
                       }
                     >
-                      <p className="text-md text-trueZinc-700">
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
                         Yes, we are growing the Beerverse community one beer for
                         the road at a time.
-                      </p>
+                      </Text>
                     </Collapse>
                     <Collapse
                       title="Who is 4MoBeers?"
+                      subtitle={
+                        <>
+                          <Text
+                            color="#db2777"
+                            css={{
+                              fontSize: "$sm",
+                            }}
+                          >
+                            Hint ... Beer us?
+                          </Text>
+                        </>
+                      }
                       arrowIcon={
                         <ChevronUpIcon
                           className={`${
-                            open ? "transform rotate-180" : ""
-                          } w-5 h-5 text-truePurple-900`}
+                            open ? "rotate-180 transform" : ""
+                          } h-5 w-5 text-truePink-600`}
                         />
                       }
                     >
-                      <p className="text-md text-trueZinc-700">Beer me!</p>
+                      <Text
+                        css={{
+                          fontSize: "$xs",
+                        }}
+                        color="#3f3f46"
+                      >
+                        Beer us!
+                      </Text>
                     </Collapse>
                   </Collapse.Group>
                 </>
@@ -146,7 +295,7 @@ export default function Faq() {
             </Disclosure>
           </div>
         </div>
-      </Container>
+      </div>
     </>
   );
 }
